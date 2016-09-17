@@ -177,7 +177,7 @@
           </xs:attribute>
           <xs:attribute name="Multiline" type="msb:non_empty_string">
             <xs:annotation>
-              <xs:documentation>[Optional] Gets or sets a value changing the meaning of ^ and $ so they match at the beginning and end, 
+              <xs:documentation>[Optional] Gets or sets a value changing the meaning of ^ and $ so they match at the beginning and end,
             respectively, of any line, and not just the beginning and end of the entire string.</xs:documentation>
             </xs:annotation>
           </xs:attribute>
@@ -198,7 +198,7 @@
           </xs:attribute>
           <xs:attribute name="Singleline" type="msb:non_empty_string">
             <xs:annotation>
-              <xs:documentation>[Optional] Gets or sets a value changing the meaning of the dot (.) so it matches 
+              <xs:documentation>[Optional] Gets or sets a value changing the meaning of the dot (.) so it matches
             every character (instead of every character except \n).</xs:documentation>
             </xs:annotation>
           </xs:attribute>
@@ -257,28 +257,28 @@
           </xs:attribute>
           <xs:attribute name="ApplyOutXsl" type="msb:non_empty_string">
             <xs:annotation>
-              <xs:documentation>[Optional] Applies the XSL transformation specified in /outXsl to the 
+              <xs:documentation>[Optional] Applies the XSL transformation specified in /outXsl to the
             analysis report before saving the file.</xs:documentation>
             </xs:annotation>
           </xs:attribute>
           <xs:attribute name="ConsoleXslFileName" type="xs:string">
             <xs:annotation>
-              <xs:documentation>[Optional] Specifies the XSL or XSLT file that contains a transformation to 
+              <xs:documentation>[Optional] Specifies the XSL or XSLT file that contains a transformation to
             be applied to the analysis output before it is displayed in the console.</xs:documentation>
             </xs:annotation>
           </xs:attribute>
           <xs:attribute name="DependencyDirectories" type="xs:string">
             <xs:annotation>
-              <xs:documentation>[Optional] Specifies additional directories to search for assembly dependencies. 
-            FxCopCmd always searches the target assembly directory and the current 
+              <xs:documentation>[Optional] Specifies additional directories to search for assembly dependencies.
+            FxCopCmd always searches the target assembly directory and the current
             working directory.</xs:documentation>
             </xs:annotation>
           </xs:attribute>
           <xs:attribute name="DirectOutputToConsole" type="msb:non_empty_string">
             <xs:annotation>
-              <xs:documentation>[Optional] Directs analysis output to the console or to the 
-            Output window in Visual Studio .NET. By default, 
-            the XSL file FxCopConsoleOutput.xsl is applied to the 
+              <xs:documentation>[Optional] Directs analysis output to the console or to the
+            Output window in Visual Studio .NET. By default,
+            the XSL file FxCopConsoleOutput.xsl is applied to the
             output before it is displayed.</xs:documentation>
             </xs:annotation>
           </xs:attribute>
@@ -286,33 +286,33 @@
           <xs:attribute name="FailOnError" type="msb:non_empty_string">
             <xs:annotation>
               <xs:documentation>[Optional] Gets or sets a value indicating whether the build should
-            fail if static code analysis reports errors. Defaults to 
+            fail if static code analysis reports errors. Defaults to
             true.</xs:documentation>
             </xs:annotation>
           </xs:attribute>
           <xs:attribute name="ImportFiles" type="xs:string">
             <xs:annotation>
-              <xs:documentation>[Optional] Specifies the name of an analysis report or project file to import. 
-            Any messages in the imported file that are marked as excluded are not 
+              <xs:documentation>[Optional] Specifies the name of an analysis report or project file to import.
+            Any messages in the imported file that are marked as excluded are not
             included in the analysis results.</xs:documentation>
             </xs:annotation>
           </xs:attribute>
           <xs:attribute name="IncludeSummaryReport" type="msb:non_empty_string">
             <xs:annotation>
-              <xs:documentation>[Optional] Includes a summary report with the informational 
+              <xs:documentation>[Optional] Includes a summary report with the informational
             messages returned by FxCopCmd.</xs:documentation>
             </xs:annotation>
           </xs:attribute>
           <xs:attribute name="OutputXslFileName" type="xs:string">
             <xs:annotation>
-              <xs:documentation>[Optional] Specifies the XSL or XSLT file that is referenced by the 
+              <xs:documentation>[Optional] Specifies the XSL or XSLT file that is referenced by the
             xml-stylesheet processing instruction in the analysis report.</xs:documentation>
             </xs:annotation>
           </xs:attribute>
           <xs:attribute name="PlatformDirectory" type="xs:string">
             <xs:annotation>
-              <xs:documentation>[Optional] Specifies the location of the version of Mscorlib.dll 
-            that was used when building the target assemblies if this 
+              <xs:documentation>[Optional] Specifies the location of the version of Mscorlib.dll
+            that was used when building the target assemblies if this
             version is not installed on the computer running FxCopCmd.</xs:documentation>
             </xs:annotation>
           </xs:attribute>
@@ -340,9 +340,9 @@
           <xs:attribute name="ToolPath" type="xs:string" />
           <xs:attribute name="TypeList" type="xs:string">
             <xs:annotation>
-              <xs:documentation>[Optional] Comma-separated list of type names to analyze.  This option disables 
-            analysis of assemblies, namespaces, and resources; only the specified 
-            types and their members are included in the analysis.  
+              <xs:documentation>[Optional] Comma-separated list of type names to analyze.  This option disables
+            analysis of assemblies, namespaces, and resources; only the specified
+            types and their members are included in the analysis.
             Use the wildcard character '*' at the end of the name to select multiple types.</xs:documentation>
             </xs:annotation>
           </xs:attribute>
@@ -362,7 +362,7 @@
   </xs:element>
   <xs:element name="AppPoolController" substitutionGroup="msb:Task">
     <xs:annotation>
-      <xs:documentation>Allows control for an application pool on a local or remote machine with IIS installed.  The default is 
+      <xs:documentation>Allows control for an application pool on a local or remote machine with IIS installed.  The default is
             to control the application pool on the local machine.  If connecting to a remote machine, you can
             specify the  and  for the task
             to run under.</xs:documentation>
@@ -436,7 +436,7 @@
   </xs:simpleType>
   <xs:element name="AppPoolCreate" substitutionGroup="msb:Task">
     <xs:annotation>
-      <xs:documentation>Creates a new application pool on a local or remote machine with IIS installed.  The default is 
+      <xs:documentation>Creates a new application pool on a local or remote machine with IIS installed.  The default is
             to create the new application pool on the local machine.  If connecting to a remote machine, you can
             specify the  and  for the task
             to run under.</xs:documentation>
@@ -459,7 +459,7 @@
           <xs:attribute name="AppPoolIdentityType" type="xs:string">
             <xs:annotation>
               <xs:documentation>[Optional] The AppPoolIdentityType property allows application pools to run as a specific user account:
-            
+
             0 - The application pool runs as NT AUTHORITY\SYSTEM.
             1 - The application pool runs as NT AUTHORITY\LOCAL SERVICE.
             2 - The application pool runs as NT AUTHORITY\NETWORK SERVICE.
@@ -486,10 +486,10 @@
             is specified in the AutoShutdownAppPoolExe property. You can use these two properties in the following
             way to send e-mail, for example, when the World Wide Web Publishing Service (WWW service) shuts down
             an application pool for rapid fail protection:
-            
+
             AutoShutdownAppPoolExe = "C:\LogAndSendMail.bat"
             AutoShutdownAppPoolParams = "-AppPoolName %1%"
-            
+
             where %1% represents the application pool name.</xs:documentation>
             </xs:annotation>
           </xs:attribute>
@@ -498,7 +498,7 @@
               <xs:documentation>[Optional] The CPUAction property configures the action(s) that IIS takes when Microsoft Windows NT ® job objects
             run. Only one Windows NT job object exists per application pool, therefore the CPUAction property
             is configured on a per application pool basis.
-            
+
             Possible values:
             0 - No action is taken except that a warning is written to the event log when the CPU limit is exceeded.
             1 - Application pool worker processes that exceed their CPU limit will be forced to shut down.</xs:documentation>
@@ -558,9 +558,9 @@
           </xs:attribute>
           <xs:attribute name="LogonMethod" type="xs:string">
             <xs:annotation>
-              <xs:documentation>[Optional] The LogonMethod property contains an integer that specifies the logon method for cleartext 
+              <xs:documentation>[Optional] The LogonMethod property contains an integer that specifies the logon method for cleartext
             logons. Valid settings are:
-            
+
             0 for interactive logon.
             1 for batch logon.
             2 for network logon.
@@ -625,7 +625,7 @@
             <xs:annotation>
               <xs:documentation>[Optional] The PeriodicRestartSchedule property specifies the time (in 24 hour format) that the application
             will be rotated. Each time is in local time and is specified in the following format:
-            
+
             PeriodicRestartSchedule="hh:mm,hh:mm,hh:mm"</xs:documentation>
             </xs:annotation>
           </xs:attribute>
@@ -675,7 +675,7 @@
           <xs:attribute name="RapidFailProtectionMaxCrashes" type="xs:string">
             <xs:annotation>
               <xs:documentation>[Optional] The RapidFailProtectionMaxCrashes property specifies the maximum number of failures
-            allowed within the number of minutes specified by the  
+            allowed within the number of minutes specified by the
             property. See .</xs:documentation>
             </xs:annotation>
           </xs:attribute>
@@ -710,7 +710,7 @@
             processor mask indicates to which CPU the worker processes in an application pool should be
             bound. Before this property takes affect, the  property must be set
             to true for the application pool. These properties cannot be set through IIS Manager.
-            
+
             Do not set this property to zero. Doing so causes no SMP affinity to be configured, creating an
             error condition. The default DWORD value is 4294967295 (or -1), which is represented in hexadecimal
             as 0xFFFFFFFF. A value of 0xFFFFFFFF in SMPProcessorAffinityMask indicates that all processors are enabled.</xs:documentation>
@@ -738,12 +738,12 @@
             at the same time. Changing the value of this property is not recommended. If you do, change
             it to a valid Windows user account, and change WAMUserPass to the corresponding password
             for the new account.
-            
+
             Important:
             Changes to WAMUserName and WAMUserPass may disrupt the operation of existing IIS out-of-process
             applications. You can synchronize application identities using Component Services to edit the
             user name and password values, found on the Identity tab of the property sheet for each package.
-            
+
             In-process applications are not affected by these property values.</xs:documentation>
             </xs:annotation>
           </xs:attribute>
@@ -754,13 +754,13 @@
             and its companion property, , are set when IIS is installed, and match the
             password and user name values in the Microsoft Windows user account (IWAM_ MachineName, where MachineName
             is the name of the machine on which IIS is installed) established at the same time.
-            
+
             Important:
             Changing the value of this property is not recommended. If you do, you must change the Windows account
             password to the identical value. You must also synchronize existing IIS out-of-process application
             identities, using Component Services to edit the user name and password values, which are found on the
             Identity tab of the property sheet for each package.
-            
+
             In-process applications are not affected by these property values.</xs:documentation>
             </xs:annotation>
           </xs:attribute>
@@ -770,7 +770,7 @@
   </xs:element>
   <xs:element name="AppPoolDelete" substitutionGroup="msb:Task">
     <xs:annotation>
-      <xs:documentation>Deletes an existing application pool on a local or remote machine with IIS installed.  The default is 
+      <xs:documentation>Deletes an existing application pool on a local or remote machine with IIS installed.  The default is
             to delete an existing application pool on the local machine.  If connecting to a remote machine, you can
             specify the  and  for the task
             to run under.</xs:documentation>
@@ -811,9 +811,9 @@
   </xs:element>
   <xs:element name="WebDirectoryCreate" substitutionGroup="msb:Task">
     <xs:annotation>
-      <xs:documentation>Creates a new web directory on a local or remote machine with IIS installed.  The default is 
+      <xs:documentation>Creates a new web directory on a local or remote machine with IIS installed.  The default is
             to create the new web directory on the local machine.  The physical path is required to already exist
-            on the target machine.  If connecting to a remote machine, you can specify the 
+            on the target machine.  If connecting to a remote machine, you can specify the
             and  for the task to run under.</xs:documentation>
     </xs:annotation>
     <xs:complexType>
@@ -829,7 +829,7 @@
             <xs:annotation>
               <xs:documentation>[Optional] A value of true indicates that remote requests to execute applications
             are denied; only requests from the same computer as the IIS server succeed
-            if the AccessExecute property is set to true. You cannot set 
+            if the AccessExecute property is set to true. You cannot set
             AccessNoRemoteExecute to false to enable remote requests, and set
              to false to disable local requests.</xs:documentation>
             </xs:annotation>
@@ -837,7 +837,7 @@
           <xs:attribute name="AccessNoRemoteRead" type="msb:non_empty_string">
             <xs:annotation>
               <xs:documentation>[Optional] A value of true indicates that remote requests to view files are denied; only
-            requests from the same computer as the IIS server succeed if the 
+            requests from the same computer as the IIS server succeed if the
             property is set to true. You cannot set  to false to enable
             remote requests, and set  to false to disable local requests.</xs:documentation>
             </xs:annotation>
@@ -846,7 +846,7 @@
             <xs:annotation>
               <xs:documentation>[Optional] A value of true indicates that remote requests to view dynamic content are denied; only
             requests from the same computer as the IIS server succeed if the  property
-            is set to true. You cannot set AccessNoRemoteScript to false to enable remote requests, 
+            is set to true. You cannot set AccessNoRemoteScript to false to enable remote requests,
             and set  to false to disable local requests.</xs:documentation>
             </xs:annotation>
           </xs:attribute>
@@ -854,7 +854,7 @@
             <xs:annotation>
               <xs:documentation>[Optional] A value of true indicates that remote requests to create or change files are denied; only
             requests from the same computer as the IIS server succeed if the  property
-            is set to true. You cannot set AccessNoRemoteWrite to false to enable remote requests, 
+            is set to true. You cannot set AccessNoRemoteWrite to false to enable remote requests,
             and set  to false to disable local requests.</xs:documentation>
             </xs:annotation>
           </xs:attribute>
@@ -867,7 +867,7 @@
           <xs:attribute name="AccessScript" type="msb:non_empty_string">
             <xs:annotation>
               <xs:documentation>[Optional] A value of true indicates that the file or the contents of the folder may be executed
-            if they are script files or static content. A value of false only allows static files, 
+            if they are script files or static content. A value of false only allows static files,
             such as HTML files, to be served.</xs:documentation>
             </xs:annotation>
           </xs:attribute>
@@ -902,14 +902,14 @@
               <xs:documentation>[Optional] A value of true indicates that SSL file access processing requests a certificate from
             the client. A value of false indicates that access continues if the client does not have
             a certificate. Some versions of Internet Explorer will close the connection if the server
-            requests a certificate and a certificate is not available (even if  
+            requests a certificate and a certificate is not available (even if
             is also set to true).</xs:documentation>
             </xs:annotation>
           </xs:attribute>
           <xs:attribute name="AccessSslRequireCert" type="msb:non_empty_string">
             <xs:annotation>
               <xs:documentation>[Optional] A value of true indicates that SSL file access processing requests a certificate from the
-            client. If the client provides no certificate, the connection is closed.  
+            client. If the client provides no certificate, the connection is closed.
             must also be set to true when using AccessSSLRequireCert.</xs:documentation>
             </xs:annotation>
           </xs:attribute>
@@ -937,7 +937,7 @@
           <xs:attribute name="AppAllowDebugging" type="msb:non_empty_string">
             <xs:annotation>
               <xs:documentation>[Optional] The AppAllowDebugging property specifies whether ASP debugging is enabled on
-            the server. This property is independent of the  property, 
+            the server. This property is independent of the  property,
             which applies to client-side debugging.</xs:documentation>
             </xs:annotation>
           </xs:attribute>
@@ -1010,7 +1010,7 @@
           <xs:attribute name="AspScriptErrorMessage" type="xs:string">
             <xs:annotation>
               <xs:documentation>[Optional] The AspScriptErrorMessage property specifies the error message to send to the browser
-            if specific debugging errors are not sent to the client (if  
+            if specific debugging errors are not sent to the client (if
             is set to false).</xs:documentation>
             </xs:annotation>
           </xs:attribute>
@@ -1018,7 +1018,7 @@
             <xs:annotation>
               <xs:documentation>[Optional] The AspScriptErrorSentToBrowser property specifies whether the Web server writes
             debugging specifics (file name, error, line number, description) to the client
-            browser, in addition to logging them to the Windows Event Log. The  
+            browser, in addition to logging them to the Windows Event Log. The
             property provides the error message to be sent if this property is set to false.</xs:documentation>
             </xs:annotation>
           </xs:attribute>
@@ -1227,7 +1227,7 @@
   </xs:element>
   <xs:element name="WebDirectoryDelete" substitutionGroup="msb:Task">
     <xs:annotation>
-      <xs:documentation>Deletes a web directory on a local or remote machine with IIS installed.  The default is 
+      <xs:documentation>Deletes a web directory on a local or remote machine with IIS installed.  The default is
             to delete the web directory on the local machine.  If connecting to a remote machine, you
             can specify the  and  for the
             task to run under.</xs:documentation>
@@ -1281,8 +1281,8 @@
           </xs:attribute>
           <xs:attribute name="AllowZeroPeKind" type="msb:non_empty_string">
             <xs:annotation>
-              <xs:documentation>[Optional] Gets or sets the flag to treat an assembly 
-            with a zero PeKind flag 
+              <xs:documentation>[Optional] Gets or sets the flag to treat an assembly
+            with a zero PeKind flag
             (this is the value of the field listed as .corflags in the Manifest)
             as if it was ILonly.</xs:documentation>
             </xs:annotation>
@@ -1768,7 +1768,7 @@
           </xs:attribute>
           <xs:attribute name="IgnoreMsBuildSchema" type="msb:non_empty_string">
             <xs:annotation>
-              <xs:documentation>[Optional] Gets or sets a value indicating if the 
+              <xs:documentation>[Optional] Gets or sets a value indicating if the
             MsBuild schema inclusing should be ignored</xs:documentation>
             </xs:annotation>
           </xs:attribute>
@@ -1862,7 +1862,7 @@
           </xs:attribute>
           <xs:attribute name="MainClass" type="xs:string">
             <xs:annotation>
-              <xs:documentation>[Optional] The name of the main class containing the static ScriptMain 
+              <xs:documentation>[Optional] The name of the main class containing the static ScriptMain
             entry point.</xs:documentation>
             </xs:annotation>
           </xs:attribute>
@@ -2401,7 +2401,7 @@
           </xs:attribute>
           <xs:attribute name="User" type="xs:string">
             <xs:annotation>
-              <xs:documentation>[Optional] The name of the user whose changes should be listed in 
+              <xs:documentation>[Optional] The name of the user whose changes should be listed in
             the history.</xs:documentation>
             </xs:annotation>
           </xs:attribute>
@@ -3057,7 +3057,7 @@
           <xs:attribute name="ExitCode" />
           <xs:attribute name="Exported" type="msb:non_empty_string">
             <xs:annotation>
-              <xs:documentation>[Optional] [Output] True if invoked on a directory that is not a working copy, 
+              <xs:documentation>[Optional] [Output] True if invoked on a directory that is not a working copy,
             svnversion assumes it is an exported working copy and prints "exported".</xs:documentation>
             </xs:annotation>
           </xs:attribute>

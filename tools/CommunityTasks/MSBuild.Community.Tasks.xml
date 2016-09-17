@@ -46,11 +46,11 @@
         </member>
         <member name="M:MSBuild.Community.Tasks.AspNet.InstallAspNet.GenerateCommandLineCommands">
             <summary>
-            Returns a string value containing the command line arguments 
+            Returns a string value containing the command line arguments
             to pass directly to the executable file.
             </summary>
             <returns>
-            A string value containing the command line arguments to pass 
+            A string value containing the command line arguments to pass
             directly to the executable file.
             </returns>
         </member>
@@ -134,16 +134,16 @@
             <example>
             <para>Generates a common version file.</para>
             <code><![CDATA[
-            <AssemblyInfo CodeLanguage="CS"  
-                OutputFile="VersionInfo.cs" 
-                AssemblyVersion="1.0.0.0" 
+            <AssemblyInfo CodeLanguage="CS"
+                OutputFile="VersionInfo.cs"
+                AssemblyVersion="1.0.0.0"
                 AssemblyFileVersion="1.0.0.0" />
             ]]></code>
             <para>Generates a complete version file.</para>
             <code><![CDATA[
-            <AssemblyInfo CodeLanguage="CS"  
-                OutputFile="$(MSBuildProjectDirectory)\Test\GlobalInfo.cs" 
-                AssemblyTitle="AssemblyInfoTask" 
+            <AssemblyInfo CodeLanguage="CS"
+                OutputFile="$(MSBuildProjectDirectory)\Test\GlobalInfo.cs"
+                AssemblyTitle="AssemblyInfoTask"
                 AssemblyDescription="AssemblyInfo Description"
                 AssemblyConfiguration=""
                 AssemblyCompany="Company Name, LLC"
@@ -153,7 +153,7 @@
                 ComVisible="false"
                 CLSCompliant="true"
                 Guid="d038566a-1937-478a-b5c5-b79c4afb253d"
-                AssemblyVersion="1.0.0.0" 
+                AssemblyVersion="1.0.0.0"
                 AssemblyFileVersion="1.0.0.0" />
             ]]></code>
             </example>
@@ -300,17 +300,17 @@
             <example>
             <para>Make file Readonly, Hidden and System.</para>
             <code><![CDATA[
-            <Attrib Files="Test\version.txt" 
+            <Attrib Files="Test\version.txt"
                 ReadOnly="true" Hidden="true" System="true"/>
             ]]></code>
             <para>Clear Hidden and System attributes.</para>
             <code><![CDATA[
-            <Attrib Files="Test\version.txt" 
+            <Attrib Files="Test\version.txt"
                 Hidden="false" System="false"/>
             ]]></code>
             <para>Make file Normal.</para>
             <code><![CDATA[
-            <Attrib Files="Test\version.txt" 
+            <Attrib Files="Test\version.txt"
                 Normal="true"/>
             ]]></code>
             </example>
@@ -319,7 +319,7 @@
             <summary>
             Executes the task.
             </summary>
-            <returns><see langword="true"/> if the task ran successfully; 
+            <returns><see langword="true"/> if the task ran successfully;
             otherwise <see langword="false"/>.</returns>
         </member>
         <member name="P:MSBuild.Community.Tasks.Attrib.Files">
@@ -393,17 +393,17 @@
             </summary>
             <example>Install a dll into the GAC.
             <code><![CDATA[
-                <GacUtil 
-                    Command="Install" 
-                    Assemblies="MSBuild.Community.Tasks.dll" 
+                <GacUtil
+                    Command="Install"
+                    Assemblies="MSBuild.Community.Tasks.dll"
                     Force="true" />
             ]]></code>
             </example>
             <example>Uninstall a dll from the GAC.
             <code><![CDATA[
-                <GacUtil 
-                    Command="Uninstall" 
-                    Assemblies="MSBuild.Community.Tasks" 
+                <GacUtil
+                    Command="Uninstall"
+                    Assemblies="MSBuild.Community.Tasks"
                     Force="true" />
             ]]></code>
             </example>
@@ -473,12 +473,12 @@
         </member>
         <member name="T:MSBuild.Community.Tasks.JavaScript.JSCompress">
             <summary>
-            Compresses JavaScript source by removing comments and unnecessary 
-            whitespace. It typically reduces the size of the script by half, 
+            Compresses JavaScript source by removing comments and unnecessary
+            whitespace. It typically reduces the size of the script by half,
             resulting in faster downloads and code that is harder to read.
             </summary>
             <remarks>
-            This task does not change the behavior of the program that it is 
+            This task does not change the behavior of the program that it is
             compressing. The resulting code will be harder to debug as well as
             harder to read.
             </remarks>
@@ -511,15 +511,15 @@
             Copy a file or folder in Subversion
             </summary>
             <remarks>
-            This is most useful for automatically tagging your source code during a build. 
+            This is most useful for automatically tagging your source code during a build.
             You can create a tag by copying a path from one server location to another.
             </remarks>
             <example>Create a tag of the trunk with the current Cruise Control build number:
             <code><![CDATA[
             <Target Name="TagTheBuild">
               <SvnCopy SourcePath="file:///d:/svn/repo/Test/trunk"
-                       DestinationPath="file:///d:/svn/repo/Test/tags/BUILD-$(CCNetLabel)" 
-                       Message="Automatic build of $(CCNetProject)" />      
+                       DestinationPath="file:///d:/svn/repo/Test/tags/BUILD-$(CCNetLabel)"
+                       Message="Automatic build of $(CCNetProject)" />
             </Target>
             ]]></code>
             </example>
@@ -1297,20 +1297,20 @@
                  <excludeFile>$(testDir)\ExcludeTypes.txt</excludeFile>
                  <logFile>$(testDir)\ilmergetest.log</logFile>
              </PropertyGroup>
-            
+
              <ItemGroup>
                  <inputAssemblies Include="$(testDir)\A.dll" />
                  <inputAssemblies Include="$(testDir)\B.dll" />
-            
+
                  <allowDuplicates Include="ClassAB" />
              </ItemGroup>
-            
+
              <Target Name="merge" >
-                <ILMerge InputAssemblies="@(inputAssemblies)" 
+                <ILMerge InputAssemblies="@(inputAssemblies)"
                     AllowDuplicateTypes="@(allowDuplicates)"
                     ExcludeFile="$(excludeFile)"
                     OutputFile="$(outputFile)" LogFile="$(logFile)"
-                    DebugInfo="true" XmlDocumentation="true" 
+                    DebugInfo="true" XmlDocumentation="true"
                     KeyFile="$(keyFile)" DelaySign="true" />
              </Target>]]></code>
              </example>
@@ -1331,7 +1331,7 @@
             to pass directly to the executable file.
             </summary>
             <returns>
-            Returns a string value containing the command line arguments 
+            Returns a string value containing the command line arguments
             to pass directly to the executable file.
             </returns>
         </member>
@@ -1349,8 +1349,8 @@
         </member>
         <member name="P:MSBuild.Community.Tasks.ILMerge.AllowZeroPeKind">
             <summary>
-            Gets or sets the flag to treat an assembly 
-            with a zero PeKind flag 
+            Gets or sets the flag to treat an assembly
+            with a zero PeKind flag
             (this is the value of the field listed as .corflags in the Manifest)
             as if it was ILonly.
             </summary>
@@ -1369,7 +1369,7 @@
             <remarks>
             <para>This property is mutually exclusive with <see cref="P:MSBuild.Community.Tasks.ILMerge.CopyAttributes"/>.</para>
             <para>
-            When not specified, then the Win32 Resources from the primary assembly 
+            When not specified, then the Win32 Resources from the primary assembly
             are copied over into the target assembly.
             </para>
             <para>Corresponds to command line option "/attr".</para>
@@ -1385,9 +1385,9 @@
             <remarks>
             <para>
             An assembly is considered part of the transitive closure if it is referenced,
-            either directly or indirectly, 
-            from one of the originally specified input assemblies 
-            and it has an external reference to one of the input assemblies, 
+            either directly or indirectly,
+            from one of the originally specified input assemblies
+            and it has an external reference to one of the input assemblies,
             or one of the assemblies that has such a reference.
             </para>
             <para>Corresponds to command line option "/closed".</para>
@@ -1441,17 +1441,17 @@
             </summary>
             <remarks>
             <para>
-            If an empty item group is provided, 
+            If an empty item group is provided,
             then all types in any assembly other than the primary assembly are made non-public.
             </para>
             <para>Omit this parameter to prevent ILMerge from modifying the visibility of any types.</para>
             <para>
-            The contents of the file should be one <see cref="T:System.Text.RegularExpressions.Regex"/> per line. 
-            The regular expressions are matched against each type's full name, 
-            e.g., <c>System.Collections.IList</c>. 
-            If the match fails, it is tried again with the assembly name (surrounded by square brackets) 
-            prepended to the type name. 
-            Thus, the pattern <c>\[A\].*</c> excludes all types in assembly <c>A</c> from being made non-public. 
+            The contents of the file should be one <see cref="T:System.Text.RegularExpressions.Regex"/> per line.
+            The regular expressions are matched against each type's full name,
+            e.g., <c>System.Collections.IList</c>.
+            If the match fails, it is tried again with the assembly name (surrounded by square brackets)
+            prepended to the type name.
+            Thus, the pattern <c>\[A\].*</c> excludes all types in assembly <c>A</c> from being made non-public.
             The pattern <c>N.T</c> will match all types named <c>T</c> in the namespace named <c>N</c>
             no matter what assembly they are defined in.
             </para>
@@ -1571,7 +1571,7 @@
              Installs assemblies.
              </summary>
             <remarks>
-             Uses InstallUtil.exe to execute the 
+             Uses InstallUtil.exe to execute the
              <see href="http://msdn2.microsoft.com/system.configuration.install.installer.install.aspx">Install</see>
              method of
              <see href="http://msdn2.microsoft.com/system.configuration.install.installer.aspx">Installer</see>
@@ -1613,11 +1613,11 @@
         </member>
         <member name="M:MSBuild.Community.Tasks.Install.InstallAssembly.GenerateCommandLineCommands">
             <summary>
-            Returns a string value containing the command line arguments 
+            Returns a string value containing the command line arguments
             to pass directly to the executable file.
             </summary>
             <returns>
-            A string value containing the command line arguments to pass 
+            A string value containing the command line arguments to pass
             directly to the executable file.
             </returns>
         </member>
@@ -1660,9 +1660,9 @@
             <returns>The name of the executable file to run.</returns>
         </member>
         <member name="T:MSBuild.Community.Tasks.Install.UninstallAssembly">
-            <summary>Uninstalls assemblies.</summary>    
+            <summary>Uninstalls assemblies.</summary>
             <remarks>
-            Uses InstallUtil.exe to execute the 
+            Uses InstallUtil.exe to execute the
             <see href="http://msdn2.microsoft.com/system.configuration.install.installer.uninstall.aspx">Uninstall</see>
             method of
             <see href="http://msdn2.microsoft.com/system.configuration.install.installer.aspx">Installer</see>
@@ -1782,7 +1782,7 @@
             <summary>
             Displays a message on the console and waits for user input.
             </summary>
-            <remarks>It is important to note that the message is not written to the MSBuild logger, 
+            <remarks>It is important to note that the message is not written to the MSBuild logger,
             it is always written to the console, no matter which logger is configured.
             <para>This task requires user input from the console. Do not use this task for projects
             that will be executed unattended. It is recommended that you always add a Condtion so that
@@ -1792,11 +1792,11 @@
             <example>Pause the build if the interactive property is set:
             <code><![CDATA[
             <!-- Pause when invoked with the interactive property: msbuild myproject.proj /property:interactive=true -->
-            
+
             <Prompt Text="You can now attach the debugger to the msbuild.exe process..." Condition="'$(Interactive)' == 'True'" />
             ]]></code>
             </example>
-            <example>Obtain user input during the build: 
+            <example>Obtain user input during the build:
             (Note: in most cases, it is recommended that users instead provide custom values to your build through the /property argument of msbuild.exe)
             <code><![CDATA[
             <Prompt Text="Tell me your name:" Condition="'$(Interactive)' == 'True'" >
@@ -1845,7 +1845,7 @@
             Regex options as strings corresponding to the RegexOptions enum:
                 Compiled
                 CultureInvariant
-                ECMAScript 
+                ECMAScript
                 ExplicitCapture
                 IgnoreCase
                 IgnorePatternWhitespace
@@ -1896,7 +1896,7 @@
             <summary>
             Performs the Match task
             </summary>
-            <returns><see langword="true"/> if the task ran successfully; 
+            <returns><see langword="true"/> if the task ran successfully;
             otherwise <see langword="false"/>.</returns>
         </member>
         <member name="T:MSBuild.Community.Tasks.RegexReplace">
@@ -1938,7 +1938,7 @@
             <summary>
             Performs the Replace task
             </summary>
-            <returns><see langword="true"/> if the task ran successfully; 
+            <returns><see langword="true"/> if the task ran successfully;
             otherwise <see langword="false"/>.</returns>
         </member>
         <member name="P:MSBuild.Community.Tasks.RegexReplace.Replacement">
@@ -1990,9 +1990,9 @@
             <example>
             <para>Creates schema for MSBuild Community Task project</para>
             <code><![CDATA[
-            <TaskSchema Assemblies="Build\MSBuild.Community.Tasks.dll" 
-                OutputPath="Build" 
-                CreateTaskList="true" 
+            <TaskSchema Assemblies="Build\MSBuild.Community.Tasks.dll"
+                OutputPath="Build"
+                CreateTaskList="true"
                 IgnoreMsBuildSchema="true"
                 Includes="Microsoft.Build.Commontypes.xsd"/>
             ]]></code>
@@ -2047,7 +2047,7 @@
         </member>
         <member name="P:MSBuild.Community.Tasks.Schema.TaskSchema.IgnoreMsBuildSchema">
             <summary>
-            Gets or sets a value indicating if the 
+            Gets or sets a value indicating if the
             MsBuild schema inclusing should be ignored
             </summary>
         </member>
@@ -2067,7 +2067,7 @@
                   <GetSolutionProjects Solution="TestSolution.sln">
                       <Output ItemName="ProjectFiles" TaskParameter="Output"/>
                   </GetSolutionProjects>
-            
+
                 <Message Text="Solution Project paths:" />
                 <Message Text="%(ProjectFiles.ProjectName) : @(ProjectFiles)" />
               </Target>
@@ -2095,14 +2095,14 @@
              <summary>
              MSBuild task to execute DDL and SQL statements.
              </summary>
-             <remarks>Requires the the SQL Server libraries and dynamically loads the 
+             <remarks>Requires the the SQL Server libraries and dynamically loads the
              required Microsoft.SqlServer.ConnectionInfo assembly.</remarks>
              <example>
              <code><![CDATA[
              <PropertyGroup>
             		<ConnectionString>Server=localhost;Integrated Security=True</ConnectionString>
             	</PropertyGroup>
-            
+
              <Target Name="ExecuteDDL">
             		<ExecuteDDL ConnectionString="$(ConnectionString)" Files="SqlBatchScript.sql" ContinueOnError="false" />
              </Target>
@@ -2265,11 +2265,11 @@
             		<ReplacementValue>MSBuild Community Tasks</ReplacementValue>
             	</Tokens>
             </ItemGroup>
-            
+
             <TemplateFile TemplateFile="ATemplateFile.template" OutputFile="ReplacedFile.txt" Tokens="@(Tokens)" />
             ]]></code>
             </example>
-            <remarks>Tokens in the template file are formatted using ${var} syntax and names are not 
+            <remarks>Tokens in the template file are formatted using ${var} syntax and names are not
             case-sensitive, so ${Token} and ${TOKEN} are equivalent.</remarks>
         </member>
         <member name="F:MSBuild.Community.Tasks.TemplateFile.MetadataValueTag">
@@ -2488,49 +2488,49 @@
         </member>
         <member name="M:MSBuild.Community.Tasks.Xml.XmlNodeTaskItem.CloneCustomMetadata">
             <summary>
-            
+
             </summary>
             <returns></returns>
         </member>
         <member name="M:MSBuild.Community.Tasks.Xml.XmlNodeTaskItem.CopyMetadataTo(Microsoft.Build.Framework.ITaskItem)">
             <summary>
-            
+
             </summary>
             <param name="destinationItem"></param>
         </member>
         <member name="M:MSBuild.Community.Tasks.Xml.XmlNodeTaskItem.GetMetadata(System.String)">
             <summary>
-            
+
             </summary>
             <param name="metadataName"></param>
             <returns></returns>
         </member>
         <member name="M:MSBuild.Community.Tasks.Xml.XmlNodeTaskItem.RemoveMetadata(System.String)">
             <summary>
-            
+
             </summary>
             <param name="metadataName"></param>
         </member>
         <member name="M:MSBuild.Community.Tasks.Xml.XmlNodeTaskItem.SetMetadata(System.String,System.String)">
             <summary>
-            
+
             </summary>
             <param name="metadataName"></param>
             <param name="metadataValue"></param>
         </member>
         <member name="P:MSBuild.Community.Tasks.Xml.XmlNodeTaskItem.ItemSpec">
             <summary>
-            
+
             </summary>
         </member>
         <member name="P:MSBuild.Community.Tasks.Xml.XmlNodeTaskItem.MetadataCount">
             <summary>
-            
+
             </summary>
         </member>
         <member name="P:MSBuild.Community.Tasks.Xml.XmlNodeTaskItem.MetadataNames">
             <summary>
-            
+
             </summary>
         </member>
         <member name="T:MSBuild.Community.Tasks.Xml.XmlQuery">
@@ -2759,7 +2759,7 @@
 <Target Name="test-report" >
     <Xslt Inputs="@(nunitFiles)"
         RootTag="mergedroot"
-        Xsl="@(nunitReportXslFile)" 
+        Xsl="@(nunitReportXslFile)"
         Output="$(testDir)\TestReport.html" />
 </Target>]]>
       </code>
@@ -2878,15 +2878,15 @@
         </member>
         <member name="P:MSBuild.Community.Tasks.FileUpdate.Multiline">
             <summary>
-            Gets or sets a value changing the meaning of ^ and $ so they match at the beginning and end, 
+            Gets or sets a value changing the meaning of ^ and $ so they match at the beginning and end,
             respectively, of any line, and not just the beginning and end of the entire string.
             </summary>
             <value><c>true</c> if multiline; otherwise, <c>false</c>.</value>
         </member>
         <member name="P:MSBuild.Community.Tasks.FileUpdate.Singleline">
             <summary>
-            Gets or sets a value changing the meaning of the dot (.) so it matches 
-            every character (instead of every character except \n). 
+            Gets or sets a value changing the meaning of the dot (.) so it matches
+            every character (instead of every character except \n).
             </summary>
             <value><c>true</c> if singleline; otherwise, <c>false</c>.</value>
         </member>
@@ -2915,14 +2915,14 @@
             their design best-practice compliance.
             </summary>
             <example>
-            <para>Shows how to analyse an assembly and use an XSLT stylesheet 
+            <para>Shows how to analyse an assembly and use an XSLT stylesheet
             to present the report as an HTML file. If the static anlysis fails,
             the build does not stop - this is controlled with the <c>FailOnError</c>
             parameter.</para>
             <code><![CDATA[
-            <FxCop 
+            <FxCop
               TargetAssemblies="$(MSBuildCommunityTasksPath)\MSBuild.Community.Tasks.dll"
-              RuleLibraries="@(FxCopRuleAssemblies)" 
+              RuleLibraries="@(FxCopRuleAssemblies)"
               Rules="Microsoft.Design#CA1012;-Microsoft.Performance#CA1805"
               AnalysisReportFileName="Test.html"
               DependencyDirectories="$(MSBuildCommunityTasksPath)"
@@ -2932,7 +2932,7 @@
             />
             ]]></code>
             </example>
-            <remarks>If you include the <c>MSBuild.Community.Tasks.Targets</c> file 
+            <remarks>If you include the <c>MSBuild.Community.Tasks.Targets</c> file
             in you build project, the ItemGroup <c>@(FxCopRuleAssemblies)</c> is defined
             with the standard FxCop Rules Assemblies.</remarks>
         </member>
@@ -2940,7 +2940,7 @@
             <summary>
             Executes the task.
             </summary>
-            <returns><see langword="true"/> if the task ran successfully; 
+            <returns><see langword="true"/> if the task ran successfully;
             otherwise <see langword="false"/>.</returns>
         </member>
         <member name="M:MSBuild.Community.Tasks.FxCop.GenerateFullPathToTool">
@@ -2953,17 +2953,17 @@
         </member>
         <member name="M:MSBuild.Community.Tasks.FxCop.GenerateCommandLineCommands">
             <summary>
-            Returns a string value containing the command line arguments 
+            Returns a string value containing the command line arguments
             to pass directly to the executable file.
             </summary>
             <returns>
-            A string value containing the command line arguments to pass 
+            A string value containing the command line arguments to pass
             directly to the executable file.
             </returns>
         </member>
         <member name="M:MSBuild.Community.Tasks.FxCop.ValidateParameters">
             <summary>
-            Indicates whether all task paratmeters are valid. 
+            Indicates whether all task paratmeters are valid.
             </summary>
             <returns>true if all task parameters are valid; otherwise, false</returns>
         </member>
@@ -2972,29 +2972,29 @@
             Returns the directory in which to run the executable file.
             </summary>
             <returns>
-            The directory in which to run the executable file, 
-            or a null reference (Nothing in Visual Basic) if the executable file 
+            The directory in which to run the executable file,
+            or a null reference (Nothing in Visual Basic) if the executable file
             should be run in the current directory.
             </returns>
         </member>
         <member name="P:MSBuild.Community.Tasks.FxCop.ApplyOutXsl">
             <summary>
-            Applies the XSL transformation specified in /outXsl to the 
+            Applies the XSL transformation specified in /outXsl to the
             analysis report before saving the file.
             </summary>
         </member>
         <member name="P:MSBuild.Community.Tasks.FxCop.DirectOutputToConsole">
             <summary>
-            Directs analysis output to the console or to the 
-            Output window in Visual Studio .NET. By default, 
-            the XSL file FxCopConsoleOutput.xsl is applied to the 
+            Directs analysis output to the console or to the
+            Output window in Visual Studio .NET. By default,
+            the XSL file FxCopConsoleOutput.xsl is applied to the
             output before it is displayed.
             </summary>
         </member>
         <member name="P:MSBuild.Community.Tasks.FxCop.DependencyDirectories">
             <summary>
-            Specifies additional directories to search for assembly dependencies. 
-            FxCopCmd always searches the target assembly directory and the current 
+            Specifies additional directories to search for assembly dependencies.
+            FxCopCmd always searches the target assembly directory and the current
             working directory.
             </summary>
         </member>
@@ -3005,14 +3005,14 @@
         </member>
         <member name="P:MSBuild.Community.Tasks.FxCop.ConsoleXslFileName">
             <summary>
-            Specifies the XSL or XSLT file that contains a transformation to 
+            Specifies the XSL or XSLT file that contains a transformation to
             be applied to the analysis output before it is displayed in the console.
             </summary>
         </member>
         <member name="P:MSBuild.Community.Tasks.FxCop.ImportFiles">
             <summary>
-            Specifies the name of an analysis report or project file to import. 
-            Any messages in the imported file that are marked as excluded are not 
+            Specifies the name of an analysis report or project file to import.
+            Any messages in the imported file that are marked as excluded are not
             included in the analysis results.
             </summary>
         </member>
@@ -3036,14 +3036,14 @@
         </member>
         <member name="P:MSBuild.Community.Tasks.FxCop.OutputXslFileName">
             <summary>
-            Specifies the XSL or XSLT file that is referenced by the 
+            Specifies the XSL or XSLT file that is referenced by the
             xml-stylesheet processing instruction in the analysis report.
             </summary>
         </member>
         <member name="P:MSBuild.Community.Tasks.FxCop.PlatformDirectory">
             <summary>
-            Specifies the location of the version of Mscorlib.dll 
-            that was used when building the target assemblies if this 
+            Specifies the location of the version of Mscorlib.dll
+            that was used when building the target assemblies if this
             version is not installed on the computer running FxCopCmd.
             </summary>
         </member>
@@ -3054,15 +3054,15 @@
         </member>
         <member name="P:MSBuild.Community.Tasks.FxCop.IncludeSummaryReport">
             <summary>
-            Includes a summary report with the informational 
+            Includes a summary report with the informational
             messages returned by FxCopCmd.
             </summary>
         </member>
         <member name="P:MSBuild.Community.Tasks.FxCop.TypeList">
             <summary>
-            Comma-separated list of type names to analyze.  This option disables 
-            analysis of assemblies, namespaces, and resources; only the specified 
-            types and their members are included in the analysis.  
+            Comma-separated list of type names to analyze.  This option disables
+            analysis of assemblies, namespaces, and resources; only the specified
+            types and their members are included in the analysis.
             Use the wildcard character '*' at the end of the name to select multiple types.
             </summary>
         </member>
@@ -3089,7 +3089,7 @@
         <member name="P:MSBuild.Community.Tasks.FxCop.FailOnError">
             <summary>
             Gets or sets a value indicating whether the build should
-            fail if static code analysis reports errors. Defaults to 
+            fail if static code analysis reports errors. Defaults to
             <c>true</c>.
             </summary>
             <value><c>true</c> if verbose; otherwise, <c>false</c>.</value>
@@ -3173,7 +3173,7 @@
             <summary>
             Executes the task.
             </summary>
-            <returns><see langword="true"/> if the task ran successfully; 
+            <returns><see langword="true"/> if the task ran successfully;
             otherwise <see langword="false"/>.</returns>
         </member>
         <member name="M:MSBuild.Community.Tasks.ServiceQuery.GetServiceController">
@@ -3210,7 +3210,7 @@
         </member>
         <member name="P:MSBuild.Community.Tasks.ServiceQuery.CanShutdown">
             <summary>
-            Gets a value indicating whether the service should be notified when the system is shutting down. 
+            Gets a value indicating whether the service should be notified when the system is shutting down.
             </summary>
             <value>
             	<c>true</c> if this instance can shutdown; otherwise, <c>false</c>.
@@ -3218,13 +3218,13 @@
         </member>
         <member name="P:MSBuild.Community.Tasks.ServiceQuery.CanStop">
             <summary>
-            Gets a value indicating whether the service can be stopped after it has started. 
+            Gets a value indicating whether the service can be stopped after it has started.
             </summary>
             <value><c>true</c> if this instance can stop; otherwise, <c>false</c>.</value>
         </member>
         <member name="P:MSBuild.Community.Tasks.ServiceQuery.DisplayName">
             <summary>
-            Gets a friendly name for the service. 
+            Gets a friendly name for the service.
             </summary>
             <value>The name of the display.</value>
         </member>
@@ -3243,7 +3243,7 @@
             <summary>
             Executes the task.
             </summary>
-            <returns><see langword="true"/> if the task ran successfully; 
+            <returns><see langword="true"/> if the task ran successfully;
             otherwise <see langword="false"/>.</returns>
         </member>
         <member name="P:MSBuild.Community.Tasks.ServiceController.Action">
@@ -3274,7 +3274,7 @@
             <summary>
             Executes the task.
             </summary>
-            <returns><see langword="true"/> if the task ran successfully; 
+            <returns><see langword="true"/> if the task ran successfully;
             otherwise <see langword="false"/>.</returns>
         </member>
         <member name="T:MSBuild.Community.Tasks.FtpUpload">
@@ -3283,8 +3283,8 @@
             </summary>
             <example>Upload a file.
             <code><![CDATA[
-            <FtpUpload 
-                LocalFile="MSBuild.Community.Tasks.zip" 
+            <FtpUpload
+                LocalFile="MSBuild.Community.Tasks.zip"
                 RemoteUri="ftp://localhost/MSBuild.Community.Tasks.zip" />
             ]]></code>
             </example>
@@ -3334,7 +3334,7 @@
         </member>
         <member name="T:MSBuild.Community.Tasks.IIS.AppPoolCreate">
             <summary>
-            Creates a new application pool on a local or remote machine with IIS installed.  The default is 
+            Creates a new application pool on a local or remote machine with IIS installed.  The default is
             to create the new application pool on the local machine.  If connecting to a remote machine, you can
             specify the <see cref="P:MSBuild.Community.Tasks.IIS.WebBase.Username"/> and <see cref="P:MSBuild.Community.Tasks.IIS.WebBase.Password"/> for the task
             to run under.
@@ -3370,7 +3370,7 @@
         <member name="P:MSBuild.Community.Tasks.IIS.AppPoolCreate.AppPoolIdentityType">
             <summary>
             The AppPoolIdentityType property allows application pools to run as a specific user account:
-            
+
             0 - The application pool runs as NT AUTHORITY\SYSTEM.
             1 - The application pool runs as NT AUTHORITY\LOCAL SERVICE.
             2 - The application pool runs as NT AUTHORITY\NETWORK SERVICE.
@@ -3400,10 +3400,10 @@
             is specified in the AutoShutdownAppPoolExe property. You can use these two properties in the following
             way to send e-mail, for example, when the World Wide Web Publishing Service (WWW service) shuts down
             an application pool for rapid fail protection:
-            
+
             AutoShutdownAppPoolExe = "C:\LogAndSendMail.bat"
             AutoShutdownAppPoolParams = "-AppPoolName %1%"
-            
+
             where %1% represents the application pool name.
             </summary>
             <value>Value indicating the parameters for the application pool auto shutdown executable.</value>
@@ -3413,7 +3413,7 @@
             The CPUAction property configures the action(s) that IIS takes when Microsoft Windows NT ® job objects
             run. Only one Windows NT job object exists per application pool, therefore the CPUAction property
             is configured on a per application pool basis.
-            
+
             Possible values:
             0 - No action is taken except that a warning is written to the event log when the CPU limit is exceeded.
             1 - Application pool worker processes that exceed their CPU limit will be forced to shut down.
@@ -3481,9 +3481,9 @@
         </member>
         <member name="P:MSBuild.Community.Tasks.IIS.AppPoolCreate.LogonMethod">
             <summary>
-            The LogonMethod property contains an integer that specifies the logon method for cleartext 
+            The LogonMethod property contains an integer that specifies the logon method for cleartext
             logons. Valid settings are:
-            
+
             0 for interactive logon.
             1 for batch logon.
             2 for network logon.
@@ -3550,7 +3550,7 @@
             <summary>
             The PeriodicRestartSchedule property specifies the time (in 24 hour format) that the application
             will be rotated. Each time is in local time and is specified in the following format:
-            
+
             PeriodicRestartSchedule="hh:mm,hh:mm,hh:mm"
             </summary>
             <value>Value indicating the restart schedule.</value>
@@ -3607,7 +3607,7 @@
         <member name="P:MSBuild.Community.Tasks.IIS.AppPoolCreate.RapidFailProtectionMaxCrashes">
             <summary>
             The RapidFailProtectionMaxCrashes property specifies the maximum number of failures
-            allowed within the number of minutes specified by the <see cref="P:MSBuild.Community.Tasks.IIS.AppPoolCreate.RapidFailProtectionInterval"/> 
+            allowed within the number of minutes specified by the <see cref="P:MSBuild.Community.Tasks.IIS.AppPoolCreate.RapidFailProtectionInterval"/>
             property. See <see cref="P:MSBuild.Community.Tasks.IIS.AppPoolCreate.RapidFailProtection"/>.
             </summary>
             <value>Value indicating the maximum number of crashes.</value>
@@ -3635,7 +3635,7 @@
             processor mask indicates to which CPU the worker processes in an application pool should be
             bound. Before this property takes affect, the <see cref="P:MSBuild.Community.Tasks.IIS.AppPoolCreate.SMPAffinitized"/> property must be set
             to true for the application pool. These properties cannot be set through IIS Manager.
-            
+
             Do not set this property to zero. Doing so causes no SMP affinity to be configured, creating an
             error condition. The default DWORD value is 4294967295 (or -1), which is represented in hexadecimal
             as 0xFFFFFFFF. A value of 0xFFFFFFFF in SMPProcessorAffinityMask indicates that all processors are enabled.
@@ -3659,12 +3659,12 @@
             at the same time. Changing the value of this property is not recommended. If you do, change
             it to a valid Windows user account, and change WAMUserPass to the corresponding password
             for the new account.
-            
+
             Important:
             Changes to WAMUserName and WAMUserPass may disrupt the operation of existing IIS out-of-process
             applications. You can synchronize application identities using Component Services to edit the
             user name and password values, found on the Identity tab of the property sheet for each package.
-            
+
             In-process applications are not affected by these property values.
             </summary>
             <value>Value indicating the username.</value>
@@ -3676,20 +3676,20 @@
             and its companion property, <see cref="P:MSBuild.Community.Tasks.IIS.AppPoolCreate.WAMUserName"/>, are set when IIS is installed, and match the
             password and user name values in the Microsoft Windows user account (IWAM_ MachineName, where MachineName
             is the name of the machine on which IIS is installed) established at the same time.
-            
+
             Important:
             Changing the value of this property is not recommended. If you do, you must change the Windows account
             password to the identical value. You must also synchronize existing IIS out-of-process application
             identities, using Component Services to edit the user name and password values, which are found on the
             Identity tab of the property sheet for each package.
-            
+
             In-process applications are not affected by these property values.
             </summary>
             <value>Value indicating the password.</value>
         </member>
         <member name="T:MSBuild.Community.Tasks.IIS.WebDirectoryCreate">
             <summary>
-            Creates a new web directory on a local or remote machine with IIS installed.  The default is 
+            Creates a new web directory on a local or remote machine with IIS installed.  The default is
             to create the new web directory on the local machine.  The physical path is required to already exist
             on the target machine.  If connecting to a remote machine, you can specify the <see cref="P:MSBuild.Community.Tasks.IIS.WebBase.Username"/>
             and <see cref="P:MSBuild.Community.Tasks.IIS.WebBase.Password"/> for the task to run under.
@@ -3733,7 +3733,7 @@
             <summary>
             A value of true indicates that remote requests to execute applications
             are denied; only requests from the same computer as the IIS server succeed
-            if the AccessExecute property is set to true. You cannot set 
+            if the AccessExecute property is set to true. You cannot set
             AccessNoRemoteExecute to false to enable remote requests, and set
             <see cref="P:MSBuild.Community.Tasks.IIS.WebDirectoryCreate.AccessExecute"/> to false to disable local requests.
             </summary>
@@ -3752,7 +3752,7 @@
             <summary>
             A value of true indicates that remote requests to view dynamic content are denied; only
             requests from the same computer as the IIS server succeed if the <see cref="P:MSBuild.Community.Tasks.IIS.WebDirectoryCreate.AccessScript"/> property
-            is set to true. You cannot set AccessNoRemoteScript to false to enable remote requests, 
+            is set to true. You cannot set AccessNoRemoteScript to false to enable remote requests,
             and set <see cref="P:MSBuild.Community.Tasks.IIS.WebDirectoryCreate.AccessScript"/> to false to disable local requests.
             </summary>
             <value>Value indicating if AccessNoRemoteScript is enabled or disabled.</value>
@@ -3761,7 +3761,7 @@
             <summary>
             A value of true indicates that remote requests to create or change files are denied; only
             requests from the same computer as the IIS server succeed if the <see cref="P:MSBuild.Community.Tasks.IIS.WebDirectoryCreate.AccessWrite"/> property
-            is set to true. You cannot set AccessNoRemoteWrite to false to enable remote requests, 
+            is set to true. You cannot set AccessNoRemoteWrite to false to enable remote requests,
             and set <see cref="P:MSBuild.Community.Tasks.IIS.WebDirectoryCreate.AccessWrite"/> to false to disable local requests.
             </summary>
             <value>Value indicating if AccessNoRemoteWrite is enabled or disabled.</value>
@@ -3784,7 +3784,7 @@
         <member name="P:MSBuild.Community.Tasks.IIS.WebDirectoryCreate.AccessScript">
             <summary>
             A value of true indicates that the file or the contents of the folder may be executed
-            if they are script files or static content. A value of false only allows static files, 
+            if they are script files or static content. A value of false only allows static files,
             such as HTML files, to be served.
             </summary>
             <value>Value indicating if AccessScript is enabled or disabled.</value>
@@ -3816,7 +3816,7 @@
             A value of true indicates that SSL file access processing requests a certificate from
             the client. A value of false indicates that access continues if the client does not have
             a certificate. Some versions of Internet Explorer will close the connection if the server
-            requests a certificate and a certificate is not available (even if <see cref="P:MSBuild.Community.Tasks.IIS.WebDirectoryCreate.AccessSslRequireCert"/> 
+            requests a certificate and a certificate is not available (even if <see cref="P:MSBuild.Community.Tasks.IIS.WebDirectoryCreate.AccessSslRequireCert"/>
             is also set to true).
             </summary>
             <value>Value indicating if AccessSslNegotiateCert is enabled or disabled.</value>
@@ -3824,7 +3824,7 @@
         <member name="P:MSBuild.Community.Tasks.IIS.WebDirectoryCreate.AccessSslRequireCert">
             <summary>
             A value of true indicates that SSL file access processing requests a certificate from the
-            client. If the client provides no certificate, the connection is closed. <see cref="P:MSBuild.Community.Tasks.IIS.WebDirectoryCreate.AccessSslNegotiateCert"/> 
+            client. If the client provides no certificate, the connection is closed. <see cref="P:MSBuild.Community.Tasks.IIS.WebDirectoryCreate.AccessSslNegotiateCert"/>
             must also be set to true when using AccessSSLRequireCert.
             </summary>
             <value>Value indicating if AccessSslRequireCert is enabled or disabled.</value>
@@ -3856,7 +3856,7 @@
         <member name="P:MSBuild.Community.Tasks.IIS.WebDirectoryCreate.AppAllowDebugging">
             <summary>
             The AppAllowDebugging property specifies whether ASP debugging is enabled on
-            the server. This property is independent of the <see cref="P:MSBuild.Community.Tasks.IIS.WebDirectoryCreate.AppAllowClientDebug"/> property, 
+            the server. This property is independent of the <see cref="P:MSBuild.Community.Tasks.IIS.WebDirectoryCreate.AppAllowClientDebug"/> property,
             which applies to client-side debugging.
             </summary>
             <value>Value indicating if AppAllowDebugging is enabled or disabled.</value>
@@ -3941,7 +3941,7 @@
             <summary>
             The AspScriptErrorSentToBrowser property specifies whether the Web server writes
             debugging specifics (file name, error, line number, description) to the client
-            browser, in addition to logging them to the Windows Event Log. The <see cref="P:MSBuild.Community.Tasks.IIS.WebDirectoryCreate.AspScriptErrorMessage"/> 
+            browser, in addition to logging them to the Windows Event Log. The <see cref="P:MSBuild.Community.Tasks.IIS.WebDirectoryCreate.AspScriptErrorMessage"/>
             property provides the error message to be sent if this property is set to false.
             </summary>
             <value>Value indicating if AspScriptErrorSentToBrowser is enabled or disabled.</value>
@@ -4132,7 +4132,7 @@
         <member name="P:MSBuild.Community.Tasks.IIS.WebDirectoryCreate.AspScriptErrorMessage">
             <summary>
             The AspScriptErrorMessage property specifies the error message to send to the browser
-            if specific debugging errors are not sent to the client (if <see cref="P:MSBuild.Community.Tasks.IIS.WebDirectoryCreate.AspScriptErrorSentToBrowser"/> 
+            if specific debugging errors are not sent to the client (if <see cref="P:MSBuild.Community.Tasks.IIS.WebDirectoryCreate.AspScriptErrorSentToBrowser"/>
             is set to false).
             </summary>
             <value>Value indicating if AspScriptErrorMessage is enabled or disabled.</value>
@@ -4149,7 +4149,7 @@
         </member>
         <member name="T:MSBuild.Community.Tasks.IIS.AppPoolDelete">
             <summary>
-            Deletes an existing application pool on a local or remote machine with IIS installed.  The default is 
+            Deletes an existing application pool on a local or remote machine with IIS installed.  The default is
             to delete an existing application pool on the local machine.  If connecting to a remote machine, you can
             specify the <see cref="P:MSBuild.Community.Tasks.IIS.WebBase.Username"/> and <see cref="P:MSBuild.Community.Tasks.IIS.WebBase.Password"/> for the task
             to run under.
@@ -4176,7 +4176,7 @@
         </member>
         <member name="T:MSBuild.Community.Tasks.IIS.WebDirectoryDelete">
             <summary>
-            Deletes a web directory on a local or remote machine with IIS installed.  The default is 
+            Deletes a web directory on a local or remote machine with IIS installed.  The default is
             to delete the web directory on the local machine.  If connecting to a remote machine, you
             can specify the <see cref="P:MSBuild.Community.Tasks.IIS.WebBase.Username"/> and <see cref="P:MSBuild.Community.Tasks.IIS.WebBase.Password"/> for the
             task to run under.
@@ -4220,7 +4220,7 @@
         </member>
         <member name="T:MSBuild.Community.Tasks.IIS.AppPoolController">
             <summary>
-            Allows control for an application pool on a local or remote machine with IIS installed.  The default is 
+            Allows control for an application pool on a local or remote machine with IIS installed.  The default is
             to control the application pool on the local machine.  If connecting to a remote machine, you can
             specify the <see cref="P:MSBuild.Community.Tasks.IIS.WebBase.Username"/> and <see cref="P:MSBuild.Community.Tasks.IIS.WebBase.Password"/> for the task
             to run under.
@@ -4499,12 +4499,12 @@
         </member>
         <member name="P:MSBuild.Community.Tasks.Move.DestinationFiles">
             <summary>
-            Gets or sets the list of files to moved the source files to. 
+            Gets or sets the list of files to moved the source files to.
             </summary>
             <remarks>
-            This list is expected to be a one-to-one mapping with the 
-            list specified in the SourceFiles parameter. That is, the 
-            first file specified in SourceFiles will be moved to the 
+            This list is expected to be a one-to-one mapping with the
+            list specified in the SourceFiles parameter. That is, the
+            first file specified in SourceFiles will be moved to the
             first location specified in DestinationFiles, and so forth.
             </remarks>
             <value>The destination files.</value>
@@ -4527,7 +4527,7 @@
             </summary>
             <example>Generated html help file.
             <code><![CDATA[
-            <NDoc Documenter="MSDN" 
+            <NDoc Documenter="MSDN"
                 ProjectFilePath="MSBuild.Community.Tasks.ndoc" />
             ]]></code>
             </example>
@@ -5268,8 +5268,8 @@
             </summary>
             <example>Read .NET Framework install root from Registry.
             <code><![CDATA[
-            <RegistryRead 
-                KeyName="HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework" 
+            <RegistryRead
+                KeyName="HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework"
                 ValueName="InstallRoot">
                 <Output TaskParameter="Value" PropertyName="InstallRoot" />
             </RegistryRead>
@@ -5324,7 +5324,7 @@
             </summary>
             <example>Write a value to Registry
             <code><![CDATA[
-            <RegistryWrite 
+            <RegistryWrite
                 KeyName="HKEY_CURRENT_USER\SOFTWARE\MSBuildTasks"
                 ValueName="RegistryWrite"
                 Value="Test Write" />
@@ -5411,7 +5411,7 @@
             <summary>
             Executes the task.
             </summary>
-            <returns><see langword="true"/> if the task ran successfully; 
+            <returns><see langword="true"/> if the task ran successfully;
             otherwise <see langword="false"/>.</returns>
         </member>
         <member name="P:MSBuild.Community.Tasks.Script.References">
@@ -5434,13 +5434,13 @@
             <item><description>C# (C#, c#, CSHARP)</description></item>
             <item><description>JavaScript (JS, js, JSCRIPT)</description></item>
             <item><description>J# (VJS, vjs, JSHARP)</description></item>
-            </list> or, proviude the fully-qualified name for a class implementing 
+            </list> or, proviude the fully-qualified name for a class implementing
             <see cref="T:System.CodeDom.Compiler.CodeDomProvider"/>.</remarks>
         </member>
         <member name="P:MSBuild.Community.Tasks.Script.MainClass">
             <summary>
-            The name of the main class containing the static <c>ScriptMain</c> 
-            entry point. 
+            The name of the main class containing the static <c>ScriptMain</c>
+            entry point.
             </summary>
         </member>
         <member name="P:MSBuild.Community.Tasks.Script.Code">
@@ -5472,7 +5472,7 @@
             <summary>
             Executes the task.
             </summary>
-            <returns><see langword="true"/> if the task ran successfully; 
+            <returns><see langword="true"/> if the task ran successfully;
             otherwise <see langword="false"/>.</returns>
         </member>
         <member name="P:MSBuild.Community.Tasks.Sleep.Milliseconds">
@@ -5591,7 +5591,7 @@
             <summary>
             Executes the task.
             </summary>
-            <returns><see langword="true"/> if the task ran successfully; 
+            <returns><see langword="true"/> if the task ran successfully;
             otherwise <see langword="false"/>.</returns>
         </member>
         <member name="P:MSBuild.Community.Tasks.SourceSafe.VssCheckin.LocalPath">
@@ -5631,7 +5631,7 @@
             <summary>
             Executes the task.
             </summary>
-            <returns><see langword="true"/> if the task ran successfully; 
+            <returns><see langword="true"/> if the task ran successfully;
             otherwise <see langword="false"/>.</returns>
         </member>
         <member name="P:MSBuild.Community.Tasks.SourceSafe.VssCheckout.LocalPath">
@@ -5654,7 +5654,7 @@
             <summary>
             Executes the task.
             </summary>
-            <returns><see langword="true"/> if the task ran successfully; 
+            <returns><see langword="true"/> if the task ran successfully;
             otherwise <see langword="false"/>.</returns>
         </member>
         <member name="P:MSBuild.Community.Tasks.SourceSafe.VssAdd.Files">
@@ -5674,7 +5674,7 @@
             to a file.
             </summary>
             <example>
-            <para>Generates a file containing all of the differences between the 
+            <para>Generates a file containing all of the differences between the
             current version and the label &quot;Test Label&quot;</para>
             <code><![CDATA[<VssDiff UserName="uid"
              Password="pwd"
@@ -5689,7 +5689,7 @@
             <summary>
             Executes the task.
             </summary>
-            <returns><see langword="true"/> if the task ran successfully; 
+            <returns><see langword="true"/> if the task ran successfully;
             otherwise <see langword="false"/>.</returns>
         </member>
         <member name="P:MSBuild.Community.Tasks.SourceSafe.VssDiff.Label">
@@ -5723,7 +5723,7 @@
             <summary>
             Runs the task using the specified parameters.
             </summary>
-            <returns><see langword="true"/> if the task ran successfully; 
+            <returns><see langword="true"/> if the task ran successfully;
             otherwise <see langword="false"/>.</returns>
         </member>
         <member name="P:MSBuild.Community.Tasks.SourceSafe.VssGet.LocalPath">
@@ -5755,7 +5755,7 @@
              Password="pwd"
              DatabasePath="\\VSSServer\VSS\srcsafe.ini"
              Path="$/Test"
-             User="joe.bloggs" 
+             User="joe.bloggs"
              OutputFile="History.xml"
              Recursive="True"
             />
@@ -5794,7 +5794,7 @@
             <summary>
             Executes the task.
             </summary>
-            <returns><see langword="true"/> if the task ran successfully; 
+            <returns><see langword="true"/> if the task ran successfully;
             otherwise <see langword="false"/>.</returns>
         </member>
         <member name="P:MSBuild.Community.Tasks.SourceSafe.VssHistory.ToLabel">
@@ -5824,7 +5824,7 @@
         </member>
         <member name="P:MSBuild.Community.Tasks.SourceSafe.VssHistory.User">
             <summary>
-            The name of the user whose changes should be listed in 
+            The name of the user whose changes should be listed in
             the history.
             </summary>
         </member>
@@ -5837,7 +5837,7 @@
             <summary>
             Executes the task.
             </summary>
-            <returns><see langword="true"/> if the task ran successfully; 
+            <returns><see langword="true"/> if the task ran successfully;
             otherwise <see langword="false"/>.</returns>
         </member>
         <member name="P:MSBuild.Community.Tasks.SourceSafe.VssLabel.Label">
@@ -5871,7 +5871,7 @@
             <summary>
             Executes the task.
             </summary>
-            <returns><see langword="true"/> if the task ran successfully; 
+            <returns><see langword="true"/> if the task ran successfully;
             otherwise <see langword="false"/>.</returns>
         </member>
         <member name="P:MSBuild.Community.Tasks.SourceSafe.VssUndoCheckout.LocalPath">
@@ -5915,8 +5915,8 @@
             <code><![CDATA[
             <Target Name="Checkout">
               <RemoveDir Directories="$(MSBuildProjectDirectory)\Test\Checkout" />
-              <SvnCheckout RepositoryPath="file:///d:/svn/repo/Test/trunk" 
-                           LocalPath="$(MSBuildProjectDirectory)\Test\Checkout">      
+              <SvnCheckout RepositoryPath="file:///d:/svn/repo/Test/trunk"
+                           LocalPath="$(MSBuildProjectDirectory)\Test\Checkout">
                 <Output TaskParameter="Revision" PropertyName="Revision" />
               </SvnCheckout>
               <Message Text="Revision: $(Revision)"/>
@@ -5964,7 +5964,7 @@
             <Target Name="Export">
               <MakeDir Directories="$(MSBuildProjectDirectory)\Test" />
               <RemoveDir Directories="$(MSBuildProjectDirectory)\Test\Export" />
-              <SvnExport RepositoryPath="file:///d:/svn/repo/Test/trunk" 
+              <SvnExport RepositoryPath="file:///d:/svn/repo/Test/trunk"
                 LocalPath="$(MSBuildProjectDirectory)\Test\Export">
                 <Output TaskParameter="Revision" PropertyName="Revision" />
               </SvnExport>
@@ -6063,7 +6063,7 @@
         </member>
         <member name="P:MSBuild.Community.Tasks.Subversion.SvnVersion.Exported">
             <summary>
-            True if invoked on a directory that is not a working copy, 
+            True if invoked on a directory that is not a working copy,
             svnversion assumes it is an exported working copy and prints "exported".
             </summary>
         </member>
@@ -6105,7 +6105,7 @@
             </summary>
             <example>Unzip file tasks
             <code><![CDATA[
-            <Unzip ZipFileName="MSBuild.Community.Tasks.zip" 
+            <Unzip ZipFileName="MSBuild.Community.Tasks.zip"
                 TargetDirectory="Backup"/>
             ]]></code>
             </example>
@@ -6257,11 +6257,11 @@
         </member>
         <member name="T:MSBuild.Community.Tasks.WebDownload">
             <summary>
-            Downloads a resource with the specified URI to a local file. 
+            Downloads a resource with the specified URI to a local file.
             </summary>
             <example>Download the Microsoft.com home page.
             <code><![CDATA[
-            <WebDownload FileUri="http://www.microsoft.com/default.aspx" 
+            <WebDownload FileUri="http://www.microsoft.com/default.aspx"
                 FileName="microsoft.html" />
             ]]></code>
             </example>
@@ -6298,7 +6298,7 @@
             <example>Read all targest from a build project.
             <code><![CDATA[
             <XmlRead Prefix="n"
-                Namespace="http://schemas.microsoft.com/developer/msbuild/2003" 
+                Namespace="http://schemas.microsoft.com/developer/msbuild/2003"
                 XPath="/n:Project/n:Target/@Name"
                 XmlFileName="Subversion.proj">
                 <Output TaskParameter="Value" PropertyName="BuildTargets" />
@@ -6307,7 +6307,7 @@
             ]]></code>
             </example>
             <remarks>
-            If the XPath returns multiple nodes, the Value will 
+            If the XPath returns multiple nodes, the Value will
             be a semicolon delimited list of the nodes text.
             </remarks>
         </member>
@@ -6364,7 +6364,7 @@
             <example>Update a XML element.
             <code><![CDATA[
             <XmlUpdate Prefix="n"
-                Namespace="http://schemas.microsoft.com/developer/msbuild/2003" 
+                Namespace="http://schemas.microsoft.com/developer/msbuild/2003"
                 XPath="/n:Project/n:PropertyGroup/n:TestUpdate"
                 XmlFileName="Subversion.proj"
                 Value="Test from $(MSBuildProjectFile)"/>
@@ -6427,7 +6427,7 @@
                 <ZipFiles Include="**\*.*" Exclude="*.zip" />
             </ItemGroup>
             <Target Name="Zip">
-                <Zip Files="@(ZipFiles)" 
+                <Zip Files="@(ZipFiles)"
                     ZipFileName="MSBuild.Community.Tasks.zip" />
             </Target>
             ]]></code>
@@ -6437,8 +6437,8 @@
                 <RepoFiles Include="D:\svn\repo\**\*.*" />
             </ItemGroup>
             <Target Name="Zip">
-                <Zip Files="@(RepoFiles)" 
-                    WorkingDirectory="D:\svn\repo" 
+                <Zip Files="@(RepoFiles)"
+                    WorkingDirectory="D:\svn\repo"
                     ZipFileName="D:\svn\repo.zip" />
             </Target>
             ]]></code>
@@ -6482,7 +6482,7 @@
             </summary>
             <value><c>true</c> if flatten; otherwise, <c>false</c>.</value>
             <remarks>
-            Flattening the zip means that all directories will be removed 
+            Flattening the zip means that all directories will be removed
             and the files will be place at the root of the zip file
             </remarks>
         </member>
@@ -6498,7 +6498,7 @@
             </summary>
             <value>The working directory.</value>
             <remarks>
-            The working directory is the base of the zip file.  
+            The working directory is the base of the zip file.
             All files will be made relative from the working directory.
             </remarks>
         </member>

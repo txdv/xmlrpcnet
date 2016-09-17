@@ -1,6 +1,6 @@
 html
 {
-   
+
 }
 
 
@@ -11,7 +11,7 @@ html
 
 #googlink
 {
-    position:relative; 
+    position:relative;
     top: 40px;
     }
 
@@ -22,20 +22,20 @@ html
 
 #content
 {
-    top:10px; 
+    top:10px;
     margin-left: 150px;
     margin-right: 10px;
     right:20px;
-    bottom:10px; 
+    bottom:10px;
     width: 728px;
-}  
- 
+}
+
 #footer
 {
     font-size: x-small;
     text-align: center
-} 
-    
+}
+
 #donate
 {
     float: right;
@@ -43,7 +43,7 @@ html
 }
 
 
-pre 
+pre
 {
     font:13px Monaco,"Courier New","DejaVu Sans Mono","Bitstream Vera Sans Mono",monospace;
     color:black;
@@ -52,7 +52,7 @@ pre
     padding: 5px;
 }
 
-body 
+body
 {
     width: 900px;
     font-size: 14px;
@@ -87,7 +87,7 @@ H4 {
 
 .toc a:hover { text-decoration:underline;  }
 
-@media print 
+@media print
 {
    #content
    {
@@ -95,12 +95,12 @@ H4 {
         overflow: visible;
         left: 0px;
    }
-   
+
    #headermenu
    {
         display:none;
    }
-   
+
    #googlead
    {
         display:none;
