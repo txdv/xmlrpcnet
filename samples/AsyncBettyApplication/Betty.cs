@@ -8,7 +8,7 @@ public interface IStateName : IXmlRpcProxy
   string GetStateName(int stateNumber);
 
   [XmlRpcBegin("examples.getStateName")]
-  IAsyncResult BeginGetStateName(int stateNumber, AsyncCallback acb, 
+  IAsyncResult BeginGetStateName(int stateNumber, AsyncCallback acb,
     object state);
 
   [XmlRpcEnd]

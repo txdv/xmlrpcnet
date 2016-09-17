@@ -1,26 +1,26 @@
-/* 
+/*
 XML-RPC.NET  proxy class code generator
 Copyright (c) 2003, Joe Bork <joe@headblender.com>
 Portions Copyright (c) 2001-2003, Charles Cook <ccook@cookcomputing.com>
 
-Permission is hereby granted, free of charge, to any person 
-obtaining a copy of this software and associated documentation 
-files (the "Software"), to deal in the Software without restriction, 
-including without limitation the rights to use, copy, modify, merge, 
-publish, distribute, sublicense, and/or sell copies of the Software, 
-and to permit persons to whom the Software is furnished to do so, 
+Permission is hereby granted, free of charge, to any person
+obtaining a copy of this software and associated documentation
+files (the "Software"), to deal in the Software without restriction,
+including without limitation the rights to use, copy, modify, merge,
+publish, distribute, sublicense, and/or sell copies of the Software,
+and to permit persons to whom the Software is furnished to do so,
 subject to the following conditions:
 
-The above copyright notice and this permission notice shall be 
+The above copyright notice and this permission notice shall be
 included in all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES 
-OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND 
-NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT 
-HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
-WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, 
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 */
 
@@ -137,7 +137,7 @@ namespace Headblender.XmlRpc
 		}
 
 		private delegate void BuildMethodDelegate(
-			CodeTypeDeclaration declaration, 
+			CodeTypeDeclaration declaration,
 			string methodName,
 			string rpcMethodName,
 			Type[] argTypes,
@@ -146,14 +146,14 @@ namespace Headblender.XmlRpc
 			Type implementationType);
 
 		public static string CreateCode(
-			Type proxyType, 
+			Type proxyType,
 			ICodeGenerator generator)
 		{
 			return CreateCode(proxyType, generator, new XmlRpcProxyCodeGenOptions());
 		}
 
 		public static string CreateCode(
-			Type proxyType, 
+			Type proxyType,
 			ICodeGenerator generator,
 			XmlRpcProxyCodeGenOptions options)
 		{
@@ -180,15 +180,15 @@ namespace Headblender.XmlRpc
 		}
 
 		public static CodeCompileUnit CreateCodeCompileUnit(
-			Type proxyType, 
+			Type proxyType,
 			ICodeGenerator generator)
 		{
 			return CreateCodeCompileUnit(proxyType, generator, new XmlRpcProxyCodeGenOptions());
 		}
 
 		public static CodeCompileUnit CreateCodeCompileUnit(
-			Type proxyType, 
-			ICodeGenerator generator, 
+			Type proxyType,
+			ICodeGenerator generator,
 			XmlRpcProxyCodeGenOptions options)
 		{
 			if (options == null)
@@ -241,10 +241,10 @@ namespace Headblender.XmlRpc
 			bool flattenInterfaces = options.FlattenInterfaces;
 
 			CodeCompileUnit ccu = BuildCompileUnit(
-				proxyType, 
-				assemblyName, 
-				moduleName, 
-				typeName, 
+				proxyType,
+				assemblyName,
+				moduleName,
+				typeName,
 				implicitAsync,
 				flattenInterfaces);
 
@@ -252,7 +252,7 @@ namespace Headblender.XmlRpc
 		}
 
 		private static CodeCompileUnit BuildCompileUnit(
-			Type proxyType, 
+			Type proxyType,
 			string assemblyName,
 			string moduleName,
 			string typeName,
@@ -303,7 +303,7 @@ namespace Headblender.XmlRpc
 		}
 
 		private static void BuildMethods(
-			CodeTypeDeclaration declaration, 
+			CodeTypeDeclaration declaration,
 			Hashtable methods,
 			BuildMethodDelegate buildDelegate)
 		{
@@ -321,18 +321,18 @@ namespace Headblender.XmlRpc
 				//buildDelegate(declaration, mi.Name, mthdData.xmlRpcName, argTypes, argNames, mi.ReturnType);
 				string n = (string)de.Key;
 				buildDelegate(
-					declaration, 
-					n, 
-					mthdData.xmlRpcName, 
-					argTypes, 
-					argNames, 
-					mi.ReturnType, 
+					declaration,
+					n,
+					mthdData.xmlRpcName,
+					argTypes,
+					argNames,
+					mi.ReturnType,
 					mthdData.implementationType);
 			}
 		}
 
 		private static void BuildStandardMethod(
-			CodeTypeDeclaration declaration, 
+			CodeTypeDeclaration declaration,
 			string methodName,
 			string rpcMethodName,
 			Type[] argTypes,
@@ -350,7 +350,7 @@ namespace Headblender.XmlRpc
 			cmm.ImplementationTypes.Add(implementationType);
 
 			cmm.Name = methodName;
-			
+
 			// set the return type
 			CodeTypeReference ctrReturn = new CodeTypeReference(returnType);
 			cmm.ReturnType = ctrReturn;
@@ -385,7 +385,7 @@ namespace Headblender.XmlRpc
 			CodeThisReferenceExpression ctre = new CodeThisReferenceExpression();
 
 			CodeMethodReferenceExpression cmre = new CodeMethodReferenceExpression(ctre, "Invoke");
-			
+
 			CodeMethodInvokeExpression cmie = new CodeMethodInvokeExpression();
 			cmie.Method = cmre;
 			cmie.Parameters.Add(new CodePrimitiveExpression(methodName));
@@ -413,7 +413,7 @@ namespace Headblender.XmlRpc
 		}
 
 		private static void BuildBeginMethod(
-			CodeTypeDeclaration declaration, 
+			CodeTypeDeclaration declaration,
 			string methodName,
 			string rpcMethodName,
 			Type[] argTypes,
@@ -438,7 +438,7 @@ namespace Headblender.XmlRpc
 			cmm.Name = beginMethodName;
 
 			//!cmm.ImplementationTypes.Add(implementationType);
-			
+
 			// set the return type (always IAsyncResult)
 			cmm.ReturnType = new CodeTypeReference(typeof(System.IAsyncResult));
 
@@ -446,7 +446,7 @@ namespace Headblender.XmlRpc
 
 			// add callback and state params
 			cmm.Parameters.Add(new CodeParameterDeclarationExpression(
-				typeof(System.AsyncCallback), 
+				typeof(System.AsyncCallback),
 				DEFAULT_CALLBACK)
 				);
 
@@ -464,7 +464,7 @@ namespace Headblender.XmlRpc
 			CodeThisReferenceExpression ctre = new CodeThisReferenceExpression();
 
 			CodeMethodReferenceExpression cmre = new CodeMethodReferenceExpression(ctre, "BeginInvoke");
-			
+
 			CodeMethodInvokeExpression cmie = new CodeMethodInvokeExpression();
 			cmie.Method = cmre;
 			cmie.Parameters.Add(new CodePrimitiveExpression(methodName));
@@ -490,7 +490,7 @@ namespace Headblender.XmlRpc
 		}
 
 		private static void BuildEndMethod(
-			CodeTypeDeclaration declaration, 
+			CodeTypeDeclaration declaration,
 			string methodName,
 			string rpcMethodName,
 			Type[] argTypes,
@@ -515,7 +515,7 @@ namespace Headblender.XmlRpc
 			cmm.Name = endMethodName;
 
 			//!cmm.ImplementationTypes.Add(implementationType);
-			
+
 			// set the return type
 			CodeTypeReference ctrReturn = new CodeTypeReference(returnType);
 			cmm.ReturnType = ctrReturn;
@@ -543,7 +543,7 @@ namespace Headblender.XmlRpc
 			CodeThisReferenceExpression ctre = new CodeThisReferenceExpression();
 
 			CodeMethodReferenceExpression cmre = new CodeMethodReferenceExpression(ctre, "EndInvoke");
-			
+
 			CodeMethodInvokeExpression cmie = new CodeMethodInvokeExpression();
 			cmie.Method = cmre;
 			cmie.Parameters.Add(new CodeVariableReferenceExpression(DEFAULT_RESULT));
@@ -576,7 +576,7 @@ namespace Headblender.XmlRpc
 		}
 
 		private static void BuildConstructor(
-			CodeTypeDeclaration declaration, 
+			CodeTypeDeclaration declaration,
 			Type baseType,
 			string urlStr)
 		{
@@ -609,7 +609,7 @@ namespace Headblender.XmlRpc
 		private static string GetXmlRpcUrl(Type proxyType)
 		{
 			Attribute attr = Attribute.GetCustomAttribute(
-				proxyType, 
+				proxyType,
 				typeof(XmlRpcUrlAttribute));
 			if (attr == null)
 				return null;
@@ -629,7 +629,7 @@ namespace Headblender.XmlRpc
 		}
 
 		private static void RecurseGetXmlRpcMethods(Type proxyType, ref Hashtable h, bool flatten)
-		{			
+		{
 			if (!proxyType.IsInterface)
 				throw new Exception("type not interface");
 
@@ -660,7 +660,7 @@ namespace Headblender.XmlRpc
 			}
 		}
 
-		
+
 		private static Hashtable GetXmlRpcBeginMethods(Type proxyType, bool flatten)
 		{
 			Hashtable ret = new Hashtable();
@@ -676,17 +676,17 @@ namespace Headblender.XmlRpc
 				throw new Exception("type not interface");
 			foreach(MethodInfo mi in proxyType.GetMethods())
 			{
-				Attribute attr = Attribute.GetCustomAttribute(mi, 
+				Attribute attr = Attribute.GetCustomAttribute(mi,
 					typeof(XmlRpcBeginAttribute));
 				if (attr == null)
 					continue;
 				string rpcMethod = ((XmlRpcBeginAttribute)attr).Method;
-				if (rpcMethod.Length == 0)  
+				if (rpcMethod.Length == 0)
 				{
 					if (!mi.Name.StartsWith("Begin") || mi.Name.Length <= 5)
 						throw new Exception(String.Format(
-							CultureInfo.InvariantCulture, 
-							"method {0} has invalid signature for begin method", 
+							CultureInfo.InvariantCulture,
+							"method {0} has invalid signature for begin method",
 							mi.Name));
 					rpcMethod = mi.Name.Substring(5);
 				}
@@ -702,15 +702,15 @@ namespace Headblender.XmlRpc
 				{
 					if (i < paramCount - 2)
 						throw new Exception(String.Format(
-							CultureInfo.InvariantCulture, 
+							CultureInfo.InvariantCulture,
 							"method {0} has invalid signature for begin method", mi.Name));
 					if (i == (paramCount - 2))
 					{
 						Type paramType = mi.GetParameters()[i+1].ParameterType;
 						if (paramType != typeof(System.Object))
 							throw new Exception(String.Format(
-								CultureInfo.InvariantCulture, 
-								"method {0} has invalid signature for begin method", 
+								CultureInfo.InvariantCulture,
+								"method {0} has invalid signature for begin method",
 								mi.Name));
 					}
 				}
@@ -732,7 +732,7 @@ namespace Headblender.XmlRpc
 				{
 					RecurseGetXmlRpcBeginMethods(ifs[i], ref h, flatten);
 				}
-			}			
+			}
 		}
 
 
@@ -746,25 +746,25 @@ namespace Headblender.XmlRpc
 		}
 
 		private static void RecurseGetXmlRpcEndMethods(Type proxyType, ref Hashtable h, bool flatten)
-		{			
+		{
 			if (!proxyType.IsInterface)
 				throw new Exception("type not interface");
 			foreach(MethodInfo mi in proxyType.GetMethods())
 			{
-				Attribute attr = Attribute.GetCustomAttribute(mi, 
+				Attribute attr = Attribute.GetCustomAttribute(mi,
 					typeof(XmlRpcEndAttribute));
 				if (attr == null)
 					continue;
 				if (mi.GetParameters().Length != 1)
 					throw new Exception(String.Format(
-						CultureInfo.InvariantCulture, 
+						CultureInfo.InvariantCulture,
 						"method {0} has invalid signature for end method", mi.Name));
 				Type paramType = mi.GetParameters()[0].ParameterType;
 				if (paramType != typeof(System.IAsyncResult))
 					throw new Exception(String.Format(
-						CultureInfo.InvariantCulture, 
+						CultureInfo.InvariantCulture,
 						"method {0} has invalid signature for end method", mi.Name));
-				
+
 				string n = mi.Name;
 
 				if (h.Contains(n) == true)
@@ -785,10 +785,10 @@ namespace Headblender.XmlRpc
 			}
 		}
 
-		
+
 		private static string GetXmlRpcMethodName(MethodInfo mi)
 		{
-			Attribute attr = Attribute.GetCustomAttribute(mi, 
+			Attribute attr = Attribute.GetCustomAttribute(mi,
 				typeof(XmlRpcMethodAttribute));
 			if (attr == null)
 				return null;
@@ -892,16 +892,16 @@ namespace Headblender.XmlRpc
 
 		private static void MakeTempParameterArray(CodeMemberMethod method, Type[] types, string[] names)
 		{
-			
+
 			// declare array variable to store method args
 			CodeVariableDeclarationStatement cvdsArr = new CodeVariableDeclarationStatement();
 			cvdsArr.Name = DEFAULT_ARR;
-			
+
 			CodeTypeReference ctrArrType = new CodeTypeReference(typeof(System.Object));
 			CodeTypeReference ctrArr = new CodeTypeReference(ctrArrType, 1);
 
 			cvdsArr.Type = ctrArr;
-			
+
 			// gen code to initialize the array
 			CodeArrayCreateExpression cace = new CodeArrayCreateExpression(typeof(System.Object), 1);
 
@@ -925,7 +925,7 @@ namespace Headblender.XmlRpc
 			{
 				// create a cast statement
 				CodeCastExpression cce = new CodeCastExpression(
-					returnType, 
+					returnType,
 					new CodeVariableReferenceExpression(DEFAULT_TEMP)
 					);
 
@@ -948,6 +948,6 @@ namespace Headblender.XmlRpc
 			}
 		}
 
-		
+
 	}
 }

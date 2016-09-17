@@ -1,5 +1,5 @@
 <%@ WebHandler Language="C#" Class="StateName" %> <%@ Assembly Name="CookComputing.XmlRpcV2" %>
- 
+
 using System;
 using System.Collections;
 using System.Web;
@@ -7,7 +7,7 @@ using CookComputing.XmlRpc;
 
 public struct StateStructRequest
 {
-  public int state1;  
+  public int state1;
   public int state2;
   public int state3;
 }
@@ -17,25 +17,25 @@ public struct StateStructRequest
 "betty.userland.com/RPC2.")]
 public class StateName: XmlRpcService
 {
-  private string[] _stateNames = 
+  private string[] _stateNames =
   {
-    "Alabama", "Alaska", "Arizona", 
-    "Arkansas", "California", "Colorado", 
-    "Connecticut", "Delaware", "Florida", 
-    "Georgia", "Hawaii", "Idaho", 
-    "Illinois", "Indiana", "Iowa", 
-    "Kansas", "Kentucky", "Louisiana", 
-    "Maine", "Maryland", "Massachusetts", 
-    "Michigan", "Minnesota", "Mississippi", 
-    "Missouri", "Montana", "Nebraska", 
-    "Nevada", "New Hampshire", "New Jersey", 
-    "New Mexico", "New York", "North Carolina", 
-    "North Dakota", "Ohio", "Oklahoma", 
-    "Oregon", "Pennsylvania", "Rhode Island", 
-    "South Carolina", "South Dakota", "Tennessee", 
-    "Texas", "Utah", "Vermont", 
-    "Virginia", "Washington", "West Virginia", 
-    "Wisconsin", "Wyoming" 
+    "Alabama", "Alaska", "Arizona",
+    "Arkansas", "California", "Colorado",
+    "Connecticut", "Delaware", "Florida",
+    "Georgia", "Hawaii", "Idaho",
+    "Illinois", "Indiana", "Iowa",
+    "Kansas", "Kentucky", "Louisiana",
+    "Maine", "Maryland", "Massachusetts",
+    "Michigan", "Minnesota", "Mississippi",
+    "Missouri", "Montana", "Nebraska",
+    "Nevada", "New Hampshire", "New Jersey",
+    "New Mexico", "New York", "North Carolina",
+    "North Dakota", "Ohio", "Oklahoma",
+    "Oregon", "Pennsylvania", "Rhode Island",
+    "South Carolina", "South Dakota", "Tennessee",
+    "Texas", "Utah", "Vermont",
+    "Virginia", "Washington", "West Virginia",
+    "Wisconsin", "Wyoming"
   };
 
   [XmlRpcMethod("examples.getStateName")]
@@ -46,7 +46,7 @@ public class StateName: XmlRpcService
     int stateNumber)
   {
     if (stateNumber < 1 || stateNumber > _stateNames.Length)
-      throw new XmlRpcFaultException(1, 
+      throw new XmlRpcFaultException(1,
        String.Format("{0} is not valid state number.", stateNumber));
     return _stateNames[stateNumber-1];
   }
@@ -66,12 +66,12 @@ public class StateName: XmlRpcService
     foreach (DictionaryEntry de in request)
     {
       if (!(de.Value is int))
-        throw new XmlRpcFaultException(2, 
+        throw new XmlRpcFaultException(2,
           "struct parameter contains a non-integer member");
       if (ret != "")
         ret += ",";
       ret += GetStateName((int)de.Value);
     }
-    return ret; 
+    return ret;
   }
 }

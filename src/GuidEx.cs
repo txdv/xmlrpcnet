@@ -3,25 +3,25 @@
 ////		OpenNETCF.GuidEx
 ////		Copyright (C) 2003-2005, OpenNETCF.org
 ////
-////		This library is free software; you can redistribute it and/or modify it under 
+////		This library is free software; you can redistribute it and/or modify it under
 ////		the terms of the OpenNETCF.org Shared Source License.
 ////
-////		This library is distributed in the hope that it will be useful, but 
-////		WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or 
-////		FITNESS FOR A PARTICULAR PURPOSE. See the OpenNETCF.org Shared Source License 
+////		This library is distributed in the hope that it will be useful, but
+////		WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+////		FITNESS FOR A PARTICULAR PURPOSE. See the OpenNETCF.org Shared Source License
 ////		for more details.
 ////
-////		You should have received a copy of the OpenNETCF.org Shared Source License 
+////		You should have received a copy of the OpenNETCF.org Shared Source License
 ////		along with this library; if not, email licensing@opennetcf.org to request a copy.
 ////
-////		If you wish to contact the OpenNETCF Advisory Board to discuss licensing, please 
+////		If you wish to contact the OpenNETCF Advisory Board to discuss licensing, please
 ////		email licensing@opennetcf.org.
 ////
 ////		For general enquiries, email enquiries@opennetcf.org or visit our website at:
 ////		http://www.opennetcf.org
 ////
 ////		!!! A HUGE thank-you goes out to Casey Chesnut for supplying parts of this code !!!
-////      !!! You can contact Casey at http://www.brains-n-brawn.com   
+////      !!! You can contact Casey at http://www.brains-n-brawn.com
 ////
 ////==========================================================================================
 
@@ -121,8 +121,8 @@
 ////			//use crypto apis to generate random bytes
 ////			OpenNETCF.Security.Cryptography.RNGCryptoServiceProvider rng = new OpenNETCF.Security.Cryptography.RNGCryptoServiceProvider();
 ////			rng.GetBytes(guidbytes);
-////			
-////			//set version etc	
+////
+////			//set version etc
 ////			MakeValidRandomGuid(guidbytes);
 ////
 ////			// create the new System.Guid object
@@ -142,8 +142,8 @@
 
 //            //set version etc
 //            MakeValidRandomGuid(guidbytes);
-			
-         
+
+
 //            // create the new System.Guid object
 //            return new System.Guid(guidbytes);
 //        }
@@ -154,12 +154,12 @@
 //        {
 //            // set the variant
 //            guidbytes[Const.VariantByte] &= Const.VariantByteMask;
-//            guidbytes[Const.VariantByte] |= 
+//            guidbytes[Const.VariantByte] |=
 //                ((int)Const.GuidVariant.Standard << Const.VariantByteShift);
 
 //            // set the version
 //            guidbytes[Const.VersionByte] &= Const.VersionByteMask;
-//            guidbytes[Const.VersionByte] |= 
+//            guidbytes[Const.VersionByte] |=
 //                ((int)Const.GuidVersion.Random << Const.VersionByteShift);
 //        }
 //        #endregion

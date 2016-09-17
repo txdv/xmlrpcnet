@@ -33,7 +33,7 @@ namespace MathService
       }
       return A/B;
     }
-    
+
     public SumAndDiff SumAndDifference(int A, int B)
     {
       SumAndDiff ret;

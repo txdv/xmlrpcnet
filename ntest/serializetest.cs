@@ -15,7 +15,7 @@ namespace ntest
   [TestFixture]
   public class SerializeTest
   {
-    //---------------------- int -------------------------------------------// 
+    //---------------------- int -------------------------------------------//
     [Test]
     public void Int()
     {
@@ -23,17 +23,17 @@ namespace ntest
         12345,
         Encoding.UTF8, new MappingActions { NullMappingAction = NullMappingAction.Ignore });
       Type parsedType, parsedArrayType;
-      object obj = Utils.Parse(rdr, null, MappingAction.Error, 
+      object obj = Utils.Parse(rdr, null, MappingAction.Error,
         out parsedType, out parsedArrayType);
       Assert.AreEqual(12345, obj);
     }
 
-    //---------------------- i64 -------------------------------------------// 
+    //---------------------- i64 -------------------------------------------//
     [Test]
     public void Int64()
     {
       XmlReader rdr = Utils.Serialize("SerializeTest.testInt64",
-        123456789012, Encoding.UTF8, new MappingActions 
+        123456789012, Encoding.UTF8, new MappingActions
         { NullMappingAction = NullMappingAction.Ignore });
       Type parsedType, parsedArrayType;
       object obj = Utils.Parse(rdr, null, MappingAction.Error,
@@ -41,15 +41,15 @@ namespace ntest
       Assert.AreEqual(123456789012, obj);
     }
 
-    //---------------------- string ----------------------------------------// 
+    //---------------------- string ----------------------------------------//
     [Test]
     public void String()
     {
-      XmlReader rdr = Utils.Serialize("SerializeTest.testString", 
+      XmlReader rdr = Utils.Serialize("SerializeTest.testString",
         "this is a string",
         Encoding.UTF8, new MappingActions { NullMappingAction = NullMappingAction.Ignore });
       Type parsedType, parsedArrayType;
-      object obj = Utils.Parse(rdr, null, MappingAction.Error, 
+      object obj = Utils.Parse(rdr, null, MappingAction.Error,
         out parsedType, out parsedArrayType);
       Assert.AreEqual("this is a string", obj);
     }
@@ -64,33 +64,33 @@ namespace ntest
         Encoding.UTF8, new MappingActions { NullMappingAction = NullMappingAction.Ignore });
     }
 
-    //---------------------- boolean ---------------------------------------// 
+    //---------------------- boolean ---------------------------------------//
     [Test]
     public void Boolean()
     {
-      XmlReader rdr = Utils.Serialize("SerializeTest.testBoolean", 
+      XmlReader rdr = Utils.Serialize("SerializeTest.testBoolean",
         true,
         Encoding.UTF8, new MappingActions { NullMappingAction = NullMappingAction.Ignore });
       Type parsedType, parsedArrayType;
-      object obj = Utils.Parse(rdr, null, MappingAction.Error, 
+      object obj = Utils.Parse(rdr, null, MappingAction.Error,
         out parsedType, out parsedArrayType);
       Assert.AreEqual(true, obj);
     }
 
-    //---------------------- double ----------------------------------------// 
+    //---------------------- double ----------------------------------------//
     [Test]
     public void Double()
     {
-      XmlReader xdoc = Utils.Serialize("SerializeTest.testDouble", 
+      XmlReader xdoc = Utils.Serialize("SerializeTest.testDouble",
         543.21,
         Encoding.UTF8, new MappingActions { NullMappingAction = NullMappingAction.Ignore });
       Type parsedType, parsedArrayType;
-      object obj = Utils.Parse(xdoc, null, MappingAction.Error, 
+      object obj = Utils.Parse(xdoc, null, MappingAction.Error,
         out parsedType, out parsedArrayType);
       Assert.AreEqual(543.21, obj);
     }
 
-    //---------------------- dateTime ------------------------------------// 
+    //---------------------- dateTime ------------------------------------//
     [Test]
     public void DateTime()
     {
@@ -103,10 +103,10 @@ namespace ntest
           Thread.CurrentThread.CurrentCulture = ci;
           DateTime testDate = new DateTime(2002, 7, 6, 11, 25, 37);
           XmlReader xdoc = Utils.Serialize("SerializeTest.testDateTime",
-            testDate, Encoding.UTF8, 
+            testDate, Encoding.UTF8,
             new MappingActions { NullMappingAction = NullMappingAction.Error });
           Type parsedType, parsedArrayType;
-          object obj = Utils.Parse(xdoc, null, MappingAction.Error, 
+          object obj = Utils.Parse(xdoc, null, MappingAction.Error,
             out parsedType, out parsedArrayType);
           Assert.AreEqual(testDate, obj);
         }
@@ -130,11 +130,11 @@ namespace ntest
         CultureInfo ci = new CultureInfo("ja-JP");
         Thread.CurrentThread.CurrentCulture = ci;
         ci.DateTimeFormat.Calendar = new JapaneseCalendar();
-        XmlReader xdoc = Utils.Serialize("SerializeTest.testDateTime", 
+        XmlReader xdoc = Utils.Serialize("SerializeTest.testDateTime",
           new DateTime(2002, 7, 6, 11, 25, 37),
           Encoding.UTF8, new MappingActions { NullMappingAction = NullMappingAction.Ignore });
         Type parsedType, parsedArrayType;
-        object obj = Utils.Parse(xdoc, null, MappingAction.Error, 
+        object obj = Utils.Parse(xdoc, null, MappingAction.Error,
           out parsedType, out parsedArrayType);
         Assert.AreEqual(new DateTime(2002, 7, 6, 11, 25, 37), obj);
       }
@@ -143,21 +143,21 @@ namespace ntest
         Thread.CurrentThread.CurrentCulture = oldci;
       }
     }
- 
-    //---------------------- base64 ----------------------------------------// 
+
+    //---------------------- base64 ----------------------------------------//
     [Test]
     public void Base64()
     {
-      byte[] testb = new Byte[] 
+      byte[] testb = new Byte[]
       {
-        121, 111, 117, 32, 99, 97, 110, 39, 116, 32, 114, 101, 97, 100, 
-        32, 116, 104, 105, 115, 33 
+        121, 111, 117, 32, 99, 97, 110, 39, 116, 32, 114, 101, 97, 100,
+        32, 116, 104, 105, 115, 33
       };
-      XmlReader xdoc = Utils.Serialize("SerializeTest.testBase64", 
+      XmlReader xdoc = Utils.Serialize("SerializeTest.testBase64",
         testb,
         Encoding.UTF8, new MappingActions { NullMappingAction = NullMappingAction.Ignore });
       Type parsedType, parsedArrayType;
-      object obj = Utils.Parse(xdoc, null, MappingAction.Error, 
+      object obj = Utils.Parse(xdoc, null, MappingAction.Error,
         out parsedType, out parsedArrayType);
       Assert.IsTrue(obj is byte[], "result is array of byte");
       byte[] ret = obj as byte[];
@@ -192,8 +192,8 @@ namespace ntest
   </params>
 </methodCall>", reqstr);
     }
-    
-    //---------------------- struct ----------------------------------------// 
+
+    //---------------------- struct ----------------------------------------//
     public struct Struct1
     {
       public int mi;
@@ -218,16 +218,16 @@ namespace ntest
         return true;
       }
     }
-    
+
     [Test]
     public void StructTest()
     {
-      byte[] testb = new Byte[] 
+      byte[] testb = new Byte[]
       {
-        121, 111, 117, 32, 99, 97, 110, 39, 116, 32, 114, 101, 97, 100, 
-        32, 116, 104, 105, 115, 33 
-      }; 
-      
+        121, 111, 117, 32, 99, 97, 110, 39, 116, 32, 114, 101, 97, 100,
+        32, 116, 104, 105, 115, 33
+      };
+
       Struct1 str1 = new Struct1();
       str1.mi = 34567;
       str1.ms = "another test string";
@@ -236,11 +236,11 @@ namespace ntest
       str1.mdt = new DateTime(2002, 7, 6, 11, 25, 37);
       str1.mb64 = testb;
       str1.ma = new int[] { 1, 2, 3, 4, 5 };
-      XmlReader xdoc = Utils.Serialize("SerializeTest.testStruct", 
+      XmlReader xdoc = Utils.Serialize("SerializeTest.testStruct",
         str1,
         Encoding.UTF8, new MappingActions { NullMappingAction = NullMappingAction.Ignore });
-      Type parsedType, parsedArrayType;    
-      object obj = Utils.Parse(xdoc, typeof(Struct1), MappingAction.Error, 
+      Type parsedType, parsedArrayType;
+      object obj = Utils.Parse(xdoc, typeof(Struct1), MappingAction.Error,
         out parsedType, out parsedArrayType);
       Assert.IsTrue(obj is Struct1, "result is Struct1");
       Struct1 str2 = (Struct1)obj;
@@ -308,18 +308,18 @@ namespace ntest
     public struct Struct3
     {
       int _member1;
-      public int member1 { get { return _member1; } set { _member1 = value; } } 
+      public int member1 { get { return _member1; } set { _member1 = value; } }
 
       int _member2;
-      public int member2 { get { return _member2; }  } 
+      public int member2 { get { return _member2; }  }
 
       int _member3;
       [XmlRpcMember("member-3")]
-      public int member3 { get { return _member3; } set { _member3 = value; } } 
+      public int member3 { get { return _member3; } set { _member3 = value; } }
 
       int _member4;
       [XmlRpcMember("member-4")]
-      public int member4 { get { return _member4; }  } 
+      public int member4 { get { return _member4; }  }
     }
 
     [Test]
@@ -372,8 +372,8 @@ namespace ntest
   </params>
 </methodCall>", reqstr);
     }
-         
-         
+
+
     public class TestClass
     {
       public int _int;
@@ -486,9 +486,9 @@ namespace ntest
     {
       Stream stm = new MemoryStream();
       XmlRpcRequest req = new XmlRpcRequest();
-      req.args = new Object[] 
-      { 
-        new Struct5 { ds = new System.Data.DataSet(), y = 1234 } 
+      req.args = new Object[]
+      {
+        new Struct5 { ds = new System.Data.DataSet(), y = 1234 }
       };
       req.method = "Foo";
       var ser = new XmlRpcRequestSerializer();
@@ -933,7 +933,7 @@ namespace ntest
     }
 
 
-    //---------------------- XmlRpcStruct ------------------------------------// 
+    //---------------------- XmlRpcStruct ------------------------------------//
     [Test]
     public void XmlRpcStruct()
     {
@@ -942,7 +942,7 @@ namespace ntest
       xmlRpcStruct["ms"] = "another test string";
 
       XmlReader xdoc = Utils.Serialize("SerializeTest.testXmlRpcStruct",
-        xmlRpcStruct, Encoding.UTF8, 
+        xmlRpcStruct, Encoding.UTF8,
         new MappingActions { NullMappingAction = NullMappingAction.Ignore });
       Type parsedType, parsedArrayType;
       object obj = Utils.Parse(xdoc, typeof(XmlRpcStruct), MappingAction.Error,
@@ -972,7 +972,7 @@ namespace ntest
 
 
 
-    //---------------------- HashTable----------------------------------------// 
+    //---------------------- HashTable----------------------------------------//
     [Test]
     [ExpectedException(typeof(XmlRpcUnsupportedTypeException))]
     public void Hashtable()
@@ -982,46 +982,46 @@ namespace ntest
       hashtable["ms"] = "another test string";
 
       XmlReader xdoc = Utils.Serialize("SerializeTest.testXmlRpcStruct",
-        hashtable, Encoding.UTF8, 
+        hashtable, Encoding.UTF8,
         new MappingActions { NullMappingAction = NullMappingAction.Ignore });
-    }  
+    }
 
 
-    //---------------------- XmlRpcInt -------------------------------------// 
+    //---------------------- XmlRpcInt -------------------------------------//
     [Test]
     public void XmlRpcInt()
     {
-      XmlReader xdoc = Utils.Serialize("SerializeTest.testXmlRpcInt", 
+      XmlReader xdoc = Utils.Serialize("SerializeTest.testXmlRpcInt",
         new int?(12345),
         Encoding.UTF8, new MappingActions { NullMappingAction = NullMappingAction.Ignore });
       Type parsedType, parsedArrayType;
-      object obj = Utils.Parse(xdoc, null, MappingAction.Error, 
+      object obj = Utils.Parse(xdoc, null, MappingAction.Error,
         out parsedType, out parsedArrayType);
       Assert.AreEqual(12345, obj);
     }
-  
-    //---------------------- XmlRpcBoolean --------------------------------// 
+
+    //---------------------- XmlRpcBoolean --------------------------------//
     [Test]
     public void XmlRpcBoolean()
     {
-      XmlReader xdoc = Utils.Serialize("SerializeTest.testXmlRpcBoolean", 
+      XmlReader xdoc = Utils.Serialize("SerializeTest.testXmlRpcBoolean",
         new bool?(true),
         Encoding.UTF8, new MappingActions { NullMappingAction = NullMappingAction.Ignore });
       Type parsedType, parsedArrayType;
-      object obj = Utils.Parse(xdoc, null, MappingAction.Error, 
+      object obj = Utils.Parse(xdoc, null, MappingAction.Error,
         out parsedType, out parsedArrayType);
       Assert.AreEqual(true, obj);
     }
 
-    //---------------------- XmlRpcDouble ----------------------------------// 
+    //---------------------- XmlRpcDouble ----------------------------------//
     [Test]
     public void XmlRpcDouble()
     {
-      XmlReader xdoc = Utils.Serialize("SerializeTest.testXmlRpcDouble", 
+      XmlReader xdoc = Utils.Serialize("SerializeTest.testXmlRpcDouble",
         new double?(543.21),
         Encoding.UTF8, new MappingActions { NullMappingAction = NullMappingAction.Ignore });
       Type parsedType, parsedArrayType;
-      object obj = Utils.Parse(xdoc, null, MappingAction.Error, 
+      object obj = Utils.Parse(xdoc, null, MappingAction.Error,
         out parsedType, out parsedArrayType);
       Assert.AreEqual(543.21, obj);
     }
@@ -1037,7 +1037,7 @@ namespace ntest
         double? xsd = new double?(543.21);
         //Console.WriteLine(xsd.ToString());
         xdoc = Utils.Serialize(
-          "SerializeTest.testXmlRpcDouble_ForeignCulture", 
+          "SerializeTest.testXmlRpcDouble_ForeignCulture",
           new double?(543.21),
           Encoding.UTF8, new MappingActions { NullMappingAction = NullMappingAction.Ignore });
       }
@@ -1050,25 +1050,25 @@ namespace ntest
         Thread.CurrentThread.CurrentCulture = currentCulture;
       }
       Type parsedType, parsedArrayType;
-      object obj = Utils.Parse(xdoc, null, MappingAction.Error, 
+      object obj = Utils.Parse(xdoc, null, MappingAction.Error,
         out parsedType, out parsedArrayType);
       Assert.AreEqual(543.21, obj);
     }
 
-    //---------------------- XmlRpcDateTime ------------------------------// 
+    //---------------------- XmlRpcDateTime ------------------------------//
     [Test]
     public void XmlRpcDateTime()
     {
-      XmlReader xdoc = Utils.Serialize("SerializeTest.testXmlRpcDateTime", 
+      XmlReader xdoc = Utils.Serialize("SerializeTest.testXmlRpcDateTime",
         new DateTime(2002, 7, 6, 11, 25, 37),
         Encoding.UTF8, new MappingActions { NullMappingAction = NullMappingAction.Ignore });
       Type parsedType, parsedArrayType;
-      object obj = Utils.Parse(xdoc, null, MappingAction.Error, 
+      object obj = Utils.Parse(xdoc, null, MappingAction.Error,
         out parsedType, out parsedArrayType);
       Assert.AreEqual(new DateTime(2002, 7, 6, 11, 25, 37), obj);
     }
 
-    //---------------------- null parameter ----------------------------------// 
+    //---------------------- null parameter ----------------------------------//
     [Test]
     public void NullParameter()
     {
@@ -1096,7 +1096,7 @@ namespace ntest
 </methodCall>", reqstr);
     }
 
-    //---------------------- formatting ----------------------------------// 
+    //---------------------- formatting ----------------------------------//
     [Test]
     public void DefaultFormatting()
     {
@@ -1175,10 +1175,10 @@ namespace ntest
     [Test]
     public void StructOrderTest()
     {
-      byte[] testb = new Byte[] 
+      byte[] testb = new Byte[]
       {
-        121, 111, 117, 32, 99, 97, 110, 39, 116, 32, 114, 101, 97, 100, 
-        32, 116, 104, 105, 115, 33 
+        121, 111, 117, 32, 99, 97, 110, 39, 116, 32, 114, 101, 97, 100,
+        32, 116, 104, 105, 115, 33
       };
 
       Struct1 str1 = new Struct1();
@@ -1320,7 +1320,7 @@ namespace ntest
 </methodCall>", reqstr);
     }
 
-    //---------------------- struct params -----------------------------------// 
+    //---------------------- struct params -----------------------------------//
     [XmlRpcMethod(StructParams=true)]
     public int Foo(int x, string y, double z)
     {
@@ -1525,12 +1525,12 @@ namespace ntest
          var ser = new XmlRpcRequestSerializer();
          ser.UseStringTag = true;
          ser.Indentation = 4;
-         ser.UseEmptyElementTags = false; 
+         ser.UseEmptyElementTags = false;
          ser.SerializeRequest(stm, req);
          stm.Position = 0;
          TextReader tr = new StreamReader(stm);
          string reqstr = tr.ReadToEnd();
- 
+
          Assert.AreEqual(
            @"<?xml version=""1.0""?>
  <methodCall>
@@ -1544,7 +1544,7 @@ namespace ntest
      </params>
  </methodCall>", reqstr);
      }
- 
+
      [Test]
      public void EmptyStringTagNoEmptyTag()
      {
@@ -1560,7 +1560,7 @@ namespace ntest
          stm.Position = 0;
          TextReader tr = new StreamReader(stm);
          string reqstr = tr.ReadToEnd();
- 
+
          Assert.AreEqual(
            @"<?xml version=""1.0""?>
 <methodCall>
@@ -1574,7 +1574,7 @@ namespace ntest
     </params>
 </methodCall>", reqstr);
      }
- 
+
      [Test]
      public void EmptyStringTagNoEmptyTagNoIndentation()
      {
@@ -1590,7 +1590,7 @@ namespace ntest
          stm.Position = 0;
          TextReader tr = new StreamReader(stm);
          string reqstr = tr.ReadToEnd();
- 
+
          Assert.AreEqual(
            "<?xml version=\"1.0\"?><methodCall><methodName>Foo</methodName>"+
            "<params><param><value><string></string></value></param></params>"+

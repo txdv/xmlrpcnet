@@ -48,7 +48,7 @@ class _
       }
       catch (XmlRpcFaultException fex)
       {
-        Console.WriteLine("Fault response: {0} {1} {2}", 
+        Console.WriteLine("Fault response: {0} {1} {2}",
           fex.FaultCode, fex.FaultString, fex.Message);
       }
     }

@@ -35,8 +35,8 @@
 
   <!--
   //
-  // Project specific test properties (the InstrumentedAssemblies and 
-  // InstrumentedXaps properties are required for code coverage but optional 
+  // Project specific test properties (the InstrumentedAssemblies and
+  // InstrumentedXaps properties are required for code coverage but optional
   // for just running tests)
   //
   -->
@@ -52,11 +52,11 @@
   </PropertyGroup>
 
   <!--
-  // 
+  //
   // Tag expressions. By default, the special name of RequiresFocus is excluded
   // if no tag expression is provided. This Tag should be added to tests that
   // fail if the browser does not have the focus during execution.
-  // 
+  //
   -->
   <PropertyGroup>
     <TagExpression Condition="$(TagExpression) == ''">All-RequiresFocus</TagExpression>
@@ -72,8 +72,8 @@
   <PropertyGroup>
     <Browser Condition="$(Browser) == ''">ie</Browser>
   </PropertyGroup>
-  
-  <!-- 
+
+  <!--
   //
   // Test execution properties
   //
@@ -92,7 +92,7 @@
          use it to automatically check out Generic.xaml when it is updated -->
     <EnableTfsInfrastructureIntegration>false</EnableTfsInfrastructureIntegration>
   </PropertyGroup>
-  
+
   <!--
   //
   // Standard coverage target properties
@@ -104,7 +104,7 @@
     <CoverageStandardAssemblySuffix>.dll</CoverageStandardAssemblySuffix>
     <CoverageInstrumentedSymbolSuffix>.Coverage.pdb</CoverageInstrumentedSymbolSuffix>
   </PropertyGroup>
-  
+
   <!--
   //
   // Standard unit test and code coverage targets
@@ -171,8 +171,8 @@
   //
   // Code Coverage Instrumentation
   // - - -
-  // The coverage task takes the assembly built and injects calls to the 
-  // Silverlight Unit Test Framework, which manages the visited block 
+  // The coverage task takes the assembly built and injects calls to the
+  // Silverlight Unit Test Framework, which manages the visited block
   // data at runtime.
   //
   -->
@@ -251,7 +251,7 @@
 
     <Warning Condition="!Exists('$(CoverageOutputPath)\Coverage.xml')"
              Text="Could not locate final coverage information file $(CoverageOutputPath)\Coverage.xml" />
-    
+
     <Exec Command="&quot;$(CoverageToolsPath)\CodeCoverageViewer.exe&quot; &quot;$(CoverageOutputPath)\Coverage.xml&quot;"/>
   </Target>
 
@@ -261,7 +261,7 @@
   // Merge default styles into generic.xaml
   //
   -->
-  
+
   <!-- Add "DefaultStyle" as a Build Action in Visual Studio -->
   <ItemGroup Condition="'$(BuildingInsideVisualStudio)'=='true'">
     <AvailableItemName Include="DefaultStyle" />
@@ -287,7 +287,7 @@
       ProjectDirectory="$(MSBuildProjectDirectory)"
       EnableTfs="$(EnableTfsInfrastructureIntegration)" />
   </Target>
-  
+
   <!--
   Touch DefaultStyles on Rebuild to force generation of generic.xaml.
   -->
@@ -303,7 +303,7 @@
 
   <!--
   //
-  // After build hook for enabling automatic instrumentation or other 
+  // After build hook for enabling automatic instrumentation or other
   // scenarios
   //
   -->

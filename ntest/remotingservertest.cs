@@ -5,7 +5,7 @@ using  NUnit.Framework;
 using CookComputing.XmlRpc;
 
 namespace ntest
-{       
+{
 
   [TestFixture]
   public class RemotingServerTest

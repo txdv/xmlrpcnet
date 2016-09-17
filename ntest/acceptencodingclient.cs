@@ -33,7 +33,7 @@ namespace ntest
       {
         while (_running)
         {
-          string xml = @"<?xml version=""1.0"" ?> 
+          string xml = @"<?xml version=""1.0"" ?>
 <methodResponse>
   <params>
     <param>

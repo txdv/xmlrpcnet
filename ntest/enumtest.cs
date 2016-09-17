@@ -365,17 +365,17 @@ namespace ntest
     {
       Stream stm = new MemoryStream();
       XmlRpcRequest req = new XmlRpcRequest();
-      req.args = new Object[] 
-      { 
+      req.args = new Object[]
+      {
         IntEnum.Zero,
         new IntEnum[] { IntEnum.One, IntEnum.Two },
-        new IntEnumClass 
-        { 
-          IntEnum = IntEnum.One, 
+        new IntEnumClass
+        {
+          IntEnum = IntEnum.One,
           intEnum = IntEnum.Two,
           IntEnums = new IntEnum[] { IntEnum.One, IntEnum.Two },
           intEnums = new IntEnum[] { IntEnum.Three, IntEnum.Four },
-        } 
+        }
       };
       req.method = "MappingOnMethod";
       var proxy = XmlRpcProxyGen.Create<TestMethods1>();
@@ -474,17 +474,17 @@ namespace ntest
     {
       Stream stm = new MemoryStream();
       XmlRpcRequest req = new XmlRpcRequest();
-      req.args = new Object[] 
-      { 
+      req.args = new Object[]
+      {
         IntEnum.Zero,
         new IntEnum[] { IntEnum.One, IntEnum.Two },
-        new IntEnumClass 
-        { 
-          IntEnum = IntEnum.One, 
+        new IntEnumClass
+        {
+          IntEnum = IntEnum.One,
           intEnum = IntEnum.Two,
           IntEnums = new IntEnum[] { IntEnum.One, IntEnum.Two },
           intEnums = new IntEnum[] { IntEnum.Three, IntEnum.Four },
-        } 
+        }
       };
       req.method = "MappingOnParameter";
       req.mi = this.GetType().GetMethod("MappingOnParameter");
@@ -588,15 +588,15 @@ namespace ntest
     {
       Stream stm = new MemoryStream();
       XmlRpcRequest req = new XmlRpcRequest();
-      req.args = new Object[] 
-      { 
-        new IntEnumClass2 
-        { 
-          IntEnum = IntEnum.One, 
+      req.args = new Object[]
+      {
+        new IntEnumClass2
+        {
+          IntEnum = IntEnum.One,
           intEnum = IntEnum.Two,
           IntEnums = new IntEnum[] { IntEnum.One, IntEnum.Two },
           intEnums = new IntEnum[] { IntEnum.Three, IntEnum.Four },
-        } 
+        }
       };
       req.method = "MappingOnClass";
       req.mi = this.GetType().GetMethod("MappingOnClass");
@@ -684,15 +684,15 @@ namespace ntest
     {
       Stream stm = new MemoryStream();
       XmlRpcRequest req = new XmlRpcRequest();
-      req.args = new Object[] 
-      { 
-        new IntEnumClass3 
-        { 
-          IntEnum = IntEnum.One, 
+      req.args = new Object[]
+      {
+        new IntEnumClass3
+        {
+          IntEnum = IntEnum.One,
           intEnum = IntEnum.Two,
           IntEnums = new IntEnum[] { IntEnum.One, IntEnum.Two },
           intEnums = new IntEnum[] { IntEnum.Three, IntEnum.Four },
-        } 
+        }
       };
       req.method = "MappingOnClassMembers";
       req.mi = this.GetType().GetMethod("MappingOnClassMembers");

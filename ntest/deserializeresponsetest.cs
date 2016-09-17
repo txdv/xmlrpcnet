@@ -6,16 +6,16 @@ using  NUnit.Framework;
 using CookComputing.XmlRpc;
 
 namespace ntest
-{       
+{
   [TestFixture]
-  public class DeserializeResponseTest 
+  public class DeserializeResponseTest
   {
 
     // test return integer
     [Test]
     public void I4NullType()
     {
-      string xml = @"<?xml version=""1.0"" ?> 
+      string xml = @"<?xml version=""1.0"" ?>
 <methodResponse>
   <params>
     <param>
@@ -36,7 +36,7 @@ namespace ntest
     [Test]
     public void I4WithType()
     {
-      string xml = @"<?xml version=""1.0"" ?> 
+      string xml = @"<?xml version=""1.0"" ?>
 <methodResponse>
   <params>
     <param>
@@ -57,7 +57,7 @@ namespace ntest
     [Test]
     public void IntegerNullType()
     {
-      string xml = @"<?xml version=""1.0"" ?> 
+      string xml = @"<?xml version=""1.0"" ?>
 <methodResponse>
   <params>
     <param>
@@ -78,7 +78,7 @@ namespace ntest
     [Test]
     public void IntegerWithType()
     {
-      string xml = @"<?xml version=""1.0"" ?> 
+      string xml = @"<?xml version=""1.0"" ?>
 <methodResponse>
   <params>
     <param>
@@ -101,7 +101,7 @@ namespace ntest
     {
       try
       {
-        string xml = @"<?xml version=""1.0"" ?> 
+        string xml = @"<?xml version=""1.0"" ?>
 <methodResponse>
   <params>
     <param>
@@ -118,7 +118,7 @@ namespace ntest
       {
       }
     }
-  
+
     // test return double
 
     // test return boolean
@@ -127,7 +127,7 @@ namespace ntest
     [Test]
     public void StringNullType()
     {
-      string xml = @"<?xml version=""1.0"" ?> 
+      string xml = @"<?xml version=""1.0"" ?>
 <methodResponse>
   <params>
     <param>
@@ -148,7 +148,7 @@ namespace ntest
     [Test]
     public void String2NullType()
     {
-      string xml = @"<?xml version=""1.0"" ?> 
+      string xml = @"<?xml version=""1.0"" ?>
 <methodResponse>
   <params>
     <param>
@@ -169,7 +169,7 @@ namespace ntest
     [Test]
     public void String1WithType()
     {
-      string xml = @"<?xml version=""1.0"" ?> 
+      string xml = @"<?xml version=""1.0"" ?>
 <methodResponse>
   <params>
     <param>
@@ -190,7 +190,7 @@ namespace ntest
     [Test]
     public void String2WithType()
     {
-      string xml = @"<?xml version=""1.0"" ?> 
+      string xml = @"<?xml version=""1.0"" ?>
 <methodResponse>
   <params>
     <param>
@@ -199,7 +199,7 @@ namespace ntest
   </params>
 </methodResponse>";
       StringReader sr = new StringReader(xml);
-      var deserializer = new XmlRpcResponseDeserializer(); 
+      var deserializer = new XmlRpcResponseDeserializer();
       XmlRpcResponse response = deserializer.DeserializeResponse(sr, typeof(string));
 
       Object o = response.retVal;
@@ -213,7 +213,7 @@ namespace ntest
     {
       try
       {
-        string xml = @"<?xml version=""1.0"" ?> 
+        string xml = @"<?xml version=""1.0"" ?>
 <methodResponse>
   <params>
     <param>
@@ -235,7 +235,7 @@ namespace ntest
     [Test]
     public void StringEmptyValue()
     {
-      string xml = @"<?xml version=""1.0"" ?> 
+      string xml = @"<?xml version=""1.0"" ?>
 <methodResponse>
   <params>
     <param>
@@ -260,7 +260,7 @@ namespace ntest
     [Test]
     public void MinDateTime1NotStrict()
     {
-      string xml = @"<?xml version=""1.0"" ?> 
+      string xml = @"<?xml version=""1.0"" ?>
 <methodResponse>
   <params>
     <param>
@@ -280,7 +280,7 @@ namespace ntest
     [Test]
     public void MinDateTime2NotStrict()
     {
-      string xml = @"<?xml version=""1.0"" ?> 
+      string xml = @"<?xml version=""1.0"" ?>
 <methodResponse>
   <params>
     <param>
@@ -301,7 +301,7 @@ namespace ntest
     [Test]
     public void MinDateTime3NotStrict()
     {
-      string xml = @"<?xml version=""1.0"" ?> 
+      string xml = @"<?xml version=""1.0"" ?>
 <methodResponse>
   <params>
     <param>
@@ -322,7 +322,7 @@ namespace ntest
     [Test]
     public void MinDateTime4NotStrict()
     {
-      string xml = @"<?xml version=""1.0"" ?> 
+      string xml = @"<?xml version=""1.0"" ?>
 <methodResponse>
   <params>
     <param>
@@ -343,7 +343,7 @@ namespace ntest
     [Test]
     public void MinDateTimeStrict()
     {
-      string xml = @"<?xml version=""1.0"" ?> 
+      string xml = @"<?xml version=""1.0"" ?>
 <methodResponse>
   <params>
     <param>
@@ -356,7 +356,7 @@ namespace ntest
       deserializer.NonStandard = XmlRpcNonStandard.AllowNonStandardDateTime;
       try
       {
-        XmlRpcResponse response = deserializer.DeserializeResponse(sr, 
+        XmlRpcResponse response = deserializer.DeserializeResponse(sr,
           typeof(DateTime));
         Assert.Fail("dateTime 00000000T00:00:00 invalid when strict");
       }
@@ -377,7 +377,7 @@ namespace ntest
     [Test]
     public void ReturnStructAsObject()
     {
-      string xml = @"<?xml version=""1.0"" encoding=""ISO-8859-1""?> 
+      string xml = @"<?xml version=""1.0"" encoding=""ISO-8859-1""?>
 <methodResponse>
   <params>
     <param>
@@ -403,9 +403,9 @@ namespace ntest
 
       StringReader sr = new StringReader(xml);
       var deserializer = new XmlRpcResponseDeserializer();
-      XmlRpcResponse response 
+      XmlRpcResponse response
         = deserializer.DeserializeResponse(sr, typeof(object));
-      
+
       Object o = response.retVal;
       string ret = (string)((XmlRpcStruct)o)["key3"];
       Assert.AreEqual("this is a test", ret);
@@ -417,7 +417,7 @@ namespace ntest
     [Test]
     public void ReturnStructAsXmlRpcStruct()
     {
-      string xml = @"<?xml version=""1.0"" encoding=""ISO-8859-1""?> 
+      string xml = @"<?xml version=""1.0"" encoding=""ISO-8859-1""?>
 <methodResponse>
   <params>
     <param>
@@ -437,20 +437,20 @@ namespace ntest
 
       StringReader sr = new StringReader(xml);
       var deserializer = new XmlRpcResponseDeserializer();
-      XmlRpcResponse response 
+      XmlRpcResponse response
         = deserializer.DeserializeResponse(sr, typeof(XmlRpcStruct));
-      
+
       Object o = response.retVal;
       string ret = (string)((XmlRpcStruct)o)["key3"];
     }
 
 
-   
+
     [Test]
     public void ArrayInStruct()
     {
       // reproduce problem reported by Alexander Agustsson
-      string xml = @"<?xml version=""1.0"" encoding=""ISO-8859-1""?> 
+      string xml = @"<?xml version=""1.0"" encoding=""ISO-8859-1""?>
 <methodResponse>
   <params>
     <param>
@@ -476,7 +476,7 @@ namespace ntest
       StringReader sr = new StringReader(xml);
       var deserializer = new XmlRpcResponseDeserializer();
       XmlRpcResponse response = deserializer.DeserializeResponse(sr, null);
-      
+
       Object o = response.retVal;
       Assert.IsTrue(o is XmlRpcStruct, "retval is XmlRpcStruct");
       XmlRpcStruct xrs = (XmlRpcStruct)o;
@@ -496,7 +496,7 @@ namespace ntest
     public void StringAndStructInArray()
     {
       // reproduce problem reported by Eric Brittain
-      string xml = @"<?xml version=""1.0"" encoding=""ISO-8859-1""?> 
+      string xml = @"<?xml version=""1.0"" encoding=""ISO-8859-1""?>
 <methodResponse>
   <params>
     <param>
@@ -519,7 +519,7 @@ namespace ntest
       </value>
     </param>
   </params>
-</methodResponse>";      
+</methodResponse>";
 
       StringReader sr = new StringReader(xml);
       var deserializer = new XmlRpcResponseDeserializer();
@@ -545,7 +545,7 @@ namespace ntest
     [Test]
     public void ReturnNestedStruct()
     {
-      string xml = @"<?xml version=""1.0"" encoding=""ISO-8859-1""?> 
+      string xml = @"<?xml version=""1.0"" encoding=""ISO-8859-1""?>
 <methodResponse>
   <params>
     <param>
@@ -577,9 +577,9 @@ namespace ntest
 
       StringReader sr = new StringReader(xml);
       var deserializer = new XmlRpcResponseDeserializer();
-      XmlRpcResponse response 
+      XmlRpcResponse response
         = deserializer.DeserializeResponse(sr, typeof(MyStruct));
-      
+
       Object o = response.retVal;
       Assert.IsTrue(o is MyStruct, "retval is MyStruct");
       MyStruct mystr = (MyStruct)o;
@@ -592,20 +592,20 @@ namespace ntest
     public void JoseProblem()
     {
 
-      string xml = @"<?xml version='1.0'?> 
-<methodResponse> 
-<params> 
-<param> 
-<value><int>12</int></value> 
-</param> 
-</params> 
+      string xml = @"<?xml version='1.0'?>
+<methodResponse>
+<params>
+<param>
+<value><int>12</int></value>
+</param>
+</params>
 
-</methodResponse>"; 
+</methodResponse>";
       StringReader sr = new StringReader(xml);
       var deserializer = new XmlRpcResponseDeserializer();
-      XmlRpcResponse response 
+      XmlRpcResponse response
         = deserializer.DeserializeResponse(sr, typeof(int));
-      
+
       Object o = response.retVal;
       Assert.IsTrue(o is int, "retval is int");
       int myint = (int)o;
@@ -621,10 +621,10 @@ namespace ntest
     [Test]
     public void MissingStructMember()
     {
-      string xml = @"<?xml version='1.0'?> 
-<methodResponse> 
-  <params> 
-    <param> 
+      string xml = @"<?xml version='1.0'?>
+<methodResponse>
+  <params>
+    <param>
       <value>
         <struct>
           <member>
@@ -634,34 +634,34 @@ namespace ntest
             </value>
           </member>
         </struct>
-      </value> 
-    </param> 
-  </params> 
-</methodResponse>"; 
+      </value>
+    </param>
+  </params>
+</methodResponse>";
       StringReader sr = new StringReader(xml);
       var deserializer = new XmlRpcResponseDeserializer();
       try
       {
-        XmlRpcResponse response 
+        XmlRpcResponse response
           = deserializer.DeserializeResponse(sr, typeof(BillStruct));
         Assert.Fail("Should detect missing struct member");
-      } 
+      }
       catch(AssertionException)
       {
         throw;
       }
       catch(Exception)
       {
-      }    
+      }
     }
 
     [Test]
     public void BillKeenanProblem()
     {
-      string xml = @"<?xml version='1.0'?> 
-<methodResponse> 
-  <params> 
-    <param> 
+      string xml = @"<?xml version='1.0'?>
+<methodResponse>
+  <params>
+    <param>
       <value>
         <struct>
           <member>
@@ -683,15 +683,15 @@ namespace ntest
             </value>
           </member>
         </struct>
-      </value> 
-    </param> 
-  </params> 
-</methodResponse>"; 
+      </value>
+    </param>
+  </params>
+</methodResponse>";
       StringReader sr = new StringReader(xml);
       var deserializer = new XmlRpcResponseDeserializer();
-      XmlRpcResponse response 
+      XmlRpcResponse response
         = deserializer.DeserializeResponse(sr, typeof(BillStruct));
-      
+
       Object o = response.retVal;
       Assert.IsTrue(o is BillStruct, "retval is BillStruct");
       BillStruct bs = (BillStruct)o;
@@ -701,7 +701,7 @@ namespace ntest
     [Test]
     public void AdvogatoProblem()
     {
-      string xml = @"<?xml version='1.0'?> 
+      string xml = @"<?xml version='1.0'?>
 <methodResponse>
 <params>
 <param>
@@ -717,16 +717,16 @@ namespace ntest
 </array>
 </param>
 </params>
-</methodResponse>"; 
+</methodResponse>";
       StringReader sr = new StringReader(xml);
       var deserializer = new XmlRpcResponseDeserializer();
-      try 
+      try
       {
-        XmlRpcResponse response 
+        XmlRpcResponse response
           = deserializer.DeserializeResponse(sr, null);
         Object o = response.retVal;
         Assert.Fail("should have thrown XmlRpcInvalidXmlRpcException");
-      }    
+      }
       catch(XmlRpcInvalidXmlRpcException)
       {
       }
@@ -735,7 +735,7 @@ namespace ntest
     [Test]
     public void VoidReturnType()
     {
-      string xml = @"<?xml version=""1.0"" ?> 
+      string xml = @"<?xml version=""1.0"" ?>
 <methodResponse>
   <params>
     <param>
@@ -752,7 +752,7 @@ namespace ntest
     [Test]
     public void EmptyValueReturn()
     {
-      string xml = @"<?xml version=""1.0"" ?> 
+      string xml = @"<?xml version=""1.0"" ?>
 <methodResponse>
   <params>
     <param>
@@ -770,7 +770,7 @@ namespace ntest
 
     public struct XmlRpcClassifyRequest
     {
-      public int q_id;  
+      public int q_id;
       public string docid;
       public string query;
       public string [] cattypes;
@@ -814,20 +814,20 @@ namespace ntest
                FileMode.Open, FileAccess.Read))
       {
         var deserializer = new XmlRpcResponseDeserializer();
-        XmlRpcResponse response 
+        XmlRpcResponse response
           = deserializer.DeserializeResponse(stm, typeof(String));
         String ret = (String)response.retVal;
         int nnn  = ret.Length;
-        Assert.IsTrue(ret == "hæ hvað segirðu þá", 
+        Assert.IsTrue(ret == "hæ hvað segirðu þá",
           "retVal is 'hæ hvað segirðu þá'");
       }
     }
-#endif 
+#endif
 
     [Test]
     public void FaultResponse()
     {
-      string xml = @"<?xml version=""1.0"" ?> 
+      string xml = @"<?xml version=""1.0"" ?>
 <methodResponse>
   <fault>
     <value>
@@ -862,7 +862,7 @@ namespace ntest
     {
       // Alex Hung reported that some servers, e.g. WordPress, return fault code
       // as a string
-      string xml = @"<?xml version=""1.0"" ?> 
+      string xml = @"<?xml version=""1.0"" ?>
 <methodResponse>
   <fault>
     <value>
@@ -898,7 +898,7 @@ namespace ntest
     {
       // Alex Hung reported that some servers, e.g. WordPress, return fault code
       // as a string
-      string xml = @"<?xml version=""1.0"" ?> 
+      string xml = @"<?xml version=""1.0"" ?>
 <methodResponse>
   <fault>
     <value>
@@ -929,7 +929,7 @@ namespace ntest
         Assert.AreEqual(fex.FaultString, "Too many parameters.");
       }
     }
-  
+
     [Test]
     public void Yolanda()
     {
@@ -940,7 +940,7 @@ namespace ntest
 
       Object o = response.retVal;
     }
- 
+
     [Test]
     public void Gabe()
     {
@@ -950,7 +950,7 @@ namespace ntest
         + "</double></value></member><member><name>wallclock</name><value><double>2.547471</double></value></member></struct></value></member><member><name>request</name><value><struct><member><name>state</name><value><string>CO</string></value></member><member><name>%sort</name><value><array><data /></array></value></member><member><name>%id</name><value><string>4669b341d87be7f450b4bf0dc4cd0a1e</string></value></member><member><name>city</name><value><string>denver</string></value></member><member><name>%limit</name><value><int>10</int></value></member><member><name>%offset</name><value><int>0</int></value></member></struct></value></member></struct></value></param></params></methodResponse>";
       StringReader sr = new StringReader(xml);
       var deserializer = new XmlRpcResponseDeserializer();
-      XmlRpcResponse response = deserializer.DeserializeResponse(sr, 
+      XmlRpcResponse response = deserializer.DeserializeResponse(sr,
         typeof(XmlRpcStruct));
 
       XmlRpcStruct response_struct = (XmlRpcStruct)response.retVal;
@@ -967,7 +967,7 @@ namespace ntest
     [Test]
     public void StructDuplicateMember()
     {
-      string xml = @"<?xml version=""1.0"" encoding=""ISO-8859-1""?> 
+      string xml = @"<?xml version=""1.0"" encoding=""ISO-8859-1""?>
 <methodResponse>
   <params>
     <param>
@@ -1010,7 +1010,7 @@ namespace ntest
     [Test]
     public void XmlRpcStructDuplicateMember()
     {
-      string xml = @"<?xml version=""1.0"" encoding=""ISO-8859-1""?> 
+      string xml = @"<?xml version=""1.0"" encoding=""ISO-8859-1""?>
 <methodResponse>
   <params>
     <param>
@@ -1057,9 +1057,9 @@ namespace ntest
     public void InvalidHTTPContentLeadingWhiteSpace()
     {
       string xml = @"
- 
-   
-<?xml version=""1.0"" ?> 
+
+
+<?xml version=""1.0"" ?>
 <methodResponse>
   <params>
     <param>
@@ -1081,9 +1081,9 @@ namespace ntest
     public void AllowInvalidHTTPContentLeadingWhiteSpace()
     {
       string xml = @"
- 
-   
-<?xml version=""1.0"" ?> 
+
+
+<?xml version=""1.0"" ?>
 <methodResponse>
   <params>
     <param>
@@ -1112,7 +1112,7 @@ namespace ntest
       string xml = @"
 
 
-<?xml version=""1.0"" ?> 
+<?xml version=""1.0"" ?>
 <methodResponse>
   <params>
     <param>
@@ -1253,7 +1253,7 @@ This should be ignored.
       StringReader sr1 = new StringReader(xml);
       var deserializer = new XmlRpcResponseDeserializer();
       deserializer.NonStandard = XmlRpcNonStandard.IgnoreDuplicateMembers;
-      XmlRpcResponse response = deserializer.DeserializeResponse(sr1, 
+      XmlRpcResponse response = deserializer.DeserializeResponse(sr1,
         typeof(XmlRpcStruct));
       XmlRpcStruct ret = (XmlRpcStruct)response.retVal;
     }
@@ -1281,7 +1281,7 @@ This should be ignored.
       StringReader sr1 = new StringReader(xml);
       var deserializer = new XmlRpcResponseDeserializer();
       deserializer.NonStandard = XmlRpcNonStandard.IgnoreDuplicateMembers;
-      XmlRpcResponse response = deserializer.DeserializeResponse(sr1, 
+      XmlRpcResponse response = deserializer.DeserializeResponse(sr1,
         typeof(XmlRpcStruct));
       XmlRpcStruct ret = (XmlRpcStruct)response.retVal;
     }

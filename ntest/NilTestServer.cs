@@ -11,7 +11,7 @@ namespace ntest
     [Test]
     public void DeserializeResponseNilMethod()
     {
-      string xml = @"<?xml version=""1.0"" ?> 
+      string xml = @"<?xml version=""1.0"" ?>
 <methodResponse>
   <params>
     <param>
@@ -29,7 +29,7 @@ namespace ntest
     [Test]
     public void DeserializeResponseStructWithNil()
     {
-      string xml = @"<?xml version=""1.0"" ?> 
+      string xml = @"<?xml version=""1.0"" ?>
 <methodResponse>
   <params>
     <param>
@@ -106,9 +106,9 @@ namespace ntest
     [Test]
     public void DeserializeRequestNilMethod()
     {
-      string xml = @"<?xml version=""1.0"" ?> 
+      string xml = @"<?xml version=""1.0"" ?>
 <methodCall>
-  <methodName>NilMethod</methodName> 
+  <methodName>NilMethod</methodName>
   <params>
     <param>
       <value><nil /></value>

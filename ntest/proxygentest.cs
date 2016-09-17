@@ -13,7 +13,7 @@ using System.Security.Permissions;
 namespace ntest
 {
   [XmlRpcUrl("http://localhost/test/")]
-  public interface ITest 
+  public interface ITest
   {
     [XmlRpcMethod]
     string Method1(int x);
@@ -77,7 +77,7 @@ namespace ntest
     [Test]
     public void InheritedInterface()
     {
-      // Test problem reported by Sean Rohead. This will throw an exception 
+      // Test problem reported by Sean Rohead. This will throw an exception
       // if method Foo in the base class Parent is not implemented
       IChild proxy = (IChild)XmlRpcProxyGen.Create(typeof(IChild));
     }

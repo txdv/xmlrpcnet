@@ -12,44 +12,44 @@ namespace ntest
   {
     public static XmlReader Serialize(
       string testName,
-      object obj, 
+      object obj,
       Encoding encoding,
       MappingActions actions)
     {
       Stream stm = new MemoryStream();
       XmlWriter xtw = XmlRpcXmlWriter.Create(stm, new XmlRpcFormatSettings());
-      xtw.WriteStartDocument();      
+      xtw.WriteStartDocument();
       XmlRpcSerializer ser = new XmlRpcSerializer();
-      ser.Serialize(xtw, obj, actions); 
+      ser.Serialize(xtw, obj, actions);
       xtw.Flush();
-      stm.Position = 0;    
+      stm.Position = 0;
       XmlReader rdr = XmlRpcXmlReader.Create(stm);
       return rdr;
     }
-    	
-    //----------------------------------------------------------------------// 
+
+    //----------------------------------------------------------------------//
     public static object Parse(
-      string xml, 
-      Type valueType, 
+      string xml,
+      Type valueType,
       MappingAction action,
       out Type parsedType,
       out Type parsedArrayType)
     {
       StringReader sr = new StringReader(xml);
       XmlReader rdr = XmlRpcXmlReader.Create(sr);
-      return Parse(rdr, valueType, action, 
+      return Parse(rdr, valueType, action,
         out parsedType, out parsedArrayType);
     }
-    
+
     public static object Parse(
-      XmlReader rdr, 
-      Type valueType, 
+      XmlReader rdr,
+      Type valueType,
       MappingAction action,
       out Type parsedType,
       out Type parsedArrayType)
     {
       parsedType = parsedArrayType = null;
-      rdr.ReadToDescendant("value");            
+      rdr.ReadToDescendant("value");
       MappingStack mappingStack = new MappingStack("request");
       XmlRpcDeserializer ser = new XmlRpcDeserializer();
       object obj = ser.ParseValueElement(rdr, valueType, mappingStack, action);
@@ -104,7 +104,7 @@ namespace ntest
       var writer = XmlRpcXmlWriter.Create(memStm,
         new XmlRpcFormatSettings { OmitXmlDeclaration = true, UseIndentation = indent });
       var serializer = new XmlRpcSerializer();
-      serializer.Serialize(writer, value, 
+      serializer.Serialize(writer, value,
         new MappingActions { NullMappingAction = NullMappingAction.Error });
       writer.Flush();
       memStm.Position = 0;
@@ -116,9 +116,9 @@ namespace ntest
 
     public static string[] GetLocales()
     {
-      return new string[] 
+      return new string[]
       {
-        "af-ZA", 
+        "af-ZA",
         "sq-AL",
         "ar-DZ",
         "ar-BH",

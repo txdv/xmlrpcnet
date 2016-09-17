@@ -5,7 +5,7 @@ using  NUnit.Framework;
 using CookComputing.XmlRpc;
 
 namespace ntest
-{       
+{
   [TestFixture]
   public class ServiceInfoTest
   {
@@ -30,16 +30,16 @@ namespace ntest
       string rpcString = XmlRpcTypeInfo.GetXmlRpcTypeString(type);
       Assert.AreEqual(rpcString, "i8", "Int64 doesn't map to 'i8'");
     }
-    
+
     [Test]
     public void XmlRpcInt()
     {
       Type type = typeof(int?);
       XmlRpcType rpcType = XmlRpcTypeInfo.GetXmlRpcType(type);
-      Assert.AreEqual(XmlRpcType.tInt32, rpcType, 
+      Assert.AreEqual(XmlRpcType.tInt32, rpcType,
         "XmlRpcInt doesn't map to XmlRpcType.tInt32");
       string rpcString = XmlRpcTypeInfo.GetXmlRpcTypeString(type);
-      Assert.AreEqual(rpcString, "integer", 
+      Assert.AreEqual(rpcString, "integer",
         "XmlRpcInt doesn't map to 'integer'");
     }
 
@@ -63,7 +63,7 @@ namespace ntest
       Assert.AreEqual(XmlRpcType.tBoolean, rpcType,
         "XmlRpcBoolean doesn't map to XmlRpcType.tBoolean");
       string rpcString = XmlRpcTypeInfo.GetXmlRpcTypeString(type);
-      Assert.AreEqual(rpcString, "boolean", 
+      Assert.AreEqual(rpcString, "boolean",
         "XmlRpcBoolean doesn't map to 'boolean'");
     }
 
@@ -72,29 +72,29 @@ namespace ntest
     {
       Type type = typeof(string);
       XmlRpcType rpcType = XmlRpcTypeInfo.GetXmlRpcType(type);
-      Assert.AreEqual(XmlRpcType.tString, rpcType, 
+      Assert.AreEqual(XmlRpcType.tString, rpcType,
         "String doesn't map to XmlRpcType.tString");
       string rpcString = XmlRpcTypeInfo.GetXmlRpcTypeString(type);
       Assert.AreEqual(rpcString, "string", "String doesn't map to 'string'");
     }
-    
+
     [Test]
     public void Double()
     {
       Type type = typeof(double);
       XmlRpcType rpcType = XmlRpcTypeInfo.GetXmlRpcType(type);
-      Assert.AreEqual(XmlRpcType.tDouble, rpcType, 
+      Assert.AreEqual(XmlRpcType.tDouble, rpcType,
         "Double doesn't map to XmlRpcType.tDouble");
       string rpcString = XmlRpcTypeInfo.GetXmlRpcTypeString(type);
       Assert.AreEqual(rpcString, "double", "Double doesn't map to 'double'");
     }
-    
+
     [Test]
     public void XmlRpcDouble()
     {
       Type type = typeof(double?);
       XmlRpcType rpcType = XmlRpcTypeInfo.GetXmlRpcType(type);
-      Assert.AreEqual(XmlRpcType.tDouble, rpcType, 
+      Assert.AreEqual(XmlRpcType.tDouble, rpcType,
         "XmlRpcDouble doesn't map to XmlRpcType.tDouble");
       string rpcString = XmlRpcTypeInfo.GetXmlRpcTypeString(type);
       Assert.AreEqual(rpcString, "double",
@@ -109,10 +109,10 @@ namespace ntest
       Assert.AreEqual(XmlRpcType.tDateTime, rpcType,
         "DateTime doesn't map to XmlRpcType.tDateTime");
       string rpcString = XmlRpcTypeInfo.GetXmlRpcTypeString(type);
-      Assert.AreEqual(rpcString, "dateTime", 
+      Assert.AreEqual(rpcString, "dateTime",
         "DateTime doesn't map to 'dateTime'");
     }
-    
+
     [Test]
     public void XmlRpcDateTime()
     {
@@ -130,30 +130,30 @@ namespace ntest
     {
       Type type = typeof(byte[]);
       XmlRpcType rpcType = XmlRpcTypeInfo.GetXmlRpcType(type);
-      Assert.AreEqual(XmlRpcType.tBase64, rpcType, 
+      Assert.AreEqual(XmlRpcType.tBase64, rpcType,
         "Byte[] doesn't map to XmlRpcType.tBase64");
       string rpcString = XmlRpcTypeInfo.GetXmlRpcTypeString(type);
       Assert.AreEqual(rpcString, "base64", "Byte[] doesn't map to 'base64'");
     }
-    
+
     [Test]
     public void XmlRpcStruct()
     {
       Type type = typeof(XmlRpcStruct);
         XmlRpcType rpcType = XmlRpcTypeInfo.GetXmlRpcType(type);
-      Assert.AreEqual(XmlRpcType.tHashtable, rpcType, 
+      Assert.AreEqual(XmlRpcType.tHashtable, rpcType,
         "XmlRpcStruct doesn't map to XmlRpcType.tHashtable");
       string rpcString = XmlRpcTypeInfo.GetXmlRpcTypeString(type);
-      Assert.AreEqual(rpcString, "struct", 
+      Assert.AreEqual(rpcString, "struct",
         "XmlRpcStruct doesn't map to 'struct'");
     }
-    
+
     [Test]
     public void Array()
     {
       Type type = typeof(Array);
       XmlRpcType rpcType = XmlRpcTypeInfo.GetXmlRpcType(type);
-      Assert.AreEqual(XmlRpcType.tArray, rpcType, 
+      Assert.AreEqual(XmlRpcType.tArray, rpcType,
         "Array doesn't map to XmlRpcType.tArray");
       string rpcString = XmlRpcTypeInfo.GetXmlRpcTypeString(type);
       Assert.AreEqual(rpcString, "array", "Array doesn't map to 'array'");
@@ -169,7 +169,7 @@ namespace ntest
       string rpcString = XmlRpcTypeInfo.GetXmlRpcTypeString(type);
       Assert.AreEqual(rpcString, "array", "Int32[] doesn't map to 'array'");
     }
-    
+
     [Test]
     public void MultiDimIntArray()
     {
@@ -198,26 +198,26 @@ namespace ntest
     {
       Type type = typeof(void);
         XmlRpcType rpcType = XmlRpcTypeInfo.GetXmlRpcType(type);
-      Assert.AreEqual(XmlRpcType.tVoid, rpcType, 
+      Assert.AreEqual(XmlRpcType.tVoid, rpcType,
         "void doesn't map to XmlRpcType.tVoid");
       string rpcString = XmlRpcTypeInfo.GetXmlRpcTypeString(type);
       Assert.AreEqual(rpcString, "void", "void doesn't map to 'void'");
     }
-    
+
     struct struct1
     {
       public int mi;
     }
-    
+
     [Test]
     public void Struct()
     {
       Type type = typeof(struct1);
       XmlRpcType rpcType = XmlRpcTypeInfo.GetXmlRpcType(type);
-      Assert.AreEqual(XmlRpcType.tStruct, rpcType, 
+      Assert.AreEqual(XmlRpcType.tStruct, rpcType,
         "struct doesn't map to XmlRpcType.tStruct");
       string rpcString = XmlRpcTypeInfo.GetXmlRpcTypeString(type);
-      Assert.AreEqual(rpcString, "struct", 
+      Assert.AreEqual(rpcString, "struct",
         "struct doesn't map to 'struct'");
     }
 
@@ -230,13 +230,13 @@ namespace ntest
       public int mi;
       public Fooe mf;
     }
-    
+
     [Test]
     public void StructWithEnum()
     {
       Type type = typeof(struct2);
       XmlRpcType rpcType = XmlRpcTypeInfo.GetXmlRpcType(type);
-      Assert.AreEqual(XmlRpcType.tStruct, rpcType, 
+      Assert.AreEqual(XmlRpcType.tStruct, rpcType,
         "struct doesn't map to XmlRpcType.tInvalid");
     }
 
@@ -251,7 +251,7 @@ namespace ntest
     {
       XmlRpcServiceInfo info = XmlRpcServiceInfo.CreateServiceInfo(
         typeof(struct3));
-      
+
     }
 
     [Test]

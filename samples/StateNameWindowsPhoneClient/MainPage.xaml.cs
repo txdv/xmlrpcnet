@@ -38,7 +38,7 @@ namespace StateNameWindowsPhoneClient
       var proxy = new StateNameProxy();
       proxy.BeginGetName(number, asr =>
       {
-        Dispatcher.BeginInvoke(delegate() 
+        Dispatcher.BeginInvoke(delegate()
           {
             try
             {
@@ -67,7 +67,7 @@ namespace StateNameWindowsPhoneClient
   }
 
   [XmlRpcUrl("http://www.cookcomputing.com/xmlrpcsamples/RPC2.ashx")]
-  public class StateNameProxy : XmlRpcClientProtocol 
+  public class StateNameProxy : XmlRpcClientProtocol
   {
     [XmlRpcBegin("examples.getStateName")]
    public IAsyncResult BeginGetName(int number, AsyncCallback acb)

@@ -13,8 +13,8 @@ namespace CookComputing.XmlRpc
     {
       _xmlRpcMembers.AddRange(new string[]
         {
-          "name",          
-          "value",          
+          "name",
+          "value",
 
         });
     }
@@ -247,7 +247,7 @@ namespace CookComputing.XmlRpc
       {
         rdr.Read();
         if (rdr.NodeType == XmlNodeType.Element && IsXmlRpcElement(rdr.Name))
-          throw new XmlRpcInvalidXmlRpcException(string.Format("Unexpected element {0}", 
+          throw new XmlRpcInvalidXmlRpcException(string.Format("Unexpected element {0}",
             rdr.Name));
         if (rdr.Depth == mcDepth && rdr.NodeType == XmlNodeType.EndElement)
           return true;
@@ -398,7 +398,7 @@ namespace CookComputing.XmlRpc
   {
     public ValueNode(int depth) : base(depth) { }
 
-    public ValueNode(int depth, string value) 
+    public ValueNode(int depth, string value)
       : base(depth)
     {
       Value = value;
@@ -499,7 +499,7 @@ namespace CookComputing.XmlRpc
 
   public class MethodName : Node
   {
-    public MethodName(int depth, string name) : base(depth)  
+    public MethodName(int depth, string name) : base(depth)
     {
       Name = name;
     }
@@ -507,22 +507,22 @@ namespace CookComputing.XmlRpc
     public string Name { get; set; }
   }
 
-  public class FaultNode : Node 
-  { 
+  public class FaultNode : Node
+  {
     public FaultNode(int depth) : base(depth) { }
   }
 
-  public class ResponseNode : Node 
+  public class ResponseNode : Node
   {
     public ResponseNode(int depth) : base(depth) { }
   }
 
-  public class ParamsNode : Node 
-  { 
+  public class ParamsNode : Node
+  {
     public ParamsNode(int depth) : base(depth) { }
   }
 
-  public class ParamNode : Node 
+  public class ParamNode : Node
   {
     public ParamNode(int depth) : base(depth) { }
   }

@@ -1,25 +1,25 @@
-/* 
+/*
 XML-RPC.NET library
 Copyright (c) 2001-2006, Charles Cook <charlescook@cookcomputing.com>
 
-Permission is hereby granted, free of charge, to any person 
-obtaining a copy of this software and associated documentation 
-files (the "Software"), to deal in the Software without restriction, 
-including without limitation the rights to use, copy, modify, merge, 
-publish, distribute, sublicense, and/or sell copies of the Software, 
-and to permit persons to whom the Software is furnished to do so, 
+Permission is hereby granted, free of charge, to any person
+obtaining a copy of this software and associated documentation
+files (the "Software"), to deal in the Software without restriction,
+including without limitation the rights to use, copy, modify, merge,
+publish, distribute, sublicense, and/or sell copies of the Software,
+and to permit persons to whom the Software is furnished to do so,
 subject to the following conditions:
 
-The above copyright notice and this permission notice shall be 
+The above copyright notice and this permission notice shall be
 included in all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES 
-OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND 
-NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT 
-HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
-WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, 
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 */
 
@@ -55,7 +55,7 @@ namespace CookComputing.XmlRpc
     {
       get {  throw new NotSupportedException(); }
     }
-  
+
     public IDictionary Properties
     {
       get {  return null; }
@@ -87,14 +87,14 @@ namespace CookComputing.XmlRpc
     {
       throw new Exception("not implemented");
     }
-  
+
     public Stream GetRequestStream(
       IMessage msg,
       ITransportHeaders headers)
     {
-      return null; // TODO: ??? 
+      return null; // TODO: ???
     }
-  
+
     public void ProcessMessage(
       IMessage msg,
       ITransportHeaders requestHeaders,
@@ -105,7 +105,7 @@ namespace CookComputing.XmlRpc
       responseHeaders = null;
       responseStream = null;
     }
-  
+
     public IMessage SyncProcessMessage(
       IMessage msg
       )
@@ -116,10 +116,10 @@ namespace CookComputing.XmlRpc
         Stream reqStm = null;
         ITransportHeaders reqHeaders = null;
         SerializeMessage(mcm, ref reqHeaders, ref reqStm);
-        
+
         Stream respStm = null;
         ITransportHeaders respHeaders = null;
-        m_next.ProcessMessage(msg, reqHeaders, reqStm, 
+        m_next.ProcessMessage(msg, reqHeaders, reqStm,
           out respHeaders, out respStm);
 
         IMessage imsg = DeserializeMessage(mcm, respHeaders, respStm);
@@ -134,8 +134,8 @@ namespace CookComputing.XmlRpc
     //  private methods
     //
     void SerializeMessage(
-      IMethodCallMessage mcm, 
-      ref ITransportHeaders headers, 
+      IMethodCallMessage mcm,
+      ref ITransportHeaders headers,
       ref Stream stream)
     {
       ITransportHeaders reqHeaders = new TransportHeaders();
@@ -163,17 +163,17 @@ namespace CookComputing.XmlRpc
       Stream stream)
     {
       var deserializer = new XmlRpcResponseDeserializer();
-      object tp = mcm.MethodBase;           
+      object tp = mcm.MethodBase;
       System.Reflection.MethodInfo mi = (System.Reflection.MethodInfo)tp;
       System.Type t = mi.ReturnType;
       XmlRpcResponse xmlRpcResp = deserializer.DeserializeResponse(stream, t);
       IMessage imsg = new ReturnMessage(xmlRpcResp.retVal, null, 0, null, mcm);
       return imsg;
-    } 
+    }
 
     string GetRpcMethodName(MethodInfo mi)
     {
-      Attribute attr = Attribute.GetCustomAttribute(mi, 
+      Attribute attr = Attribute.GetCustomAttribute(mi,
         typeof(XmlRpcMethodAttribute));
       // TODO: do methods need attribute?
       //      if (attr == null)
@@ -191,7 +191,7 @@ namespace CookComputing.XmlRpc
       return rpcMethod;
     }
 
-    // data 
+    // data
     //
     IClientChannelSink m_next;
   }

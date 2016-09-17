@@ -1,25 +1,25 @@
-/* 
+/*
 XML-RPC.NET library
 Copyright (c) 2001-2006, Charles Cook <charlescook@cookcomputing.com>
 
-Permission is hereby granted, free of charge, to any person 
-obtaining a copy of this software and associated documentation 
-files (the "Software"), to deal in the Software without restriction, 
-including without limitation the rights to use, copy, modify, merge, 
-publish, distribute, sublicense, and/or sell copies of the Software, 
-and to permit persons to whom the Software is furnished to do so, 
+Permission is hereby granted, free of charge, to any person
+obtaining a copy of this software and associated documentation
+files (the "Software"), to deal in the Software without restriction,
+including without limitation the rights to use, copy, modify, merge,
+publish, distribute, sublicense, and/or sell copies of the Software,
+and to permit persons to whom the Software is furnished to do so,
 subject to the following conditions:
 
-The above copyright notice and this permission notice shall be 
+The above copyright notice and this permission notice shall be
 included in all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES 
-OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND 
-NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT 
-HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
-WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, 
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 */
 
@@ -55,7 +55,7 @@ namespace CookComputing.XmlRpc
       WriteTitle(wrtr, title);
       wrtr.WriteEndTag("head");
     }
-    
+
     public static void WriteFooter(HtmlTextWriter wrtr, Type type,
       bool autoDocVersion)
     {
@@ -72,21 +72,21 @@ namespace CookComputing.XmlRpc
       if (autoDocVersion)
       {
         AssemblyName name1 = type.Assembly.GetName();
-        wrtr.Write("{0} {1}.{2}.{3}&nbsp;&nbsp;&nbsp;", name1.Name, 
+        wrtr.Write("{0} {1}.{2}.{3}&nbsp;&nbsp;&nbsp;", name1.Name,
           name1.Version.Major, name1.Version.Minor, name1.Version.Build);
 
         AssemblyName name2 = typeof(XmlRpcServerProtocol).Assembly.GetName();
-        wrtr.Write("{0} {1}.{2}.{3}&nbsp;&nbsp;&nbsp;", name2.Name, 
+        wrtr.Write("{0} {1}.{2}.{3}&nbsp;&nbsp;&nbsp;", name2.Name,
           name2.Version.Major, name2.Version.Minor, name2.Version.Build);
 
-        wrtr.Write(".NET CLR {0}.{1}.{2}&nbsp;&nbsp;&nbsp;", 
-          Environment.Version.Major,Environment.Version.Minor, 
+        wrtr.Write(".NET CLR {0}.{1}.{2}&nbsp;&nbsp;&nbsp;",
+          Environment.Version.Major,Environment.Version.Minor,
           Environment.Version.Build);
       }
       wrtr.WriteEndTag("div");
       wrtr.WriteLine();
     }
-    
+
     static void WriteStyle(HtmlTextWriter wrtr)
     {
       wrtr.WriteBeginTag("style");
@@ -118,7 +118,7 @@ namespace CookComputing.XmlRpc
     }
 
     static void WriteTitle(
-      HtmlTextWriter wrtr, 
+      HtmlTextWriter wrtr,
       string title)
     {
       wrtr.WriteFullBeginTag("title");
@@ -133,9 +133,9 @@ namespace CookComputing.XmlRpc
       wrtr.WriteFullBeginTag("body");
       wrtr.WriteLine();
 
-      WriteType(wrtr, type);         
+      WriteType(wrtr, type);
       wrtr.WriteLine();
-      
+
       WriteFooter(wrtr, type, autoDocVersion);
 
       wrtr.WriteEndTag("div");
@@ -145,11 +145,11 @@ namespace CookComputing.XmlRpc
     }
 
     public static void WriteType(
-      HtmlTextWriter wrtr, 
+      HtmlTextWriter wrtr,
       Type type)
     {
       ArrayList structs = new ArrayList();
-      
+
       wrtr.WriteBeginTag("div");
       wrtr.WriteAttribute("id", "content");
       wrtr.Write(HtmlTextWriter.TagRightChar);
@@ -199,7 +199,7 @@ namespace CookComputing.XmlRpc
           wrtr.WriteLine();
         }
       }
-     
+
       wrtr.WriteEndTag("ul");
       wrtr.WriteLine();
 
@@ -219,7 +219,7 @@ namespace CookComputing.XmlRpc
     }
 
     static void WriteMethod(
-      HtmlTextWriter wrtr, 
+      HtmlTextWriter wrtr,
       XmlRpcMethodInfo mthdInfo,
       ArrayList structs)
     {
@@ -243,7 +243,7 @@ namespace CookComputing.XmlRpc
         wrtr.WriteEndTag("p");
         wrtr.WriteLine();
       }
-      
+
       wrtr.WriteFullBeginTag("h3");
       wrtr.Write("Parameters");
       wrtr.WriteEndTag("h3");
@@ -320,7 +320,7 @@ namespace CookComputing.XmlRpc
       else
         wrtr.Write("&nbsp;");
       wrtr.WriteEndTag("td");
-        
+
       wrtr.WriteEndTag("tr");
 
       wrtr.WriteEndTag("table");
@@ -331,7 +331,7 @@ namespace CookComputing.XmlRpc
     }
 
     static void WriteStruct(
-      HtmlTextWriter wrtr, 
+      HtmlTextWriter wrtr,
       Type structType,
       ArrayList structs)
     {
@@ -345,14 +345,14 @@ namespace CookComputing.XmlRpc
       wrtr.WriteEndTag("a");
       wrtr.WriteEndTag("h2");
       wrtr.WriteLine();
-    
+
       wrtr.WriteFullBeginTag("h3");
       wrtr.Write("Members");
       wrtr.WriteEndTag("h3");
-      wrtr.WriteLine();    
+      wrtr.WriteLine();
       wrtr.WriteEndTag("span");
-      wrtr.WriteLine();  
-   
+      wrtr.WriteLine();
+
       wrtr.WriteBeginTag("table");
       wrtr.WriteAttribute("cellspacing", "0");
       wrtr.WriteAttribute("cellpadding", "5");
@@ -360,7 +360,7 @@ namespace CookComputing.XmlRpc
       wrtr.Write(HtmlTextWriter.TagRightChar);
 
       MappingAction structAction = MappingAction.Error;
-      Attribute structAttr = Attribute.GetCustomAttribute(structType, 
+      Attribute structAttr = Attribute.GetCustomAttribute(structType,
         typeof(XmlRpcMissingMappingAttribute));
       if (structAttr != null && structAttr is XmlRpcMissingMappingAttribute)
       {
@@ -373,7 +373,7 @@ namespace CookComputing.XmlRpc
         if (mi.MemberType == MemberTypes.Field)
         {
           FieldInfo fi = (FieldInfo)mi;
-        
+
           wrtr.WriteFullBeginTag("tr");
 
           wrtr.WriteBeginTag("td");
@@ -384,7 +384,7 @@ namespace CookComputing.XmlRpc
 
           wrtr.WriteFullBeginTag("td");
           MappingAction memberAction = structAction;
-          Attribute attr = Attribute.GetCustomAttribute(fi, 
+          Attribute attr = Attribute.GetCustomAttribute(fi,
             typeof(XmlRpcMissingMappingAttribute));
           if (attr != null && attr is XmlRpcMissingMappingAttribute)
           {
@@ -392,7 +392,7 @@ namespace CookComputing.XmlRpc
           }
           string memberName = fi.Name + " ";
           string desc = "";
-          Attribute mmbrAttr = Attribute.GetCustomAttribute(fi, 
+          Attribute mmbrAttr = Attribute.GetCustomAttribute(fi,
             typeof(XmlRpcMemberAttribute));
           if (mmbrAttr != null && mmbrAttr is XmlRpcMemberAttribute)
           {
@@ -406,17 +406,17 @@ namespace CookComputing.XmlRpc
             memberName = memberName + "- " + desc;
           wrtr.Write(memberName);
           wrtr.WriteEndTag("td");
-                 
+
           wrtr.WriteEndTag("tr");
         }
       }
       wrtr.WriteEndTag("table");
       wrtr.WriteLine();
-   
+
     }
 
     static void WriteType(
-      HtmlTextWriter wrtr, 
+      HtmlTextWriter wrtr,
       Type type,
       bool isparams,
       ArrayList structs)
@@ -455,7 +455,7 @@ namespace CookComputing.XmlRpc
             elemXmlRpcType = XmlRpcTypeInfo.GetXmlRpcTypeString(elemType);
           else
             elemXmlRpcType = "any";
-          wrtr.Write(elemXmlRpcType);            
+          wrtr.Write(elemXmlRpcType);
           if (elemXmlRpcType == "struct" && elemType != typeof(XmlRpcStruct))
           {
             if (!structs.Contains(elemType))

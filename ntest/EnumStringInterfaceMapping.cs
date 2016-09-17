@@ -26,7 +26,7 @@ namespace ntest
   public interface IEnumStringInterfaceMapping
   {
     [XmlRpcEnumMapping(EnumMapping.String)]
-     void MappingOnMethod(ItfEnum param1, ItfEnum[] param2, 
+     void MappingOnMethod(ItfEnum param1, ItfEnum[] param2,
       ItfEnum param3);
   }
 
@@ -42,17 +42,17 @@ namespace ntest
     {
       Stream stm = new MemoryStream();
       XmlRpcRequest req = new XmlRpcRequest();
-      req.args = new Object[] 
-      { 
+      req.args = new Object[]
+      {
         IntEnum.Zero,
         new IntEnum[] { IntEnum.One, IntEnum.Two },
         new ItfEnumClass
-        { 
-          IntEnum = ItfEnum.One, 
+        {
+          IntEnum = ItfEnum.One,
           intEnum = ItfEnum.Two,
           IntEnums = new ItfEnum[] { ItfEnum.One, ItfEnum.Two },
           intEnums = new ItfEnum[] { ItfEnum.Three, ItfEnum.Four },
-        } 
+        }
       };
       req.method = "MappingOnMethod";
       req.mi = this.GetType().GetMethod("MappingOnMethod");

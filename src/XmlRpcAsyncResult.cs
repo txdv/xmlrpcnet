@@ -1,25 +1,25 @@
-/* 
+/*
 XML-RPC.NET library
 Copyright (c) 2001-2011, Charles Cook <charlescook@cookcomputing.com>
 
-Permission is hereby granted, free of charge, to any person 
-obtaining a copy of this software and associated documentation 
-files (the "Software"), to deal in the Software without restriction, 
-including without limitation the rights to use, copy, modify, merge, 
-publish, distribute, sublicense, and/or sell copies of the Software, 
-and to permit persons to whom the Software is furnished to do so, 
+Permission is hereby granted, free of charge, to any person
+obtaining a copy of this software and associated documentation
+files (the "Software"), to deal in the Software without restriction,
+including without limitation the rights to use, copy, modify, merge,
+publish, distribute, sublicense, and/or sell copies of the Software,
+and to permit persons to whom the Software is furnished to do so,
 subject to the following conditions:
 
-The above copyright notice and this permission notice shall be 
+The above copyright notice and this permission notice shall be
 included in all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES 
-OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND 
-NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT 
-HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
-WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, 
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 */
 
@@ -37,12 +37,12 @@ namespace CookComputing.XmlRpc
     public XmlRpcFormatSettings XmlRpcFormatSettings { get; private set; }
 
     // IAsyncResult members
-    public object AsyncState 
-    { 
-      get { return userAsyncState; } 
+    public object AsyncState
+    {
+      get { return userAsyncState; }
     }
 
-    public WaitHandle AsyncWaitHandle 
+    public WaitHandle AsyncWaitHandle
     {
       get
       {
@@ -61,19 +61,19 @@ namespace CookComputing.XmlRpc
       }
     }
 
-    public bool CompletedSynchronously 
-    { 
-      get { return completedSynchronously; } 
-      set 
-      { 
+    public bool CompletedSynchronously
+    {
+      get { return completedSynchronously; }
+      set
+      {
         if (completedSynchronously)
           completedSynchronously = value;
       }
     }
 
-    public bool IsCompleted 
+    public bool IsCompleted
     {
-      get { return isCompleted; } 
+      get { return isCompleted; }
     }
 
     public CookieCollection ResponseCookies
@@ -93,24 +93,24 @@ namespace CookComputing.XmlRpc
         request.Abort();
     }
 
-    public Exception Exception 
+    public Exception Exception
     {
-      get { return exception; } 
+      get { return exception; }
     }
 
-    public XmlRpcClientProtocol ClientProtocol 
-    { 
-      get { return clientProtocol; } 
+    public XmlRpcClientProtocol ClientProtocol
+    {
+      get { return clientProtocol; }
     }
 
     //internal members
     internal XmlRpcAsyncResult(
-      XmlRpcClientProtocol ClientProtocol, 
-      XmlRpcRequest XmlRpcReq, 
+      XmlRpcClientProtocol ClientProtocol,
+      XmlRpcRequest XmlRpcReq,
       XmlRpcFormatSettings xmlRpcFormatSettings,
-      WebRequest Request, 
-      AsyncCallback UserCallback, 
-      object UserAsyncState, 
+      WebRequest Request,
+      AsyncCallback UserCallback,
+      object UserAsyncState,
       int retryNumber)
     {
       xmlRpcRequest = XmlRpcReq;
@@ -121,7 +121,7 @@ namespace CookComputing.XmlRpc
       completedSynchronously = true;
       XmlRpcFormatSettings = xmlRpcFormatSettings;
     }
-  
+
     internal void Complete(
       Exception ex)
     {
@@ -170,42 +170,42 @@ namespace CookComputing.XmlRpc
       return response;
     }
 
-    internal bool EndSendCalled 
-    { 
-      get { return endSendCalled; } 
+    internal bool EndSendCalled
+    {
+      get { return endSendCalled; }
       set { endSendCalled = value; }
     }
 
-    internal byte[] Buffer 
-    { 
-      get { return buffer; } 
+    internal byte[] Buffer
+    {
+      get { return buffer; }
       set { buffer = value; }
     }
 
-    internal WebRequest Request { get { return request; } 
+    internal WebRequest Request { get { return request; }
     }
 
-    internal WebResponse Response 
-    { 
-      get { return response; } 
+    internal WebResponse Response
+    {
+      get { return response; }
       set { response = value; }
     }
 
     internal Stream ResponseStream
-    { 
-      get { return responseStream; } 
+    {
+      get { return responseStream; }
       set { responseStream = value; }
     }
 
     internal XmlRpcRequest XmlRpcRequest
-    { 
-      get { return xmlRpcRequest; } 
+    {
+      get { return xmlRpcRequest; }
       set { xmlRpcRequest = value; }
     }
 
     internal Stream ResponseBufferedStream
-    { 
-      get { return responseBufferedStream; } 
+    {
+      get { return responseBufferedStream; }
       set { responseBufferedStream = value; }
     }
 

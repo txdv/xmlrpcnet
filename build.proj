@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
- 
+
   <!--
   Project for building a release distribution
   - requires Subversion client - configure in ToolPath of SvnExports
   -->
- 
+
   <PropertyGroup>
     <ProductVersion>3.0 snapshot</ProductVersion>
     <ProductMajor>3</ProductMajor>
@@ -16,7 +16,7 @@
     <PhoneBuild>yes</PhoneBuild>
     <BuildDir>$(MSBuildProjectDirectory)\build</BuildDir>
   </PropertyGroup>
- 
+
   <PropertyGroup>
     <BuildFiles>$(BuildDir)\buildfiles</BuildFiles>
     <OutputFiles>$(BuildDir)\outputfiles</OutputFiles>
@@ -25,9 +25,9 @@
     <NUnitToolPath>$(MSBuildProjectDirectory)\tools\NUnit\</NUnitToolPath>
     <KeyFile>CookComputing.key</KeyFile>
   </PropertyGroup>
- 
+
   <Import Project="tools\CommunityTasks\MSBuild.Community.Tasks.Targets"/>
- 
+
   <Target Name="GetFiles" Condition="$(GetFiles) == 'yes'">
     <RemoveDir Directories="$(BuildDir)" />
     <SvnExport
@@ -61,7 +61,7 @@
         ReplacementText="v$(ProductMajor).$(ProductMinor).$(ProductRevision) Release"
     />
   </Target>
- 
+
   <Target Name="MainBuild" DependsOnTargets="GetFiles">
     <Message Text="Starting to Build in $(BuildFiles)"/>
     <Error Text="Please supply your own key file CookComputing.key in build directory"
@@ -72,7 +72,7 @@
         Properties="Configuration=Release;SignAssembly=true;AssemblyOriginatorKeyFile=$(MSBuildProjectDirectory)\$(KeyFile)"
     />
   </Target>
- 
+
   <Target Name="PhoneBuild" DependsOnTargets="GetFiles" Condition="$(PhoneBuild) == 'yes'">
     <Message Text="Starting to Build in $(BuildFiles)"/>
     <MSBuild
@@ -80,7 +80,7 @@
         Properties="Configuration=Release;SignAssembly=true;AssemblyOriginatorKeyFile=$(MSBuildProjectDirectory)\$(KeyFile)"
     />
   </Target>
- 
+
   <Target Name="CleanBuild">
     <RemoveDir Directories="$(BuildFiles)\bin" />
     <ItemGroup>
@@ -88,14 +88,14 @@
     </ItemGroup>
     <Delete Files="@(BinFiles)" />
   </Target>
- 
+
   <Target Name="Build" DependsOnTargets="CleanBuild;MainBuild;PhoneBuild">
   </Target>
- 
+
   <Target Name="Test" DependsOnTargets="Build">
     <NUnit Assemblies="$(BuildFiles)\bin\ntest.dll" ToolPath="$(NUnitToolPath)" />
   </Target>
- 
+
   <Target Name="Package" DependsOnTargets="Test">
     <ItemGroup>
       <BinFiles Include="$(BuildFiles)\bin\*"/>
@@ -113,7 +113,7 @@
       <FilesToDelete Include="$(OutputSrc)\**\*FileListAbsolute.txt" />
     </ItemGroup>
     <Delete Files="@(FilesToDelete)" />
-    
+
     <ItemGroup>
       <ZipFiles Include="$(OutputFiles)\**" />
     </ItemGroup>
@@ -121,7 +121,7 @@
       ZipFileName="$(BuildDir)\xml-rpc.net.$(ProductMajor).$(ProductMinor).$(ProductRevision).$(Revision)$(ProductSuffix).zip">
     </Zip>
   </Target>
- 
+
   <Target Name="Release" DependsOnTargets="Package" />
- 
+
 </Project>

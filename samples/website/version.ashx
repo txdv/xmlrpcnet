@@ -1,5 +1,5 @@
 <%@ WebHandler Language="C#" Class="VersionService" %> <%@ Assembly Name="CookComputing.XmlRpcV2" %>
- 
+
 using System;
 using System.Collections;
 using System.Web;

@@ -20,7 +20,7 @@ public class XmlRpcStruct1 : XmlRpcStruct
 
 // TODO: fix this
 
-namespace ntest 
+namespace ntest
 {
 
   [TestFixture]
@@ -160,17 +160,17 @@ namespace ntest
 //    {
 //      Type parsedType, parsedArrayType;
 //      string xml = @"<?xml version=""1.0"" ?><value><struct></struct></value>";
-//      object obj = Utils.Parse(xml, typeof(Struct1), MappingAction.Error, 
+//      object obj = Utils.Parse(xml, typeof(Struct1), MappingAction.Error,
 //        out parsedType, out parsedArrayType);
 //      Assert.Fail("didn't detect missing members");
-//    }    
-  
+//    }
+
 //    [Test]
 //    public void Struct1_AllMissing_Ignore()
 //    {
 //      Type parsedType, parsedArrayType;
 //      string xml = @"<?xml version=""1.0"" ?><value><struct></struct></value>";
-//      object obj = Utils.Parse(xml, typeof(Struct1), MappingAction.Ignore, 
+//      object obj = Utils.Parse(xml, typeof(Struct1), MappingAction.Ignore,
 //        out parsedType, out parsedArrayType);
 //      Assert.IsTrue(obj is Struct1, "obj is Struct1");
 //      Assert.AreEqual(0, ((Struct1)obj).mi, "int member");
@@ -178,12 +178,12 @@ namespace ntest
 //      Assert.AreEqual(false, ((Struct1)obj).mb, "boolean member");
 //      Assert.AreEqual(0.0, ((Struct1)obj).md, "double member");
 //      Assert.AreEqual(new DateTime(), ((Struct1)obj).mdt, "dateTime member");
-//      Assert.AreEqual(null, ((Struct1)obj).mb64, "base64 member"); 
-//      Assert.AreEqual(null, ((Struct1)obj).ma, "array member"); 
-//      Assert.AreEqual(null, ((Struct1)obj).xi, "int? member"); 
-//      Assert.AreEqual(null, ((Struct1)obj).xb, "bool? member"); 
-//      Assert.AreEqual(null, ((Struct1)obj).xd, "XmlRpcDouble member"); 
-//      Assert.AreEqual(null, ((Struct1)obj).xdt, "DateTime? member");                
+//      Assert.AreEqual(null, ((Struct1)obj).mb64, "base64 member");
+//      Assert.AreEqual(null, ((Struct1)obj).ma, "array member");
+//      Assert.AreEqual(null, ((Struct1)obj).xi, "int? member");
+//      Assert.AreEqual(null, ((Struct1)obj).xb, "bool? member");
+//      Assert.AreEqual(null, ((Struct1)obj).xd, "XmlRpcDouble member");
+//      Assert.AreEqual(null, ((Struct1)obj).xdt, "DateTime? member");
 //      Assert.AreEqual(null, ((Struct1)obj).xstr, "XmlRpcStructTime member");
 //#if !FX1_0
 //      Assert.AreEqual(null, ((Struct1)obj).nxi, "int? member");
@@ -246,13 +246,13 @@ namespace ntest
 //      Assert.AreEqual(1234, ((ChildStruct)((Struct1)obj).nxstr).x);
 //#endif
 //    }
- 
+
 //    [Test]
 //    public void Struct2_AllMissing_ErrorStructIgnore()
 //    {
 //      Type parsedType, parsedArrayType;
 //      string xml = @"<?xml version=""1.0"" ?><value><struct></struct></value>";
-//      object obj = Utils.Parse(xml, typeof(Struct2), MappingAction.Error, 
+//      object obj = Utils.Parse(xml, typeof(Struct2), MappingAction.Error,
 //        out parsedType, out parsedArrayType);
 //      Assert.IsTrue(obj is Struct2, "obj is Struct2");
 //      Assert.AreEqual(0, ((Struct2)obj).mi, "int member");
@@ -260,12 +260,12 @@ namespace ntest
 //      Assert.AreEqual(false, ((Struct2)obj).mb,"boolean member");
 //      Assert.AreEqual(0.0, ((Struct2)obj).md, "double member");
 //      Assert.AreEqual(new DateTime(), ((Struct2)obj).mdt, "dateTime member");
-//      Assert.AreEqual(null, ((Struct2)obj).mb64, "base64 member");        
-//      Assert.AreEqual(null, ((Struct2)obj).ma, "array member"); 
-//      Assert.AreEqual(null, ((Struct2)obj).xi, "int? member"); 
-//      Assert.AreEqual(null, ((Struct2)obj).xb, "bool? member"); 
-//      Assert.AreEqual(null, ((Struct2)obj).xd, "XmlRpcDouble member"); 
-//      Assert.AreEqual(null, ((Struct2)obj).xdt, "DateTime? member");                
+//      Assert.AreEqual(null, ((Struct2)obj).mb64, "base64 member");
+//      Assert.AreEqual(null, ((Struct2)obj).ma, "array member");
+//      Assert.AreEqual(null, ((Struct2)obj).xi, "int? member");
+//      Assert.AreEqual(null, ((Struct2)obj).xb, "bool? member");
+//      Assert.AreEqual(null, ((Struct2)obj).xd, "XmlRpcDouble member");
+//      Assert.AreEqual(null, ((Struct2)obj).xdt, "DateTime? member");
 //      Assert.AreEqual(null, ((Struct2)obj).xstr, "XmlRpcStructTime member");
 //#if !FX1_0
 //      Assert.AreEqual(null, ((Struct2)obj).nxi, "int? member");
@@ -281,7 +281,7 @@ namespace ntest
 //    {
 //      Type parsedType, parsedArrayType;
 //      string xml = @"<?xml version=""1.0"" ?><value><struct></struct></value>";
-//      object obj = Utils.Parse(xml, typeof(Struct3), MappingAction.Error, 
+//      object obj = Utils.Parse(xml, typeof(Struct3), MappingAction.Error,
 //        out parsedType, out parsedArrayType);
 //      Assert.IsTrue(obj is Struct3, "obj is Struct3");
 //      Assert.AreEqual(0, ((Struct3)obj).mi, "int member");
@@ -289,12 +289,12 @@ namespace ntest
 //      Assert.AreEqual(false, ((Struct3)obj).mb, "boolean member");
 //      Assert.AreEqual(0.0, ((Struct3)obj).md, "double member");
 //      Assert.AreEqual(new DateTime(), ((Struct3)obj).mdt, "dateTime member");
-//      Assert.AreEqual(null, ((Struct3)obj).mb64, "base64 member");        
-//      Assert.AreEqual(null, ((Struct3)obj).ma, "array member"); 
-//      Assert.AreEqual(null, ((Struct3)obj).xi, "int? member"); 
-//      Assert.AreEqual(null, ((Struct3)obj).xb, "bool? member"); 
-//      Assert.AreEqual(null, ((Struct3)obj).xd, "XmlRpcDouble member"); 
-//      Assert.AreEqual(null, ((Struct3)obj).xdt, "DateTime? member");                
+//      Assert.AreEqual(null, ((Struct3)obj).mb64, "base64 member");
+//      Assert.AreEqual(null, ((Struct3)obj).ma, "array member");
+//      Assert.AreEqual(null, ((Struct3)obj).xi, "int? member");
+//      Assert.AreEqual(null, ((Struct3)obj).xb, "bool? member");
+//      Assert.AreEqual(null, ((Struct3)obj).xd, "XmlRpcDouble member");
+//      Assert.AreEqual(null, ((Struct3)obj).xdt, "DateTime? member");
 //      Assert.AreEqual(null, ((Struct3)obj).xstr, "XmlRpcStructTime member");
 //#if !FX1_0
 //      Assert.AreEqual(null, ((Struct3)obj).nxi, "int? member");
@@ -310,7 +310,7 @@ namespace ntest
 //    {
 //      Type parsedType, parsedArrayType;
 //      string xml = @"<?xml version=""1.0"" ?><value><struct></struct></value>";
-//      object obj = Utils.Parse(xml, typeof(Struct4), MappingAction.Error, 
+//      object obj = Utils.Parse(xml, typeof(Struct4), MappingAction.Error,
 //        out parsedType, out parsedArrayType);
 //      Assert.IsTrue(obj is Struct4, "obj is Struct4");
 //      Assert.AreEqual(0, ((Struct4)obj).mi, "int member");
@@ -318,12 +318,12 @@ namespace ntest
 //      Assert.AreEqual(false, ((Struct4)obj).mb, "boolean member");
 //      Assert.AreEqual(0.0, ((Struct4)obj).md, "double member");
 //      Assert.AreEqual(new DateTime(), ((Struct4)obj).mdt, "dateTime member");
-//      Assert.AreEqual(null, ((Struct4)obj).mb64, "base64 member");        
-//      Assert.AreEqual(null, ((Struct4)obj).ma, "array member"); 
-//      Assert.AreEqual(null, ((Struct4)obj).xi, "int? member"); 
-//      Assert.AreEqual(null, ((Struct4)obj).xb, "bool? member"); 
-//      Assert.AreEqual(null, ((Struct4)obj).xd, "XmlRpcDouble member"); 
-//      Assert.AreEqual(null, ((Struct4)obj).xdt, "DateTime? member");                
+//      Assert.AreEqual(null, ((Struct4)obj).mb64, "base64 member");
+//      Assert.AreEqual(null, ((Struct4)obj).ma, "array member");
+//      Assert.AreEqual(null, ((Struct4)obj).xi, "int? member");
+//      Assert.AreEqual(null, ((Struct4)obj).xb, "bool? member");
+//      Assert.AreEqual(null, ((Struct4)obj).xd, "XmlRpcDouble member");
+//      Assert.AreEqual(null, ((Struct4)obj).xdt, "DateTime? member");
 //      Assert.AreEqual(null, ((Struct4)obj).xstr, "XmlRpcStructTime member");
 //#if !FX1_0
 //      Assert.AreEqual(null, ((Struct4)obj).nxi, "int? member");
@@ -333,13 +333,13 @@ namespace ntest
 //      Assert.AreEqual(null, ((Struct4)obj).nxstr, "ChildStruct? member");
 //#endif
 //    }
-      
+
 //    [Test]
 //    public void Struct4_AllMissing_IgnoreStructErrorMemberIgnore()
 //    {
 //      Type parsedType, parsedArrayType;
 //      string xml = @"<?xml version=""1.0"" ?><value><struct></struct></value>";
-//      object obj = Utils.Parse(xml, typeof(Struct4), MappingAction.Ignore, 
+//      object obj = Utils.Parse(xml, typeof(Struct4), MappingAction.Ignore,
 //        out parsedType, out parsedArrayType);
 //      Assert.IsTrue(obj is Struct4, "obj is Struct4");
 //      Assert.AreEqual(0, ((Struct4)obj).mi,"int member");
@@ -347,12 +347,12 @@ namespace ntest
 //      Assert.AreEqual(false, ((Struct4)obj).mb, "boolean member");
 //      Assert.AreEqual(0.0, ((Struct4)obj).md, "double member");
 //      Assert.AreEqual(new DateTime(), ((Struct4)obj).mdt, "dateTime member");
-//      Assert.AreEqual(null, ((Struct4)obj).mb64, "base64 member");        
-//      Assert.AreEqual(null, ((Struct4)obj).ma, "array member"); 
-//      Assert.AreEqual(null, ((Struct4)obj).xi, "int? member"); 
-//      Assert.AreEqual(null, ((Struct4)obj).xb, "bool? member"); 
-//      Assert.AreEqual(null, ((Struct4)obj).xd, "XmlRpcDouble member"); 
-//      Assert.AreEqual(null, ((Struct4)obj).xdt, "DateTime? member");                
+//      Assert.AreEqual(null, ((Struct4)obj).mb64, "base64 member");
+//      Assert.AreEqual(null, ((Struct4)obj).ma, "array member");
+//      Assert.AreEqual(null, ((Struct4)obj).xi, "int? member");
+//      Assert.AreEqual(null, ((Struct4)obj).xb, "bool? member");
+//      Assert.AreEqual(null, ((Struct4)obj).xd, "XmlRpcDouble member");
+//      Assert.AreEqual(null, ((Struct4)obj).xdt, "DateTime? member");
 //      Assert.AreEqual(null, ((Struct4)obj).xstr, "XmlRpcStructTime member");
 //#if !FX1_0
 //      Assert.AreEqual(null, ((Struct4)obj).xi, "int? member");
@@ -387,7 +387,7 @@ namespace ntest
 //          </member>
 //        </struct>
 //      </value>";
-//      object obj = Utils.Parse(xml, typeof(StructOuter1), MappingAction.Error, 
+//      object obj = Utils.Parse(xml, typeof(StructOuter1), MappingAction.Error,
 //        out parsedType, out parsedArrayType);
 //      Assert.Fail("didn't detect missing members");
 //    }
@@ -416,8 +416,8 @@ namespace ntest
 //          </member>
 //        </struct>
 //      </value>";
-//      object obj = Utils.Parse(xml, typeof(StructOuter2), 
-//        MappingAction.Ignore, 
+//      object obj = Utils.Parse(xml, typeof(StructOuter2),
+//        MappingAction.Ignore,
 //        out parsedType, out parsedArrayType);
 //    }
 
@@ -456,7 +456,7 @@ namespace ntest
 //          </member>
 //        </struct>
 //      </value>";
-//      object obj = Utils.Parse(xml, typeof(StructHung), MappingAction.Error, 
+//      object obj = Utils.Parse(xml, typeof(StructHung), MappingAction.Error,
 //        out parsedType, out parsedArrayType);
 //      Assert.IsTrue(obj is StructHung);
 //      StructHung strct = (StructHung)obj;

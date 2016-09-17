@@ -1,25 +1,25 @@
-﻿/* 
+﻿/*
 XML-RPC.NET library
 Copyright (c) 2001-2011, Charles Cook <charlescook@cookcomputing.com>
 
-Permission is hereby granted, free of charge, to any person 
-obtaining a copy of this software and associated documentation 
-files (the "Software"), to deal in the Software without restriction, 
-including without limitation the rights to use, copy, modify, merge, 
-publish, distribute, sublicense, and/or sell copies of the Software, 
-and to permit persons to whom the Software is furnished to do so, 
+Permission is hereby granted, free of charge, to any person
+obtaining a copy of this software and associated documentation
+files (the "Software"), to deal in the Software without restriction,
+including without limitation the rights to use, copy, modify, merge,
+publish, distribute, sublicense, and/or sell copies of the Software,
+and to permit persons to whom the Software is furnished to do so,
 subject to the following conditions:
 
-The above copyright notice and this permission notice shall be 
+The above copyright notice and this permission notice shall be
 included in all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES 
-OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND 
-NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT 
-HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
-WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, 
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 */
 
@@ -163,7 +163,7 @@ namespace CookComputing.XmlRpc
       return retObj;
     }
 
-    private object MapDateTime(string value, Type valType, MappingStack mappingStack, 
+    private object MapDateTime(string value, Type valType, MappingStack mappingStack,
       MappingAction mappingAction, out Type mappedType)
     {
       CheckExpectedType(valType, typeof(DateTime), mappingStack);
@@ -188,7 +188,7 @@ namespace CookComputing.XmlRpc
       });
     }
 
-    private object MapDouble(string value, Type valType, MappingStack mappingStack, 
+    private object MapDouble(string value, Type valType, MappingStack mappingStack,
       MappingAction mappingAction, out Type mappedType)
     {
       CheckExpectedType(valType, typeof(double), mappingStack);
@@ -208,7 +208,7 @@ namespace CookComputing.XmlRpc
       });
     }
 
-    private object MapBoolean(string value, Type valType, MappingStack mappingStack, 
+    private object MapBoolean(string value, Type valType, MappingStack mappingStack,
       MappingAction mappingAction, out Type mappedType)
     {
       CheckExpectedType(valType, typeof(bool), mappingStack);
@@ -226,7 +226,7 @@ namespace CookComputing.XmlRpc
       });
     }
 
-    private object MapString(string value, Type valType, MappingStack mappingStack, 
+    private object MapString(string value, Type valType, MappingStack mappingStack,
       MappingAction mappingAction, out Type mappedType)
     {
       CheckExpectedType(valType, typeof(string), mappingStack);
@@ -261,7 +261,7 @@ namespace CookComputing.XmlRpc
       });
     }
 
-    private object MapLong(string value, Type valType, MappingStack mappingStack, 
+    private object MapLong(string value, Type valType, MappingStack mappingStack,
       MappingAction mappingAction, out Type mappedType)
     {
       CheckExpectedType(valType, typeof(long), mappingStack);
@@ -278,7 +278,7 @@ namespace CookComputing.XmlRpc
       });
     }
 
-    private object MapInt(string value, Type valType, MappingStack mappingStack, 
+    private object MapInt(string value, Type valType, MappingStack mappingStack,
       MappingAction mappingAction, out Type mappedType)
     {
       CheckExpectedType(valType, typeof(int), mappingStack);
@@ -308,7 +308,7 @@ namespace CookComputing.XmlRpc
           object enumNumberValue = Convert.ChangeType(lnum, underlyingType, null);
           if (!Enum.IsDefined(enumType, enumNumberValue))
             throw new XmlRpcInvalidEnumValue(mappingStack.MappingType
-              + " contains " + xmlRpcType + "mapped to undefined enum value " 
+              + " contains " + xmlRpcType + "mapped to undefined enum value "
               + StackDump(mappingStack));
           object ret = Enum.ToObject(enumType, enumNumberValue);
           return ret;
@@ -326,7 +326,7 @@ namespace CookComputing.XmlRpc
       });
     }
 
-    private object MapBase64(string value, Type valType, MappingStack mappingStack, 
+    private object MapBase64(string value, Type valType, MappingStack mappingStack,
       MappingAction mappingAction, out Type mappedType)
     {
       CheckExpectedType(valType, typeof(byte[]), mappingStack);
@@ -352,10 +352,10 @@ namespace CookComputing.XmlRpc
       });
     }
 
-    private object MapNilValue(string p, Type type, MappingStack mappingStack, 
+    private object MapNilValue(string p, Type type, MappingStack mappingStack,
       MappingAction mappingAction, out Type mappedType)
     {
-      if (type == null 
+      if (type == null
         || (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>))
         || (!type.IsPrimitive || !type.IsValueType)
         || type == typeof(object))
@@ -366,14 +366,14 @@ namespace CookComputing.XmlRpc
       else
       {
         throw new XmlRpcInvalidXmlRpcException(mappingStack.MappingType
-          + " contains <nil> value which cannot be mapped to type " 
+          + " contains <nil> value which cannot be mapped to type "
           + (type != null && type != typeof(object) ? type.Name : "object")
           + " "
           + StackDump(mappingStack));
       }
     }
 
-    protected object MapHashtable(IEnumerator<Node> iter, Type valType, MappingStack mappingStack, 
+    protected object MapHashtable(IEnumerator<Node> iter, Type valType, MappingStack mappingStack,
       MappingAction mappingAction, out Type mappedType)
     {
       mappedType = null;
@@ -438,8 +438,8 @@ namespace CookComputing.XmlRpc
           + " expected (as type " + valueType.Name + ") "
           + StackDump(mappingStack));
       }
-      // Note: mapping action on a struct is only applied locally - it 
-      // does not override the global mapping action when members of the 
+      // Note: mapping action on a struct is only applied locally - it
+      // does not override the global mapping action when members of the
       // struct are mapped
       MappingAction localAction = mappingAction;
       if (valueType != null)
@@ -451,7 +451,7 @@ namespace CookComputing.XmlRpc
       {
         mappingStack.Push("struct");
       }
-      // create map of field names and remove each name from it as 
+      // create map of field names and remove each name from it as
       // processed so we can determine which fields are missing
       var names = new List<string>();
       CreateFieldNamesMap(valueType, names);
@@ -532,7 +532,7 @@ namespace CookComputing.XmlRpc
       }
     }
 
-    private object MapArray(IEnumerator<Node> iter, Type valType, 
+    private object MapArray(IEnumerator<Node> iter, Type valType,
       MappingStack mappingStack, MappingAction mappingAction,
       out Type mappedType)
     {
@@ -655,17 +655,17 @@ namespace CookComputing.XmlRpc
       Type elemType = ValueType.GetElementType();
       int rank = ValueType.GetArrayRank();
 #else
-      string[] checkMultiDim = Regex.Split(ValueType.FullName, 
+      string[] checkMultiDim = Regex.Split(ValueType.FullName,
         "\\[,[,]*\\]$");
       Type elemType = Type.GetType(checkMultiDim[0]);
-      string commas = ValueType.FullName.Substring(checkMultiDim[0].Length+1, 
+      string commas = ValueType.FullName.Substring(checkMultiDim[0].Length+1,
         ValueType.FullName.Length-checkMultiDim[0].Length-2);
       int rank = commas.Length+1;
 #endif
       // elements will be stored sequentially as nested arrays are mapped
       var elements = new List<object>();
-      // create array to store length of each dimension - initialize to 
-      // all zeroes so that when parsing we can determine if an array for 
+      // create array to store length of each dimension - initialize to
+      // all zeroes so that when parsing we can determine if an array for
       // that dimension has been mapped already
       int[] dimLengths = new int[rank];
       dimLengths.Initialize();
@@ -763,7 +763,7 @@ namespace CookComputing.XmlRpc
     {
       if (expectedType != null && expectedType.IsEnum)
       {
-        Type[] i4Types = new Type[] { typeof(byte), typeof(sbyte), typeof(short), 
+        Type[] i4Types = new Type[] { typeof(byte), typeof(sbyte), typeof(short),
           typeof(ushort), typeof(int) };
         Type[] i8Types = new Type[] { typeof(uint), typeof(long) };
         Type underlyingType = Enum.GetUnderlyingType(expectedType);

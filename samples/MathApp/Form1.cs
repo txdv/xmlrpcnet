@@ -49,7 +49,7 @@ namespace MathApp
 		{
 			if( disposing )
 			{
-				if (components != null) 
+				if (components != null)
 				{
 					components.Dispose();
 				}
@@ -79,83 +79,83 @@ namespace MathApp
 			this.txtUrl = new System.Windows.Forms.TextBox();
 			this.groupBox1.SuspendLayout();
 			this.SuspendLayout();
-			// 
+			//
 			// txtArg2
-			// 
+			//
 			this.txtArg2.Location = new System.Drawing.Point(72, 96);
 			this.txtArg2.Name = "txtArg2";
 			this.txtArg2.Size = new System.Drawing.Size(80, 20);
 			this.txtArg2.TabIndex = 1;
 			this.txtArg2.Text = "";
-			// 
+			//
 			// labResult
-			// 
+			//
 			this.labResult.Location = new System.Drawing.Point(16, 24);
 			this.labResult.Name = "labResult";
 			this.labResult.Size = new System.Drawing.Size(184, 32);
 			this.labResult.TabIndex = 0;
-			// 
+			//
 			// txtArg1
-			// 
+			//
 			this.txtArg1.Location = new System.Drawing.Point(72, 56);
 			this.txtArg1.Name = "txtArg1";
 			this.txtArg1.Size = new System.Drawing.Size(80, 20);
 			this.txtArg1.TabIndex = 1;
 			this.txtArg1.Text = "";
-			// 
+			//
 			// label1
-			// 
+			//
 			this.label1.Location = new System.Drawing.Point(16, 56);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(40, 24);
 			this.label1.TabIndex = 0;
 			this.label1.Text = "Arg 1:";
-			// 
+			//
 			// label2
-			// 
+			//
 			this.label2.Location = new System.Drawing.Point(16, 96);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(48, 24);
 			this.label2.TabIndex = 0;
 			this.label2.Text = "Arg 2:";
-			// 
+			//
 			// label3
-			// 
+			//
 			this.label3.Location = new System.Drawing.Point(16, 16);
 			this.label3.Name = "label3";
 			this.label3.Size = new System.Drawing.Size(56, 24);
 			this.label3.TabIndex = 4;
 			this.label3.Text = "Url:";
-			// 
+			//
 			// butMultiply
-			// 
+			//
 			this.butMultiply.Location = new System.Drawing.Point(168, 96);
 			this.butMultiply.Name = "butMultiply";
 			this.butMultiply.Size = new System.Drawing.Size(56, 24);
 			this.butMultiply.TabIndex = 2;
 			this.butMultiply.Text = "Multiply";
 			this.butMultiply.Click += new System.EventHandler(this.butMultiply_Click);
-			// 
+			//
 			// butSubtract
-			// 
+			//
 			this.butSubtract.Location = new System.Drawing.Point(240, 56);
 			this.butSubtract.Name = "butSubtract";
 			this.butSubtract.Size = new System.Drawing.Size(56, 24);
 			this.butSubtract.TabIndex = 2;
 			this.butSubtract.Text = "Subtract";
 			this.butSubtract.Click += new System.EventHandler(this.butSubtract_Click);
-			// 
+			//
 			// butDivide
-			// 
+			//
 			this.butDivide.Location = new System.Drawing.Point(240, 96);
 			this.butDivide.Name = "butDivide";
 			this.butDivide.Size = new System.Drawing.Size(56, 24);
 			this.butDivide.TabIndex = 2;
 			this.butDivide.Text = "Divide";
 			this.butDivide.Click += new System.EventHandler(this.butDivide_Click);
-			// 
+			//
 			// groupBox1
-			// 
+			//
 			this.groupBox1.Controls.Add(this.labResult);
 			this.groupBox1.Location = new System.Drawing.Point(16, 144);
 			this.groupBox1.Name = "groupBox1";
@@ -163,26 +163,26 @@ namespace MathApp
 			this.groupBox1.TabIndex = 3;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Result";
-			// 
+			//
 			// butAdd
-			// 
+			//
 			this.butAdd.Location = new System.Drawing.Point(168, 56);
 			this.butAdd.Name = "butAdd";
 			this.butAdd.Size = new System.Drawing.Size(56, 24);
 			this.butAdd.TabIndex = 2;
 			this.butAdd.Text = "Add";
 			this.butAdd.Click += new System.EventHandler(this.butAdd_Click);
-			// 
+			//
 			// txtUrl
-			// 
+			//
 			this.txtUrl.Location = new System.Drawing.Point(72, 16);
 			this.txtUrl.Name = "txtUrl";
 			this.txtUrl.Size = new System.Drawing.Size(224, 20);
 			this.txtUrl.TabIndex = 1;
 			this.txtUrl.Text = "";
-			// 
+			//
 			// Form1
-			// 
+			//
 			this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
 			this.ClientSize = new System.Drawing.Size(312, 221);
 			this.Controls.Add(this.txtUrl);
@@ -210,7 +210,7 @@ namespace MathApp
 		/// The main entry point for the application.
 		/// </summary>
 		[STAThread]
-		static void Main() 
+		static void Main()
 		{
 			Application.Run(new Form1());
 		}
@@ -224,7 +224,7 @@ namespace MathApp
 			}
 			catch(XmlRpcFaultException fex)
 			{
-				MessageBox.Show("Fault Response: " + fex.FaultCode + " " 
+				MessageBox.Show("Fault Response: " + fex.FaultCode + " "
 					+ fex.FaultString, msgBoxTitle,
 					MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
@@ -237,7 +237,7 @@ namespace MathApp
 			}
 			catch(XmlRpcServerException xmlRpcEx)
 			{
-				MessageBox.Show("XmlRpcServerException: " + xmlRpcEx.Message, 
+				MessageBox.Show("XmlRpcServerException: " + xmlRpcEx.Message,
 					msgBoxTitle,
 					MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}

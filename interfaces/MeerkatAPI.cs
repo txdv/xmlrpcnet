@@ -1,4 +1,4 @@
-                                                                                                                                                                                                                                                               
+
 using CookComputing.XmlRpc;
 
 namespace CookComputing.Meerkat

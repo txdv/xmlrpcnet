@@ -25,10 +25,10 @@ namespace CookComputing.XmlRpc
         + m.Groups["tz"].Value;
       var formats = new string[]
       {
-        "yyyyMMdd'T'HHmmss", 
-        "yyyyMMdd'T'HHmmss'Z'", 
-        "yyyyMMdd'T'HHmmsszzz", 
-        "yyyyMMdd'T'HHmmsszz", 
+        "yyyyMMdd'T'HHmmss",
+        "yyyyMMdd'T'HHmmss'Z'",
+        "yyyyMMdd'T'HHmmsszzz",
+        "yyyyMMdd'T'HHmmsszz",
       };
       // Compact Framework doesn't support TryParseExact()
       try

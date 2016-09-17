@@ -14,9 +14,9 @@ namespace ntest
     [Test]
     public void ISO8859Foo()
     {
-      string reqXml = @"<?xml version=""1.0"" ?> 
+      string reqXml = @"<?xml version=""1.0"" ?>
 <methodCall>
-  <methodName>Foo</methodName> 
+  <methodName>Foo</methodName>
   <params>
     <param>
       <value><string>1234</string></value>
@@ -42,9 +42,9 @@ namespace ntest
     [Test]
     public void ISO8859Bar()
     {
-      string reqXml = @"<?xml version=""1.0"" ?> 
+      string reqXml = @"<?xml version=""1.0"" ?>
 <methodCall>
-  <methodName>Bar</methodName> 
+  <methodName>Bar</methodName>
   <params>
     <param>
       <value><string>1234</string></value>
@@ -72,9 +72,9 @@ namespace ntest
     [Test]
     public void DefaultFoo()
     {
-      string reqXml = @"<?xml version=""1.0"" ?> 
+      string reqXml = @"<?xml version=""1.0"" ?>
 <methodCall>
-  <methodName>Foo</methodName> 
+  <methodName>Foo</methodName>
   <params>
     <param>
       <value><string>1234</string></value>
@@ -102,9 +102,9 @@ namespace ntest
     [Test]
     public void DefaultBar()
     {
-      string reqXml = @"<?xml version=""1.0"" ?> 
+      string reqXml = @"<?xml version=""1.0"" ?>
 <methodCall>
-  <methodName>Bar</methodName> 
+  <methodName>Bar</methodName>
   <params>
     <param>
       <value><string>1234</string></value>
@@ -132,9 +132,9 @@ namespace ntest
     [Test]
     public void NoIndentationFoo()
     {
-      string reqXml = @"<?xml version=""1.0"" ?> 
+      string reqXml = @"<?xml version=""1.0"" ?>
 <methodCall>
-  <methodName>Foo</methodName> 
+  <methodName>Foo</methodName>
   <params>
     <param>
       <value><string>1234</string></value>
@@ -153,9 +153,9 @@ namespace ntest
     [Test]
     public void SystemListMethods()
     {
-      string reqXml = @"<?xml version=""1.0"" ?> 
+      string reqXml = @"<?xml version=""1.0"" ?>
 <methodCall>
-  <methodName>system.listMethods</methodName> 
+  <methodName>system.listMethods</methodName>
   <params>
   </params>
 </methodCall>";
@@ -189,14 +189,14 @@ namespace ntest
     [Test]
     public void SystemMethodSignature()
     {
-      string reqXml = @"<?xml version=""1.0"" ?> 
+      string reqXml = @"<?xml version=""1.0"" ?>
 <methodCall>
-  <methodName>system.methodSignature</methodName> 
+  <methodName>system.methodSignature</methodName>
   <params>
     <param>
       <value>
         <string>Foo</string>
-      </value>    
+      </value>
     </param>
   </params>
 </methodCall>";
@@ -236,14 +236,14 @@ namespace ntest
     [Test]
     public void SystemMethodHelp()
     {
-      string reqXml = @"<?xml version=""1.0"" ?> 
+      string reqXml = @"<?xml version=""1.0"" ?>
 <methodCall>
-  <methodName>system.methodHelp</methodName> 
+  <methodName>system.methodHelp</methodName>
   <params>
     <param>
       <value>
         <string>Foo</string>
-      </value>    
+      </value>
     </param>
   </params>
 </methodCall>";

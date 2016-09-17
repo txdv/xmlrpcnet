@@ -33,7 +33,7 @@ namespace ntest
       Type newType = XmlRpcProxyGen.Create(typeof(IFoo)).GetType();
       MethodInfo mi = newType.GetMethod("Foo");
       ParameterInfo[] pis = mi.GetParameters();
-      Assert.IsTrue(Attribute.IsDefined(pis[pis.Length - 1], 
+      Assert.IsTrue(Attribute.IsDefined(pis[pis.Length - 1],
         typeof(ParamArrayAttribute)), "method has params argument");
     }
 
@@ -232,7 +232,7 @@ namespace ntest
     [Test]
     public void DeserializeObjectParams()
     {
-      string xml = 
+      string xml =
 @"<?xml version=""1.0""?>
 <methodCall>
   <methodName>Foo</methodName>
@@ -255,14 +255,14 @@ namespace ntest
       Assert.AreEqual(request.method, "Foo", "method is Foo");
       Assert.AreEqual(request.args[0].GetType(),  typeof(object[]),
         "argument is object[]");
-      Assert.AreEqual((object[])request.args[0], new object[] { 1, "one" }, 
+      Assert.AreEqual((object[])request.args[0], new object[] { 1, "one" },
         "argument is params array 1, \"one\"");
     }
 
     [Test]
     public void DeserializeParamsEmpty()
     {
-      string xml = 
+      string xml =
         @"<?xml version=""1.0""?>
 <methodCall>
   <methodName>Foo</methodName>
@@ -271,11 +271,11 @@ namespace ntest
       StringReader sr = new StringReader(xml);
       var serializer = new XmlRpcRequestDeserializer();
       XmlRpcRequest request = serializer.DeserializeRequest(sr, this.GetType());
-  
+
       Assert.AreEqual(request.method, "Foo", "method is Foo");
       Assert.AreEqual(request.args[0].GetType(),  typeof(object[]),
         "argument is obj[]");
-      Assert.AreEqual((request.args[0] as object[]).Length, 0, 
+      Assert.AreEqual((request.args[0] as object[]).Length, 0,
         "argument is empty array of object");
     }
 
@@ -296,9 +296,9 @@ namespace ntest
 </methodCall>";
       StringReader sr = new StringReader(xml);
       var serializer = new XmlRpcRequestDeserializer();
-      XmlRpcRequest request = serializer.DeserializeRequest(sr, 
+      XmlRpcRequest request = serializer.DeserializeRequest(sr,
         this.GetType());
-      Assert.AreEqual(request.method, "FooZeroParameters", 
+      Assert.AreEqual(request.method, "FooZeroParameters",
         "method is FooZeroParameters");
       Assert.AreEqual(0, request.args.Length, "no arguments");
     }
@@ -312,7 +312,7 @@ namespace ntest
     [Test]
     public void DeserializeObjectParams1()
     {
-      string xml = 
+      string xml =
         @"<?xml version=""1.0""?>
 <methodCall>
   <methodName>Foo1</methodName>
@@ -341,7 +341,7 @@ namespace ntest
       Assert.AreEqual((int)request.args[0], 5678, "first argument is int");
       Assert.AreEqual(request.args[1].GetType(),  typeof(object[]),
         "argument is object[]");
-      Assert.AreEqual((object[])request.args[1], new object[] { 1, "one" }, 
+      Assert.AreEqual((object[])request.args[1], new object[] { 1, "one" },
         "second argument is params array 1, \"one\"");
     }
 
@@ -354,7 +354,7 @@ namespace ntest
     [Test]
     public void DeserializeObjectParamsStrings()
     {
-      string xml = 
+      string xml =
         @"<?xml version=""1.0""?>
 <methodCall>
   <methodName>Bar</methodName>
@@ -375,16 +375,16 @@ namespace ntest
       var deserializer = new XmlRpcRequestDeserializer();
       XmlRpcRequest request = deserializer.DeserializeRequest(sr, this.GetType());
       Assert.AreEqual(request.method, "Bar", "method is Foo");
-      Assert.AreEqual(request.args[0].GetType(), typeof(string[]), 
+      Assert.AreEqual(request.args[0].GetType(), typeof(string[]),
         "argument is string[]");
-      Assert.AreEqual((string[])request.args[0], new string[] { "one", "two" }, 
+      Assert.AreEqual((string[])request.args[0], new string[] { "one", "two" },
         "argument is params array \"one\", \"two\"");
     }
 
     [Test]
     public void DeserializeObjectInvalidParams()
     {
-      string xml = 
+      string xml =
         @"<?xml version=""1.0""?>
 <methodCall>
   <methodName>Bar</methodName>
@@ -405,7 +405,7 @@ namespace ntest
       var deserializer = new XmlRpcRequestDeserializer();
       try
       {
-        XmlRpcRequest request = deserializer.DeserializeRequest(sr, 
+        XmlRpcRequest request = deserializer.DeserializeRequest(sr,
           this.GetType());
         Assert.Fail("Should detect invalid type of parameter #2");
       }
@@ -510,13 +510,13 @@ namespace ntest
     [Test]
     public void SerializeMassimo()
     {
-      object[] param1 = new object[] { "test/Gain1", "Gain", 1, 1, 
+      object[] param1 = new object[] { "test/Gain1", "Gain", 1, 1,
                                        new double[] { 0.5 } };
-      object[] param2 = new object[] { "test/METER", "P1", 1, 1, 
+      object[] param2 = new object[] { "test/METER", "P1", 1, 1,
                                        new double[] { -1.0 } };
       Stream stm = new MemoryStream();
       XmlRpcRequest req = new XmlRpcRequest();
-      req.args = new Object[] { "IFTASK", 
+      req.args = new Object[] { "IFTASK",
         new object[] { param1, param2 } };
       req.method = "Send_Param";
       req.mi = this.GetType().GetMethod("Send_Param");
@@ -535,14 +535,14 @@ namespace ntest
       var deserializer = new XmlRpcRequestDeserializer();
       XmlRpcRequest request = deserializer.DeserializeRequest(sr, this.GetType());
       Assert.AreEqual(request.method, "Send_Param", "method is Send_Param");
-      Assert.AreEqual(typeof(string), request.args[0].GetType(),  
+      Assert.AreEqual(typeof(string), request.args[0].GetType(),
         "argument is string");
-      Assert.AreEqual(typeof(object[]), request.args[1].GetType(),  
+      Assert.AreEqual(typeof(object[]), request.args[1].GetType(),
         "argument is object[]");
     }
 
 
-    string massimoRequest = 
+    string massimoRequest =
 @"<?xml version=""1.0""?>
 <methodCall>
   <methodName>Send_Param</methodName>

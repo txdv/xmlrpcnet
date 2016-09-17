@@ -1,5 +1,5 @@
 <%@ WebHandler Language="C#" Class="OptionalMembers" %> <%@ Assembly Name="CookComputing.XmlRpcV2" %>
- 
+
 using System;
 using System.Collections;
 using System.Web;
@@ -7,7 +7,7 @@ using CookComputing.XmlRpc;
 
 public struct NameValuePair
 {
-  public string name;  
+  public string name;
   public object value;
   public NameValuePair(string Name, object Value)
   {

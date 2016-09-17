@@ -98,7 +98,7 @@ namespace ntest
     [Test]
     public void SerializeJagged()
     {
-      var jagged = new int[][] 
+      var jagged = new int[][]
       {
         new int[] {},
         new int[] {1},
@@ -147,7 +147,7 @@ namespace ntest
     [Test]
     public void SerializeEmpty()
     {
-      var empty = new int[] 
+      var empty = new int[]
       {
       };
       string xml = Utils.SerializeValue(empty, true);
@@ -163,7 +163,7 @@ namespace ntest
       Assert.IsTrue(ret.Length == 0);
     }
 
-    //---------------------- array -----------------------------------------// 
+    //---------------------- array -----------------------------------------//
     [Test]
     public void MixedArray_NullType()
     {
@@ -366,7 +366,7 @@ namespace ntest
       Assert.AreEqual(666, ret[1][0]);
     }
 
-    //---------------------- array -----------------------------------------// 
+    //---------------------- array -----------------------------------------//
     [Test]
     public void Array()
     {
@@ -384,7 +384,7 @@ namespace ntest
       Assert.AreEqual(false, ret[2]);
     }
 
-    //---------------------- array -----------------------------------------// 
+    //---------------------- array -----------------------------------------//
     [Test]
     public void MultiDimArray()
     {
@@ -401,7 +401,7 @@ namespace ntest
       Assert.AreEqual(2, ret[0, 1]);
       Assert.AreEqual(3, ret[1, 0]);
       Assert.AreEqual(4, ret[1, 1]);
-    }    
- 
+    }
+
   }
 }

@@ -46,7 +46,7 @@ class StateName : XmlRpcClientProtocol
   [XmlRpcMethod("examples.getStateName")]
   public string GetStateNameUsingMethodName(int stateNumber)
   {
-    return (string)Invoke("GetStateNameUsingMethodName", 
+    return (string)Invoke("GetStateNameUsingMethodName",
       new object[] { stateNumber });
   }
 
@@ -60,7 +60,7 @@ class StateName : XmlRpcClientProtocol
   [XmlRpcMethod("examples.getStateName")]
   public string GetStateNameUsingMethodInfo(int stateNumber)
   {
-    return (string)Invoke(MethodBase.GetCurrentMethod(), 
+    return (string)Invoke(MethodBase.GetCurrentMethod(),
       new object[] { stateNumber });
   }
 
@@ -75,7 +75,7 @@ class StateName : XmlRpcClientProtocol
   public IAsyncResult BeginGetStateName(int stateNumber, AsyncCallback callback,
     object asyncState)
   {
-    return BeginInvoke(MethodBase.GetCurrentMethod(), 
+    return BeginInvoke(MethodBase.GetCurrentMethod(),
       new object[] { stateNumber }, callback, asyncState);
   }
 
@@ -92,7 +92,7 @@ class StateName : XmlRpcClientProtocol
   }
 
   [XmlRpcMethod("examples.getStateNameStruct")]
-  public IAsyncResult BeginGetStateNameStruct(StateStructRequest request, 
+  public IAsyncResult BeginGetStateNameStruct(StateStructRequest request,
     AsyncCallback callback, object asyncState)
   {
     return BeginInvoke(MethodBase.GetCurrentMethod(),
@@ -170,9 +170,9 @@ namespace ntest
       }
       catch (Exception ex)
       {
-        info._excep = ex; 
+        info._excep = ex;
       }
-      info._evt.Set();      
+      info._evt.Set();
     }
 
     [Test]

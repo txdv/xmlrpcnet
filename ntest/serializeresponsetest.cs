@@ -32,7 +32,7 @@ namespace ntest
 
     class FooClass
     {
-      public void Foo() 
+      public void Foo()
       {
         Console.WriteLine("Foo called");
       }
@@ -57,7 +57,7 @@ namespace ntest
 //        s = trdr.ReadLine();
 //      }
 //      responseStream.Seek(0, SeekOrigin.Begin);
-//      xmlRpcResp = serializer.DeserializeResponse(responseStream, 
+//      xmlRpcResp = serializer.DeserializeResponse(responseStream,
 //        typeof(string));
 //
 //    }

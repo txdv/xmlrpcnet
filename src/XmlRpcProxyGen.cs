@@ -1,25 +1,25 @@
-/* 
+/*
 XML-RPC.NET library
 Copyright (c) 2001-2006, Charles Cook <charlescook@cookcomputing.com>
 
-Permission is hereby granted, free of charge, to any person 
-obtaining a copy of this software and associated documentation 
-files (the "Software"), to deal in the Software without restriction, 
-including without limitation the rights to use, copy, modify, merge, 
-publish, distribute, sublicense, and/or sell copies of the Software, 
-and to permit persons to whom the Software is furnished to do so, 
+Permission is hereby granted, free of charge, to any person
+obtaining a copy of this software and associated documentation
+files (the "Software"), to deal in the Software without restriction,
+including without limitation the rights to use, copy, modify, merge,
+publish, distribute, sublicense, and/or sell copies of the Software,
+and to permit persons to whom the Software is furnished to do so,
 subject to the following conditions:
 
-The above copyright notice and this permission notice shall be 
+The above copyright notice and this permission notice shall be
 included in all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES 
-OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND 
-NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT 
-HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
-WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, 
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 */
 
@@ -59,7 +59,7 @@ namespace CookComputing.XmlRpc
           proxyType = assBldr.GetType(typeName);
           _types.Add(itf, proxyType);
         }
-        proxyType = _types[itf]; 
+        proxyType = _types[itf];
       }
       object ret = Activator.CreateInstance(proxyType);
       return ret;
@@ -70,7 +70,7 @@ namespace CookComputing.XmlRpc
       Type itf,
       string typeName,
       string assemblyName
-     ) 
+     )
     {
       // create persistable assembly
       if (assemblyName.IndexOf(".dll") == (assemblyName.Length - 4))
@@ -167,7 +167,7 @@ namespace CookComputing.XmlRpc
       Type[] oneString = new Type[1] { typeof(string) };
       Type methodAttr = typeof(XmlRpcMethodAttribute);
       ConstructorInfo ci = methodAttr.GetConstructor(oneString);
-      PropertyInfo[] pis 
+      PropertyInfo[] pis
         = new PropertyInfo[] { methodAttr.GetProperty("StructParams") };
       object[] structParam = new object[] { structParams };
       CustomAttributeBuilder cab =
@@ -188,7 +188,7 @@ namespace CookComputing.XmlRpc
 
       for (int i = 0; i < paramNames.Length; i++)
       {
-        ParameterBuilder paramBldr = mthdBldr.DefineParameter(i + 1, 
+        ParameterBuilder paramBldr = mthdBldr.DefineParameter(i + 1,
           ParameterAttributes.In, paramNames[i]);
         // possibly add ParamArrayAttribute to final parameter
         if (i == paramNames.Length - 1 && paramsMethod)
@@ -235,7 +235,7 @@ namespace CookComputing.XmlRpc
       ilgen.Emit(OpCodes.Castclass, typeof(System.Reflection.MethodInfo));
       ilgen.Emit(OpCodes.Ldloc, argValues);
       ilgen.Emit(OpCodes.Call, invokeMethod);
-      //  if non-void return prepare return value, otherwise pop to discard 
+      //  if non-void return prepare return value, otherwise pop to discard
       if (typeof(void) != returnType)
       {
         // if return value is null, don't cast it to required type
@@ -269,7 +269,7 @@ namespace CookComputing.XmlRpc
       foreach (MethodData mthdData in methods)
       {
         MethodInfo mi = mthdData.mi;
-        // assume method has already been validated for required signature   
+        // assume method has already been validated for required signature
         int paramCount = mi.GetParameters().Length;
         // argCount counts of params before optional AsyncCallback param
         int argCount = paramCount;
@@ -314,7 +314,7 @@ namespace CookComputing.XmlRpc
           }
           ilgen.Emit(OpCodes.Stelem_Ref);
         }
-        // emit code to store AsyncCallback parameter, defaulting to null 
+        // emit code to store AsyncCallback parameter, defaulting to null
         // if not in method signature
         LocalBuilder acbValue = ilgen.DeclareLocal(typeof(System.AsyncCallback));
         if (argCount < paramCount)
@@ -322,7 +322,7 @@ namespace CookComputing.XmlRpc
           ilgen.Emit(OpCodes.Ldarg, argCount + 1);
           ilgen.Emit(OpCodes.Stloc, acbValue);
         }
-        // emit code to store async state parameter, defaulting to null 
+        // emit code to store async state parameter, defaulting to null
         // if not in method signature
         LocalBuilder objValue = ilgen.DeclareLocal(typeof(System.Object));
         if (argCount < (paramCount - 1))
@@ -331,10 +331,10 @@ namespace CookComputing.XmlRpc
           ilgen.Emit(OpCodes.Stloc, objValue);
         }
         // emit code to call BeginInvoke on base class
-        Type[] invokeTypes = new Type[] 
-      { 
-        typeof(MethodInfo), 
-        typeof(object[]), 
+        Type[] invokeTypes = new Type[]
+      {
+        typeof(MethodInfo),
+        typeof(object[]),
         typeof(System.Object),
         typeof(System.AsyncCallback),
         typeof(System.Object)
@@ -388,7 +388,7 @@ namespace CookComputing.XmlRpc
         ilgen.Emit(OpCodes.Ldstr, mi.ReturnType.AssemblyQualifiedName);
         ilgen.Emit(OpCodes.Call, GetTypeMethod);
         ilgen.Emit(OpCodes.Call, invokeMethod);
-        //  if non-void return prepare return value otherwise pop to discard 
+        //  if non-void return prepare return value otherwise pop to discard
         if (typeof(void) != mi.ReturnType)
         {
           // if return value is null, don't cast it to required type

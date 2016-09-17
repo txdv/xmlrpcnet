@@ -1,25 +1,25 @@
-/* 
+/*
 XML-RPC.NET library
 Copyright (c) 2001-2011, Charles Cook <charlescook@cookcomputing.com>
 
-Permission is hereby granted, free of charge, to any person 
-obtaining a copy of this software and associated documentation 
-files (the "Software"), to deal in the Software without restriction, 
-including without limitation the rights to use, copy, modify, merge, 
-publish, distribute, sublicense, and/or sell copies of the Software, 
-and to permit persons to whom the Software is furnished to do so, 
+Permission is hereby granted, free of charge, to any person
+obtaining a copy of this software and associated documentation
+files (the "Software"), to deal in the Software without restriction,
+including without limitation the rights to use, copy, modify, merge,
+publish, distribute, sublicense, and/or sell copies of the Software,
+and to permit persons to whom the Software is furnished to do so,
 subject to the following conditions:
 
-The above copyright notice and this permission notice shall be 
+The above copyright notice and this permission notice shall be
 included in all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES 
-OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND 
-NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT 
-HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
-WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, 
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 */
 
@@ -35,7 +35,7 @@ using System.Text;
 
 namespace CookComputing.XmlRpc
 {
-  public class XmlRpcClientProtocol : 
+  public class XmlRpcClientProtocol :
 #if (!SILVERLIGHT)
     Component,
 #endif
@@ -426,7 +426,7 @@ namespace CookComputing.XmlRpc
       {
 #if (!SILVERLIGHT)
         webReq.Headers.Add(key, headers[key]);
-#endif        
+#endif
       }
     }
 #if (!COMPACT_FRAMEWORK && !SILVERLIGHT)
@@ -477,7 +477,7 @@ namespace CookComputing.XmlRpc
       return xmlRpcResp;
     }
 
-    MethodInfo GetMethodInfoFromName(object clientObj, string methodName, 
+    MethodInfo GetMethodInfoFromName(object clientObj, string methodName,
       object[] parameters)
     {
       Type[] paramTypes = new Type[0];
@@ -562,7 +562,7 @@ namespace CookComputing.XmlRpc
 #if (!COMPACT_FRAMEWORK && !SILVERLIGHT)
       SetClientCertificates(ClientCertificates, webReq);
 #endif
-      XmlRpcAsyncResult asr = new XmlRpcAsyncResult(this, xmlRpcReq, XmlRpcFormatSettings, 
+      XmlRpcAsyncResult asr = new XmlRpcAsyncResult(this, xmlRpcReq, XmlRpcFormatSettings,
         webReq, callback, outerAsyncState, 0);
       webReq.BeginGetRequestStream(new AsyncCallback(GetRequestStreamCallback),
         asr);
@@ -788,7 +788,7 @@ namespace CookComputing.XmlRpc
           responseStream.Position = 0;
         }
 #if (!COMPACT_FRAMEWORK && !FX1_0 && !SILVERLIGHT)
-        responseStream = MaybeDecompressStream((HttpWebResponse)webResp, 
+        responseStream = MaybeDecompressStream((HttpWebResponse)webResp,
           responseStream);
 #endif
         XmlRpcResponse resp = ReadResponse(clientResult.XmlRpcRequest,
@@ -807,7 +807,7 @@ namespace CookComputing.XmlRpc
     {
       // client can either have define URI in attribute or have set it
       // via proxy's ServiceURI property - but must exist by now
-      if (!string.IsNullOrEmpty(Url)) 
+      if (!string.IsNullOrEmpty(Url))
         return Url;
       string useUrl = XmlRpcTypeInfo.GetUrlFromAttribute(clientObj.GetType());
       if (!string.IsNullOrEmpty(useUrl))
@@ -916,7 +916,7 @@ namespace CookComputing.XmlRpc
 
 #if (!COMPACT_FRAMEWORK && !FX1_0 && !SILVERLIGHT)
     // support for gzip and deflate
-    protected Stream MaybeDecompressStream(HttpWebResponse httpWebResp, 
+    protected Stream MaybeDecompressStream(HttpWebResponse httpWebResp,
       Stream respStream)
     {
       Stream decodedStream;

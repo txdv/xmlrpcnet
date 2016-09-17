@@ -1,4 +1,4 @@
-﻿<Project DefaultTargets="Build" 
+﻿<Project DefaultTargets="Build"
    xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
   <PropertyGroup>
@@ -16,7 +16,7 @@
                 @(ManifestNonResxWithNoCultureOnDisk);
                 @(ReferencePath);
                 @(CompiledLicenseFile);
-                @(EmbeddedDocumentation);                
+                @(EmbeddedDocumentation);
                 @(CustomAdditionalCompileInputs)"
      Outputs="@(DocFileItem);
                  @(IntermediateAssembly);
@@ -49,7 +49,7 @@
           NoStandardLib="$(NoStdLib)"
           Optimize="$(Optimize)"
           OutputAssembly="@(IntermediateAssembly)"
-          PdbFile="$(PdbFile)" 
+          PdbFile="$(PdbFile)"
           Platform="$(PlatformTarget)"
           References="C:\WINDOWS\Microsoft.NET\Framework\v1.0.3705\System.Data.dll;C:\WINDOWS\Microsoft.NET\Framework\v1.0.3705\System.dll;C:\WINDOWS\Microsoft.NET\Framework\v1.0.3705\System.Drawing.dll;C:\WINDOWS\Microsoft.NET\Framework\v1.0.3705\System.Web.dll;C:\WINDOWS\Microsoft.NET\Framework\v1.0.3705\System.Windows.Forms.dll;C:\WINDOWS\Microsoft.NET\Framework\v1.0.3705\System.Xml.dll"
           Resources="@(ManifestResourceWithNoCulture);@(ManifestNonResxWithNoCultureOnDisk);@(CompiledLicenseFile)"

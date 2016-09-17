@@ -3,20 +3,20 @@ using System.Globalization;
 using System.IO;
 using System.Reflection;
 using System.Threading;
-using  NUnit.Framework;
+using NUnit.Framework;
 using CookComputing.XmlRpc;
 
 namespace ntest
-{       
+{
   [TestFixture]
   public class DeserializeRequestTest
   {
     [Test]
     public void StringElement()
     {
-      string xml = @"<?xml version=""1.0"" ?> 
+      string xml = @"<?xml version=""1.0"" ?>
 <methodCall>
-  <methodName>TestString</methodName> 
+  <methodName>TestString</methodName>
   <params>
     <param>
       <value><string>test string</string></value>
@@ -26,20 +26,20 @@ namespace ntest
       StringReader sr = new StringReader(xml);
       var deserializer = new XmlRpcRequestDeserializer();
       XmlRpcRequest request = deserializer.DeserializeRequest(sr, null);
-  
+
       Assert.AreEqual(request.method, "TestString", "method is TestString");
       Assert.AreEqual(request.args[0].GetType(),  typeof(string),
         "argument is string");
-      Assert.AreEqual((string)request.args[0], "test string", 
+      Assert.AreEqual((string)request.args[0], "test string",
         "argument is 'test string'");
     }
 
     [Test]
     public void StringNoStringElement()
     {
-      string xml = @"<?xml version=""1.0"" ?> 
+      string xml = @"<?xml version=""1.0"" ?>
 <methodCall>
-  <methodName>TestString</methodName> 
+  <methodName>TestString</methodName>
   <params>
     <param>
       <value>test string</value>
@@ -49,20 +49,20 @@ namespace ntest
       StringReader sr = new StringReader(xml);
       var deserializer = new XmlRpcRequestDeserializer();
       XmlRpcRequest request = deserializer.DeserializeRequest(sr, null);
- 
+
       Assert.AreEqual(request.method, "TestString", "method is TestString");
       Assert.AreEqual(request.args[0].GetType(),  typeof(string),
         "argument is string");
-      Assert.AreEqual((string)request.args[0], "test string", 
+      Assert.AreEqual((string)request.args[0], "test string",
         "argument is 'test string'");
     }
 
     [Test]
     public void StringEmptyValue1()
     {
-      string xml = @"<?xml version=""1.0"" ?> 
+      string xml = @"<?xml version=""1.0"" ?>
 <methodCall>
-  <methodName>TestString</methodName> 
+  <methodName>TestString</methodName>
   <params>
     <param>
       <value></value>
@@ -72,19 +72,19 @@ namespace ntest
       StringReader sr = new StringReader(xml);
       var deserializer = new XmlRpcRequestDeserializer();
       XmlRpcRequest request = deserializer.DeserializeRequest(sr, null);
- 
+
       Assert.AreEqual(request.method, "TestString", "method is TestString");
       Assert.AreEqual(request.args[0].GetType(),  typeof(string),
         "argument is string");
-      Assert.AreEqual((string)request.args[0], "", "argument is empty string"); 
+      Assert.AreEqual((string)request.args[0], "", "argument is empty string");
     }
 
     [Test]
     public void StringEmptyValue2()
     {
-      string xml = @"<?xml version=""1.0"" ?> 
+      string xml = @"<?xml version=""1.0"" ?>
 <methodCall>
-  <methodName>TestString</methodName> 
+  <methodName>TestString</methodName>
   <params>
     <param>
       <value/>
@@ -94,11 +94,11 @@ namespace ntest
       StringReader sr = new StringReader(xml);
       var deserializer = new XmlRpcRequestDeserializer();
       XmlRpcRequest request = deserializer.DeserializeRequest(sr, null);
- 
+
       Assert.AreEqual(request.method, "TestString", "method is TestString");
       Assert.AreEqual(request.args[0].GetType(),  typeof(string),
         "argument is string");
-      Assert.AreEqual((string)request.args[0], "", "argument is empty string"); 
+      Assert.AreEqual((string)request.args[0], "", "argument is empty string");
     }
 
     [Test]
@@ -112,7 +112,7 @@ namespace ntest
       Assert.AreEqual(request.method, "TestString", "method is TestString");
       Assert.AreEqual(request.args[0].GetType(),  typeof(string),
         "argument is string");
-      Assert.AreEqual((string)request.args[0], "test string", 
+      Assert.AreEqual((string)request.args[0], "test string",
         "argument is 'test string'");
     }
 
@@ -133,12 +133,12 @@ namespace ntest
       var deserializer = new XmlRpcRequestDeserializer();
       XmlRpcRequest request = deserializer.DeserializeRequest(sr, null);
     }
-    
+
     [Test]
     [ExpectedException(typeof(XmlRpcIllFormedXmlException))]
     public void InvalidXml()
     {
-      string xml = @"<?xml version=""1.0"" ?> 
+      string xml = @"<?xml version=""1.0"" ?>
 <methodCall> </duffMmethodCall>";
       StringReader sr = new StringReader(xml);
       var deserializer = new XmlRpcRequestDeserializer();
@@ -161,7 +161,7 @@ namespace ntest
     [ExpectedException(typeof(XmlRpcInvalidXmlRpcException))]
     public void MissingMethodName()
     {
-      string xml = @"<?xml version=""1.0"" ?> 
+      string xml = @"<?xml version=""1.0"" ?>
 <methodCall>
 <params>
   <param>
@@ -178,9 +178,9 @@ namespace ntest
     [ExpectedException(typeof(XmlRpcInvalidXmlRpcException))]
     public void EmptyMethodName()
     {
-      string xml = @"<?xml version=""1.0"" ?> 
+      string xml = @"<?xml version=""1.0"" ?>
 <methodCall>
-<methodName/> 
+<methodName/>
 <params>
   <param>
     <value>test string</value>
@@ -196,9 +196,9 @@ namespace ntest
     [ExpectedException(typeof(XmlRpcInvalidXmlRpcException))]
     public void ZeroLengthMethodName()
     {
-      string xml = @"<?xml version=""1.0"" ?> 
+      string xml = @"<?xml version=""1.0"" ?>
 <methodCall>
-<methodName></methodName> 
+<methodName></methodName>
 <params>
   <param>
     <value>test string</value>
@@ -214,9 +214,9 @@ namespace ntest
     [Test]
     public void MissingParams()
     {
-      string xml = @"<?xml version=""1.0"" ?> 
+      string xml = @"<?xml version=""1.0"" ?>
 <methodCall>
-<methodName>TestString</methodName> 
+<methodName>TestString</methodName>
 </methodCall>";
       StringReader sr = new StringReader(xml);
       var deserializer = new XmlRpcRequestDeserializer();
@@ -231,12 +231,12 @@ namespace ntest
     }
 
     // test handling of params element
-    [Test]    
+    [Test]
     public void NoParam1()
     {
-      string xml = @"<?xml version=""1.0"" ?> 
+      string xml = @"<?xml version=""1.0"" ?>
 <methodCall>
-<methodName>MethodNoArgs</methodName> 
+<methodName>MethodNoArgs</methodName>
 <params/>
 </methodCall>";
       StringReader sr = new StringReader(xml);
@@ -248,9 +248,9 @@ namespace ntest
     [Test]
     public void NoParam2()
     {
-      string xml = @"<?xml version=""1.0"" ?> 
+      string xml = @"<?xml version=""1.0"" ?>
 <methodCall>
-  <methodName>MethodNoArgs</methodName> 
+  <methodName>MethodNoArgs</methodName>
   <params>
   </params>
 </methodCall>";
@@ -264,9 +264,9 @@ namespace ntest
     [ExpectedException(typeof(XmlRpcInvalidXmlRpcException))]
     public void EmptyParam1()
     {
-      string xml = @"<?xml version=""1.0"" ?> 
+      string xml = @"<?xml version=""1.0"" ?>
 <methodCall>
-<methodName>TestString</methodName> 
+<methodName>TestString</methodName>
 <params>
   <param/>
 </params>
@@ -280,9 +280,9 @@ namespace ntest
     [ExpectedException(typeof(XmlRpcInvalidXmlRpcException))]
     public void EmptyParam2()
     {
-      string xml = @"<?xml version=""1.0"" ?> 
+      string xml = @"<?xml version=""1.0"" ?>
 <methodCall>
-<methodName>TestString</methodName> 
+<methodName>TestString</methodName>
 <params>
   <param>
   </param>
@@ -297,9 +297,9 @@ namespace ntest
     [Test]
     public void Integer()
     {
-      string xml = @"<?xml version=""1.0"" ?> 
+      string xml = @"<?xml version=""1.0"" ?>
 <methodCall>
-  <methodName>TestInt</methodName> 
+  <methodName>TestInt</methodName>
   <params>
     <param>
       <value>
@@ -321,9 +321,9 @@ namespace ntest
     [Test]
     public void I4Integer()
     {
-      string xml = @"<?xml version=""1.0"" ?> 
+      string xml = @"<?xml version=""1.0"" ?>
 <methodCall>
-  <methodName>TestInt</methodName> 
+  <methodName>TestInt</methodName>
   <params>
     <param>
       <value><i4>666</i4></value>
@@ -343,9 +343,9 @@ namespace ntest
     [Test]
     public void IntegerWithPlus()
     {
-      string xml = @"<?xml version=""1.0"" ?> 
+      string xml = @"<?xml version=""1.0"" ?>
 <methodCall>
-  <methodName>TestInt</methodName> 
+  <methodName>TestInt</methodName>
   <params>
     <param>
       <value><i4>+666</i4></value>
@@ -365,9 +365,9 @@ namespace ntest
     [Test]
     public void NegativeInteger()
     {
-      string xml = @"<?xml version=""1.0"" ?> 
+      string xml = @"<?xml version=""1.0"" ?>
 <methodCall>
-  <methodName>TestInt</methodName> 
+  <methodName>TestInt</methodName>
   <params>
     <param>
       <value><i4>-666</i4></value>
@@ -388,9 +388,9 @@ namespace ntest
     [ExpectedException(typeof(XmlRpcInvalidXmlRpcException))]
     public void EmptyInteger()
     {
-      string xml = @"<?xml version=""1.0"" ?> 
+      string xml = @"<?xml version=""1.0"" ?>
 <methodCall>
-<methodName>TestInt</methodName> 
+<methodName>TestInt</methodName>
 <params>
   <param>
     <value><i4></i4></value>
@@ -406,9 +406,9 @@ namespace ntest
     [ExpectedException(typeof(XmlRpcInvalidXmlRpcException))]
     public void InvalidInteger()
     {
-      string xml = @"<?xml version=""1.0"" ?> 
+      string xml = @"<?xml version=""1.0"" ?>
 <methodCall>
-<methodName>TestInt</methodName> 
+<methodName>TestInt</methodName>
 <params>
   <param>
     <value><i4>12kiol</i4></value>
@@ -425,9 +425,9 @@ namespace ntest
     [ExpectedException(typeof(XmlRpcInvalidXmlRpcException))]
     public void OverflowInteger()
     {
-      string xml = @"<?xml version=""1.0"" ?> 
+      string xml = @"<?xml version=""1.0"" ?>
 <methodCall>
-<methodName>TestInt</methodName> 
+<methodName>TestInt</methodName>
 <params>
   <param>
     <value><i4>99999999999999999999</i4></value>
@@ -442,9 +442,9 @@ namespace ntest
     [Test]
     public void ZeroInteger()
     {
-      string xml = @"<?xml version=""1.0"" ?> 
+      string xml = @"<?xml version=""1.0"" ?>
 <methodCall>
-  <methodName>TestInt</methodName> 
+  <methodName>TestInt</methodName>
   <params>
     <param>
       <value><i4>0</i4></value>
@@ -465,9 +465,9 @@ namespace ntest
     [ExpectedException(typeof(XmlRpcInvalidXmlRpcException))]
     public void NegativeOverflowInteger()
     {
-      string xml = @"<?xml version=""1.0"" ?> 
+      string xml = @"<?xml version=""1.0"" ?>
 <methodCall>
-<methodName>TestInt</methodName> 
+<methodName>TestInt</methodName>
 <params>
   <param>
     <value><i4>-99999999999999999999</i4></value>
@@ -483,9 +483,9 @@ namespace ntest
     [Test]
     public void I8()
     {
-      string xml = @"<?xml version=""1.0"" ?> 
+      string xml = @"<?xml version=""1.0"" ?>
 <methodCall>
-  <methodName>TestInt</methodName> 
+  <methodName>TestInt</methodName>
   <params>
     <param>
       <value>
@@ -505,9 +505,9 @@ namespace ntest
     [Test]
     public void I8WithPlus()
     {
-      string xml = @"<?xml version=""1.0"" ?> 
+      string xml = @"<?xml version=""1.0"" ?>
 <methodCall>
-  <methodName>TestInt</methodName> 
+  <methodName>TestInt</methodName>
   <params>
     <param>
       <value><i8>+123456789012</i8></value>
@@ -525,9 +525,9 @@ namespace ntest
     [Test]
     public void NegativeI8()
     {
-      string xml = @"<?xml version=""1.0"" ?> 
+      string xml = @"<?xml version=""1.0"" ?>
 <methodCall>
-  <methodName>TestInt</methodName> 
+  <methodName>TestInt</methodName>
   <params>
     <param>
       <value><i8>-123456789012</i8></value>
@@ -546,9 +546,9 @@ namespace ntest
     [ExpectedException(typeof(XmlRpcInvalidXmlRpcException))]
     public void EmptyI8()
     {
-      string xml = @"<?xml version=""1.0"" ?> 
+      string xml = @"<?xml version=""1.0"" ?>
 <methodCall>
-<methodName>TestInt</methodName> 
+<methodName>TestInt</methodName>
 <params>
   <param>
     <value><i8></i8></value>
@@ -564,9 +564,9 @@ namespace ntest
     [ExpectedException(typeof(XmlRpcInvalidXmlRpcException))]
     public void InvalidI8()
     {
-      string xml = @"<?xml version=""1.0"" ?> 
+      string xml = @"<?xml version=""1.0"" ?>
 <methodCall>
-<methodName>TestInt</methodName> 
+<methodName>TestInt</methodName>
 <params>
   <param>
     <value><i8>12kiol</i8></value>
@@ -582,9 +582,9 @@ namespace ntest
     [ExpectedException(typeof(XmlRpcInvalidXmlRpcException))]
     public void OverflowI8()
     {
-      string xml = @"<?xml version=""1.0"" ?> 
+      string xml = @"<?xml version=""1.0"" ?>
 <methodCall>
-<methodName>TestInt</methodName> 
+<methodName>TestInt</methodName>
 <params>
   <param>
     <value><i8>9999999999999999999999999999999999999999999</i8></value>
@@ -599,9 +599,9 @@ namespace ntest
     [Test]
     public void ZeroI8()
     {
-      string xml = @"<?xml version=""1.0"" ?> 
+      string xml = @"<?xml version=""1.0"" ?>
 <methodCall>
-  <methodName>TestInt</methodName> 
+  <methodName>TestInt</methodName>
   <params>
     <param>
       <value><i8>0</i8></value>
@@ -620,9 +620,9 @@ namespace ntest
     [ExpectedException(typeof(XmlRpcInvalidXmlRpcException))]
     public void NegativeOverflowI8()
     {
-      string xml = @"<?xml version=""1.0"" ?> 
+      string xml = @"<?xml version=""1.0"" ?>
 <methodCall>
-<methodName>TestInt</methodName> 
+<methodName>TestInt</methodName>
 <params>
   <param>
     <value><i8>-9999999999999999999999999999999999999999999</i8></value>
@@ -638,12 +638,12 @@ namespace ntest
     [Test]
     public void ISO_8859_1()
     {
-      using (Stream stm = new FileStream("testdocuments/iso-8859-1_request.xml", 
+      using (Stream stm = new FileStream("testdocuments/iso-8859-1_request.xml",
               FileMode.Open, FileAccess.Read))
       {
         var deserializer = new XmlRpcRequestDeserializer();
         XmlRpcRequest request = deserializer.DeserializeRequest(stm, null);
-        Assert.AreEqual(request.args[0].GetType(), typeof(string), 
+        Assert.AreEqual(request.args[0].GetType(), typeof(string),
           "argument is string");
         Assert.AreEqual((string)request.args[0], "hæ hvað segirðu þá",
           "argument is 'hæ hvað segirðu þá'");
@@ -653,18 +653,18 @@ namespace ntest
     struct Struct3
     {
       int _member1;
-      public int member1 { get { return _member1; } set { _member1 = value; } } 
+      public int member1 { get { return _member1; } set { _member1 = value; } }
 
       int _member2;
-      public int member2 { get { return _member2; }  } 
+      public int member2 { get { return _member2; }  }
 
       int _member3;
       [XmlRpcMember("member-3")]
-      public int member3 { get { return _member3; } set { _member3 = value; } } 
+      public int member3 { get { return _member3; } set { _member3 = value; } }
 
       int _member4;
       [XmlRpcMember("member-4")]
-      public int member4 { get { return _member4; }  } 
+      public int member4 { get { return _member4; }  }
     }
 
     [Test]
@@ -715,15 +715,15 @@ namespace ntest
         "argument is XmlRpcStruct");
       XmlRpcStruct xrs = (XmlRpcStruct)request.args[0];
       Assert.IsTrue(xrs.Count == 4, "XmlRpcStruct has 4 members");
-      Assert.IsTrue(xrs.ContainsKey("member1") && (int)xrs["member1"] == 1, 
+      Assert.IsTrue(xrs.ContainsKey("member1") && (int)xrs["member1"] == 1,
         "member1");
-      Assert.IsTrue(xrs.ContainsKey("member2") && (int)xrs["member2"] == 2, 
+      Assert.IsTrue(xrs.ContainsKey("member2") && (int)xrs["member2"] == 2,
         "member2");
       Assert.IsTrue(xrs.ContainsKey("member-3") && (int)xrs["member-3"] == 3,
         "member-3");
       Assert.IsTrue(xrs.ContainsKey("member-4") && (int)xrs["member-4"] == 4,
         "member-4");
-      
+
 
 
     }
@@ -734,9 +734,9 @@ namespace ntest
     [Test]
     public void DateTimeFormats()
     {
-      string xml = @"<?xml version=""1.0"" ?> 
+      string xml = @"<?xml version=""1.0"" ?>
 <methodCall>
-<methodName>TestDateTime</methodName> 
+<methodName>TestDateTime</methodName>
 <params>
   <param>
     <value><dateTime.iso8601>20020707T11:25:37Z</dateTime.iso8601></value>
@@ -851,11 +851,11 @@ namespace ntest
       StringReader sr = new StringReader(xml);
       var deserializer = new XmlRpcRequestDeserializer();
       XmlRpcRequest request = deserializer.DeserializeRequest(sr, null);
- 
+
       Assert.AreEqual(request.args[0].GetType(),  typeof(byte[]),
         "argument is byte[]");
-      Assert.AreEqual(request.args[0], new byte[0], 
-        "argument is zero length byte[]"); 
+      Assert.AreEqual(request.args[0], new byte[0],
+        "argument is zero length byte[]");
     }
 
     [Test]
@@ -921,9 +921,9 @@ AQIDBAUGBwg=</base64>
     //    // tests of handling of structs
     //    public void testMissingMemberStruct()
     //    {
-    //      string xml = @"<?xml version=""1.0"" ?> 
+    //      string xml = @"<?xml version=""1.0"" ?>
     //<methodCall>
-    //  <methodName>TestStruct</methodName> 
+    //  <methodName>TestStruct</methodName>
     //  <params>
     //    <param>
     //    </param>
@@ -936,9 +936,9 @@ AQIDBAUGBwg=</base64>
     //
     //    public void testAdditonalMemberStruct()
     //    {
-    //      string xml = @"<?xml version=""1.0"" ?> 
+    //      string xml = @"<?xml version=""1.0"" ?>
     //<methodCall>
-    //  <methodName>TestStruct</methodName> 
+    //  <methodName>TestStruct</methodName>
     //  <params>
     //    <param>
     //    </param>
@@ -951,9 +951,9 @@ AQIDBAUGBwg=</base64>
     //
     //    public void testReversedMembersStruct()
     //    {
-    //      string xml = @"<?xml version=""1.0"" ?> 
+    //      string xml = @"<?xml version=""1.0"" ?>
     //<methodCall>
-    //  <methodName>TestStruct</methodName> 
+    //  <methodName>TestStruct</methodName>
     //  <params>
     //    <param>
     //    </param>
@@ -963,12 +963,12 @@ AQIDBAUGBwg=</base64>
     //      XmlRpcDeserializer serializer = new XmlRpcDeserializer();
     //      XmlRpcRequest request = serializer.DeserializeRequest(sr, null);
     //    }
-    //    
+    //
     //    public void testWrongTypeMembersStruct()
     //    {
-    //      string xml = @"<?xml version=""1.0"" ?> 
+    //      string xml = @"<?xml version=""1.0"" ?>
     //<methodCall>
-    //  <methodName>TestStruct</methodName> 
+    //  <methodName>TestStruct</methodName>
     //  <params>
     //    <param>
     //    </param>
@@ -981,9 +981,9 @@ AQIDBAUGBwg=</base64>
     //
     //    public void testDuplicateMembersStruct()
     //    {
-    //      string xml = @"<?xml version=""1.0"" ?> 
+    //      string xml = @"<?xml version=""1.0"" ?>
     //<methodCall>
-    //  <methodName>TestStruct</methodName> 
+    //  <methodName>TestStruct</methodName>
     //  <params>
     //    <param>
     //    </param>
@@ -996,9 +996,9 @@ AQIDBAUGBwg=</base64>
     //
     //    public void testNonAsciiMemberNameStruct()
     //    {
-    //      string xml = @"<?xml version=""1.0"" ?> 
+    //      string xml = @"<?xml version=""1.0"" ?>
     //<methodCall>
-    //  <methodName>TestStruct</methodName> 
+    //  <methodName>TestStruct</methodName>
     //  <params>
     //    <param>
     //    </param>
@@ -1012,9 +1012,9 @@ AQIDBAUGBwg=</base64>
     //    // test various invalid requests
     //    public void testIncorrectParamType()
     //    {
-    //      string xml = @"<?xml version=""1.0"" ?> 
+    //      string xml = @"<?xml version=""1.0"" ?>
     //<methodCall>
-    //  <methodName>TestStruct</methodName> 
+    //  <methodName>TestStruct</methodName>
     //  <params>
     //    <param>
     //    </param>
@@ -1074,15 +1074,15 @@ AQIDBAUGBwg=</base64>
         "argument is TestClass");
 //      XmlRpcStruct xrs = (XmlRpcStruct)request.args[0];
 //      Assert.IsTrue(xrs.Count == 4, "XmlRpcStruct has 4 members");
-//      Assert.IsTrue(xrs.ContainsKey("member1") && (int)xrs["member1"] == 1, 
+//      Assert.IsTrue(xrs.ContainsKey("member1") && (int)xrs["member1"] == 1,
 //        "member1");
-//      Assert.IsTrue(xrs.ContainsKey("member2") && (int)xrs["member2"] == 2, 
+//      Assert.IsTrue(xrs.ContainsKey("member2") && (int)xrs["member2"] == 2,
 //        "member2");
 //      Assert.IsTrue(xrs.ContainsKey("member-3") && (int)xrs["member-3"] == 3,
 //        "member-3");
 //      Assert.IsTrue(xrs.ContainsKey("member-4") && (int)xrs["member-4"] == 4,
 //        "member-4");
-      
+
     }
 
 

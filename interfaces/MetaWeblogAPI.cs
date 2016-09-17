@@ -1,4 +1,4 @@
-                                                                                                                                                                                                                                                               
+
 using System;
 using CookComputing.XmlRpc;
 
@@ -41,12 +41,12 @@ namespace CookComputing.MetaWeblog
        + "be either string or integer. "
        + "Use Convert.ToInt32(postid) to treat as integer or "
        + "Convert.ToString(postid) to treat as string")]
-    public object postid;       
+    public object postid;
     public Source source;
     public string userid;
 
-    public object mt_allow_comments; 
-    public object mt_allow_pings; 
+    public object mt_allow_comments;
+    public object mt_allow_pings;
     public object mt_convert_breaks;
     public string mt_text_more;
     public string mt_excerpt;

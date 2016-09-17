@@ -27,7 +27,7 @@ namespace StateNameSilverlightClient
       var proxy = XmlRpcProxyGen.Create<IStateName>();
       proxy.BeginGetName(number, asr =>
       {
-        Dispatcher.BeginInvoke(delegate() 
+        Dispatcher.BeginInvoke(delegate()
           {
             try
             {

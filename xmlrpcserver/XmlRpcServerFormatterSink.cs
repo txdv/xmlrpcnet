@@ -1,25 +1,25 @@
-/* 
+/*
 XML-RPC.NET library
 Copyright (c) 2001-2006, Charles Cook <charlescook@cookcomputing.com>
 
-Permission is hereby granted, free of charge, to any person 
-obtaining a copy of this software and associated documentation 
-files (the "Software"), to deal in the Software without restriction, 
-including without limitation the rights to use, copy, modify, merge, 
-publish, distribute, sublicense, and/or sell copies of the Software, 
-and to permit persons to whom the Software is furnished to do so, 
+Permission is hereby granted, free of charge, to any person
+obtaining a copy of this software and associated documentation
+files (the "Software"), to deal in the Software without restriction,
+including without limitation the rights to use, copy, modify, merge,
+publish, distribute, sublicense, and/or sell copies of the Software,
+and to permit persons to whom the Software is furnished to do so,
 subject to the following conditions:
 
-The above copyright notice and this permission notice shall be 
+The above copyright notice and this permission notice shall be
 included in all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES 
-OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND 
-NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT 
-HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
-WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, 
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 */
 
@@ -47,11 +47,11 @@ namespace CookComputing.XmlRpc
 
     // properties
     //
-    public IServerChannelSink NextChannelSink 
+    public IServerChannelSink NextChannelSink
     {
       get { return m_next; }
     }
-  
+
     public IDictionary Properties
     {
       get { return null; }
@@ -71,10 +71,10 @@ namespace CookComputing.XmlRpc
     }
 
     public Stream GetResponseStream(
-      IServerResponseChannelSinkStack sinkStack, 
-      object state, 
-      IMessage msg, 
-      ITransportHeaders headers) 
+      IServerResponseChannelSinkStack sinkStack,
+      object state,
+      IMessage msg,
+      ITransportHeaders headers)
     {
       throw new NotSupportedException();
     }
@@ -94,8 +94,8 @@ namespace CookComputing.XmlRpc
       string soapAction = (string) requestHeaders["SOAPAction"];
       if (soapAction != null)
       {
-        return m_next.ProcessMessage(sinkStack, requestMsg, requestHeaders, 
-          requestStream, out responseMsg, out responseHeaders, 
+        return m_next.ProcessMessage(sinkStack, requestMsg, requestHeaders,
+          requestStream, out responseMsg, out responseHeaders,
           out responseStream);
       }
 
@@ -105,9 +105,9 @@ namespace CookComputing.XmlRpc
       {
         MethodCall mthdCall = DeserializeRequest(requestHeaders, requestStream);
         sinkStack.Push(this, mthdCall);
-        // forward to next sink in chain - pass request stream as null to 
+        // forward to next sink in chain - pass request stream as null to
         // indicate that we have deserialized the request
-        m_next.ProcessMessage(sinkStack, mthdCall, requestHeaders, null, 
+        m_next.ProcessMessage(sinkStack, mthdCall, requestHeaders, null,
           out responseMsg, out responseHeaders, out responseStream);
         SerializeResponse(responseMsg, ref responseHeaders, ref responseStream);
       }
@@ -117,7 +117,7 @@ namespace CookComputing.XmlRpc
         responseStream = new MemoryStream();
         XmlRpcFaultException fex = new XmlRpcFaultException(0, ex.Message);
         XmlRpcSerializer serializer = new XmlRpcSerializer();
-        serializer.SerializeFaultResponse(responseStream, 
+        serializer.SerializeFaultResponse(responseStream,
           (XmlRpcFaultException)fex);
         responseHeaders = new TransportHeaders();
       }
@@ -127,13 +127,13 @@ namespace CookComputing.XmlRpc
     // private methods
     //
     MethodCall DeserializeRequest(
-      ITransportHeaders requestHeaders, 
+      ITransportHeaders requestHeaders,
       Stream requestStream)
     {
       string requestUri = (string) requestHeaders["__RequestUri"];
       Type svcType = GetServiceType(requestUri);
       var deserializer = new XmlRpcRequestDeserializer();
-      XmlRpcRequest xmlRpcReq 
+      XmlRpcRequest xmlRpcReq
         = deserializer.DeserializeRequest(requestStream, svcType);
       Header[] headers = GetChannelHeaders(requestHeaders, xmlRpcReq, svcType);
       MethodCall mthdCall = new MethodCall(headers);
@@ -143,7 +143,7 @@ namespace CookComputing.XmlRpc
 
     void SerializeResponse(
       IMessage responseMsg,
-      ref ITransportHeaders responseHeaders, 
+      ref ITransportHeaders responseHeaders,
       ref Stream responseStream)
     {
       XmlRpcResponseSerializer serializer = new XmlRpcResponseSerializer();
@@ -158,7 +158,7 @@ namespace CookComputing.XmlRpc
       }
       else if (retMsg.Exception is XmlRpcFaultException)
       {
-        serializer.SerializeFaultResponse(responseStream, 
+        serializer.SerializeFaultResponse(responseStream,
           (XmlRpcFaultException)retMsg.Exception);
       }
       else
@@ -172,19 +172,19 @@ namespace CookComputing.XmlRpc
     Header[] GetChannelHeaders(
       ITransportHeaders requestHeaders,
       XmlRpcRequest xmlRpcReq,
-      Type svcType) 
+      Type svcType)
     {
       string requestUri = (string) requestHeaders["__RequestUri"];
       XmlRpcServiceInfo svcInfo = XmlRpcServiceInfo.CreateServiceInfo(svcType);
       ArrayList hdrList = new ArrayList();
       hdrList.Add(new Header("__Uri", requestUri));
       hdrList.Add(new Header("__TypeName", svcType.AssemblyQualifiedName));
-      hdrList.Add(new Header("__MethodName", 
+      hdrList.Add(new Header("__MethodName",
         svcInfo.GetMethodName(xmlRpcReq.method)));
       hdrList.Add(new Header("__Args", xmlRpcReq.args));
       return (Header[])hdrList.ToArray(typeof(Header));
     }
-       
+
     public static Type GetServiceType(String Uri)
     {
       Type type = RemotingServices.GetServerTypeForUri(Uri);
