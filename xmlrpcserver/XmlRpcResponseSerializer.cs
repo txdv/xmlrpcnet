@@ -1,4 +1,4 @@
-﻿// TODO: overriding default mapping action in a struct should not affect nested structs
+// TODO: overriding default mapping action in a struct should not affect nested structs
 
 namespace CookComputing.XmlRpc
 {

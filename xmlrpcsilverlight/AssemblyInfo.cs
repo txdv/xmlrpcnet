@@ -1,4 +1,4 @@
-﻿using System.Reflection;
+using System.Reflection;
 
 [assembly: AssemblyTitle("XML-RPC.NET for Silverlight")]
 [assembly: AssemblyDescription("For Silverlight 3 and 4")]

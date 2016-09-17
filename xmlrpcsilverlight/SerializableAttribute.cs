@@ -1,4 +1,4 @@
-﻿namespace CookComputing.XmlRpc
+namespace CookComputing.XmlRpc
 {
   using System;
 

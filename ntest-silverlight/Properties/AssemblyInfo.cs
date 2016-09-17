@@ -1,4 +1,4 @@
-﻿// Copyright ©  2011
+// Copyright ©  2011
 
 using System.Reflection;
 using System.Runtime.CompilerServices;
